@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
+Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', /* 'middleware' => ['auth:sanctum'] */], function () {
     // Abilities
     Route::apiResource('abilities', 'AbilitiesController', ['only' => ['index']]);
 
@@ -48,4 +48,10 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Expense Report
     Route::apiResource('expense-reports', 'ExpenseReportApiController', ['only' => ['index']]);
+
+    // CLientes
+    Route::resource('clientes', 'ClienteApiController');
+
+    // Cotizacion
+    Route::post('cotizacion', 'ProductApiController@postCotizacion')->name('postCotizacion');
 });

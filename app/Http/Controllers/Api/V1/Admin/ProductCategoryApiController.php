@@ -16,7 +16,7 @@ class ProductCategoryApiController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('product_category_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('product_category_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new ProductCategoryResource(ProductCategory::advancedFilter());
     }
@@ -38,7 +38,7 @@ class ProductCategoryApiController extends Controller
 
     public function create()
     {
-        abort_if(Gate::denies('product_category_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('product_category_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return response([
             'meta' => [],
@@ -47,7 +47,7 @@ class ProductCategoryApiController extends Controller
 
     public function show(ProductCategory $productCategory)
     {
-        abort_if(Gate::denies('product_category_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('product_category_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new ProductCategoryResource($productCategory);
     }
@@ -65,7 +65,7 @@ class ProductCategoryApiController extends Controller
 
     public function edit(ProductCategory $productCategory)
     {
-        abort_if(Gate::denies('product_category_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('product_category_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return response([
             'data' => new ProductCategoryResource($productCategory),
@@ -75,7 +75,7 @@ class ProductCategoryApiController extends Controller
 
     public function destroy(ProductCategory $productCategory)
     {
-        abort_if(Gate::denies('product_category_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('product_category_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $productCategory->delete();
 
@@ -84,7 +84,7 @@ class ProductCategoryApiController extends Controller
 
     public function storeMedia(Request $request)
     {
-        abort_if(Gate::none(['product_category_create', 'product_category_edit']), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::none(['product_category_create', 'product_category_edit']), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->has('size')) {
             $this->validate($request, [

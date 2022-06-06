@@ -2,22 +2,26 @@
 
 namespace App\Http\Requests;
 
-use App\Models\ProductTag;
+use App\Models\Cliente;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 
-class UpdateProductTagRequest extends FormRequest
+class StoreClienteRequest extends FormRequest
 {
     public function authorize()
     {
-        return true;//Gate::allows('product_tag_edit');
+        return true;//Gate::allows('cliente_create');
     }
 
     public function rules()
     {
         return [
-            'name' => [
+            'nombre' => [
+                'string',
+                'required',
+            ],
+            'cuit' => [
                 'string',
                 'required',
             ],

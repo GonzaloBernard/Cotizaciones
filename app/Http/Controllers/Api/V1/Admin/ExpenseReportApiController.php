@@ -13,7 +13,7 @@ class ExpenseReportApiController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('expense_report_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('expense_report_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $validatedData = request()->validate([
             'year'  => 'required|in:' . implode(',', range(now()->year, 1900)),

@@ -11,7 +11,7 @@ class StoreIncomeCategoryRequest extends FormRequest
 {
     public function authorize()
     {
-        return Gate::allows('income_category_create');
+        return true;//Gate::allows('income_category_create');
     }
 
     public function rules()

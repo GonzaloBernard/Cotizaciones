@@ -15,7 +15,7 @@ class IncomeCategoryApiController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('income_category_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('income_category_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new IncomeCategoryResource(IncomeCategory::advancedFilter());
     }
@@ -31,7 +31,7 @@ class IncomeCategoryApiController extends Controller
 
     public function create()
     {
-        abort_if(Gate::denies('income_category_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('income_category_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return response([
             'meta' => [],
@@ -40,7 +40,7 @@ class IncomeCategoryApiController extends Controller
 
     public function show(IncomeCategory $incomeCategory)
     {
-        abort_if(Gate::denies('income_category_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('income_category_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new IncomeCategoryResource($incomeCategory);
     }
@@ -56,7 +56,7 @@ class IncomeCategoryApiController extends Controller
 
     public function edit(IncomeCategory $incomeCategory)
     {
-        abort_if(Gate::denies('income_category_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('income_category_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return response([
             'data' => new IncomeCategoryResource($incomeCategory),
@@ -66,7 +66,7 @@ class IncomeCategoryApiController extends Controller
 
     public function destroy(IncomeCategory $incomeCategory)
     {
-        abort_if(Gate::denies('income_category_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('income_category_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $incomeCategory->delete();
 
