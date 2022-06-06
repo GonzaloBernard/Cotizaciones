@@ -28,15 +28,22 @@
         <v-card-text>
             <v-row justify="center">
                 <v-col cols="auto" align-self="center">
-                    <span style="font-size:0.75rem !important;" class="text-overline font-weight-medium ">{{ precioDolar }} USD</span>
+                    <span
+                        style="font-size: 0.55rem !important"
+                        class="text-overline font-weight-medium"
+                        >{{ precioDolar }} USD</span
+                    >
                 </v-col>
                 <v-col cols="auto" align-self="center">
-                   <span style="font-size:0.75rem !important;" class="text-overline font-weight-medium 
-                   ">{{ precioPesos }} ARS</span>
+                    <span
+                        style="font-size: 0.55rem !important"
+                        class="text-overline font-weight-medium"
+                        >{{ precioPesos }} ARS</span
+                    >
                 </v-col>
             </v-row>
 
-            <div>{{ producto.description }}</div>
+            <div>{{ producto.description.substring(0,80) + '...' }}</div>
             <div class="my-4 text-subtitle-1">
                 {{ producto.stock }} disponibles
             </div>
@@ -55,11 +62,17 @@
                         ></v-text-field>
                     </template>
                 </v-slider>
-
-                <v-btn color="#801515" dark small block>
-                    Agregar al presupuesto
-                </v-btn>
             </div>
+            <v-container>
+                <v-row justify="center">
+                    <v-col align-self="stretch">
+                        <v-btn color="#801515" dark x-small block>
+                            Agregar al presupuesto
+                        </v-btn>
+
+                    </v-col>
+                </v-row>
+            </v-container>
         </v-card-text>
     </v-card>
 </template>
