@@ -9,7 +9,7 @@
             </div>
             <h4 class="card-title">
               {{ $t('global.table') }}
-              <strong>{{ $t('cruds.productCategory.title') }}</strong>
+              <strong>{{ $t('Categorias') }}</strong>
             </h4>
           </div>
           <div class="card-body">

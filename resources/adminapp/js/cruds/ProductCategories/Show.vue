@@ -9,7 +9,7 @@
             </div>
             <h4 class="card-title">
               {{ $t('global.view') }}
-              <strong>{{ $t('cruds.productCategory.title_singular') }}</strong>
+              <strong>{{ $t('Categoria') }}</strong>
             </h4>
           </div>
           <div class="card-body">

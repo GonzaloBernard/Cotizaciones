@@ -11,7 +11,7 @@
               <h4 class="card-title">
                 {{ $t('global.edit') }}
                 <strong>{{
-                  $t('cruds.productCategory.title_singular')
+                  $t('Categoria')
                 }}</strong>
               </h4>
             </div>

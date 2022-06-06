@@ -107,25 +107,25 @@ const routes = [
             path: 'product-categories',
             name: 'product_categories.index',
             component: () => import('@cruds/ProductCategories/Index.vue'),
-            meta: { title: 'cruds.productCategory.title' }
+            meta: { title: 'Categorias' }
           },
           {
             path: 'product-categories/create',
             name: 'product_categories.create',
             component: () => import('@cruds/ProductCategories/Create.vue'),
-            meta: { title: 'cruds.productCategory.title' }
+            meta: { title: 'Categorias' }
           },
           {
             path: 'product-categories/:id',
             name: 'product_categories.show',
             component: () => import('@cruds/ProductCategories/Show.vue'),
-            meta: { title: 'cruds.productCategory.title' }
+            meta: { title: 'Categorias' }
           },
           {
             path: 'product-categories/:id/edit',
             name: 'product_categories.edit',
             component: () => import('@cruds/ProductCategories/Edit.vue'),
-            meta: { title: 'cruds.productCategory.title' }
+            meta: { title: 'Categorias' }
           },
           {
             path: 'product-tags',
@@ -155,25 +155,25 @@ const routes = [
             path: 'products',
             name: 'products.index',
             component: () => import('@cruds/Products/Index.vue'),
-            meta: { title: 'cruds.product.title' }
+            meta: { title: 'Productos' }
           },
           {
             path: 'products/create',
             name: 'products.create',
             component: () => import('@cruds/Products/Create.vue'),
-            meta: { title: 'cruds.product.title' }
+            meta: { title: 'Productos' }
           },
           {
             path: 'products/:id',
             name: 'products.show',
             component: () => import('@cruds/Products/Show.vue'),
-            meta: { title: 'cruds.product.title' }
+            meta: { title: 'Productos' }
           },
           {
             path: 'products/:id/edit',
             name: 'products.edit',
             component: () => import('@cruds/Products/Edit.vue'),
-            meta: { title: 'cruds.product.title' }
+            meta: { title: 'Productos' }
           }
         ]
       },
@@ -187,25 +187,25 @@ const routes = [
             path: 'contact-companies',
             name: 'contact_companies.index',
             component: () => import('@cruds/ContactCompanies/Index.vue'),
-            meta: { title: 'cruds.contactCompany.title' }
+            meta: { title: 'Empresas' }
           },
           {
             path: 'contact-companies/create',
             name: 'contact_companies.create',
             component: () => import('@cruds/ContactCompanies/Create.vue'),
-            meta: { title: 'cruds.contactCompany.title' }
+            meta: { title: 'Empresas' }
           },
           {
             path: 'contact-companies/:id',
             name: 'contact_companies.show',
             component: () => import('@cruds/ContactCompanies/Show.vue'),
-            meta: { title: 'cruds.contactCompany.title' }
+            meta: { title: 'Empresas' }
           },
           {
             path: 'contact-companies/:id/edit',
             name: 'contact_companies.edit',
             component: () => import('@cruds/ContactCompanies/Edit.vue'),
-            meta: { title: 'cruds.contactCompany.title' }
+            meta: { title: 'Empresas' }
           },
           {
             path: 'contact-contacts',

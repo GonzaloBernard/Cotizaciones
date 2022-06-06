@@ -10,7 +10,7 @@
               </div>
               <h4 class="card-title">
                 {{ $t('global.edit') }}
-                <strong>{{ $t('cruds.product.title_singular') }}</strong>
+                <strong>{{ $t('Producto') }}</strong>
               </h4>
             </div>
             <div class="card-body">

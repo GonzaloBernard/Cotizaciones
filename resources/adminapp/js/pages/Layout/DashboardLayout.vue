@@ -60,13 +60,13 @@ export default {
           ]
         },
         {
-          title: 'cruds.productManagement.title',
+          title: 'Productos',
           icon: 'table_view',
           path: { name: 'product_management' },
           gate: 'product_management_access',
           children: [
             {
-              title: 'cruds.productCategory.title',
+              title: 'Categorias',
               icon: 'table_view',
               path: { name: 'product_categories.index' },
               gate: 'product_category_access'
@@ -78,7 +78,7 @@ export default {
               gate: 'product_tag_access'
             },
             {
-              title: 'cruds.product.title',
+              title: 'Productos',
               icon: 'table_view',
               path: { name: 'products.index' },
               gate: 'product_access'
@@ -86,13 +86,13 @@ export default {
           ]
         },
         {
-          title: 'cruds.contactManagement.title',
+          title: 'Proveedores',
           icon: 'import_contacts',
           path: { name: 'contact_management' },
           gate: 'contact_management_access',
           children: [
             {
-              title: 'cruds.contactCompany.title',
+              title: 'Empresas',
               icon: 'fas fa-building',
               path: { name: 'contact_companies.index' },
               gate: 'contact_company_access'
@@ -106,7 +106,7 @@ export default {
           ]
         },
         {
-          title: 'cruds.expenseManagement.title',
+          title: 'Balances',
           icon: 'account_balance_wallet',
           path: { name: 'expense_management' },
           gate: 'expense_management_access',
