@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 
 import Alert from './modules/alert'
 import I18NStore from './modules/i18n'
+import Testing from './modules/testing'
 
 import PermissionsIndex from './cruds/Permissions'
 import PermissionsSingle from './cruds/Permissions/single'
@@ -38,6 +39,7 @@ export default new Vuex.Store({
   modules: {
     Alert,
     I18NStore,
+    Testing,
     PermissionsIndex,
     PermissionsSingle,
     RolesIndex,

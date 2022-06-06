@@ -13,7 +13,7 @@
               </h4>
             </div>
             <div class="card-body">
-              {{ $t('global.youAreLoggedIn') }}
+              Ha iniciado sesión
             </div>
           </div>
         </div>
@@ -26,6 +26,11 @@
 export default {
   data() {
     return {}
-  }
+  },
+    created()
+  {
+    this.$store.dispatch("Testing/test")
+
+  },
 }
 </script>
