@@ -30,7 +30,6 @@ export default {
     created()
   {
     this.$store.dispatch("Testing/test")
-
   },
 }
 </script>
