@@ -38,8 +38,8 @@
           </div>
           <div class="card-body">
             <div class="row">
-              <div class="col-md-12">
-                <div class="table-overlay" v-show="loading">
+              <div class="col-md-12 containerProductos">
+                <!-- <div class="table-overlay" v-show="loading">
                   <div class="table-overlay-container">
                     <material-spinner></material-spinner>
                     <span>Loading...</span>
@@ -57,6 +57,9 @@
                   <global-search :query="query" class="pull-left" />
                   <header-settings :columns="columns" class="pull-right" />
                 </datatable>
+ -->            
+
+                <Producto v-for="product in data" :key="product.id" :producto="product"/>
               </div>
             </div>
           </div>
@@ -74,9 +77,11 @@ import HeaderSettings from '@components/Datatables/HeaderSettings'
 import GlobalSearch from '@components/Datatables/GlobalSearch'
 import DatatableList from '@components/Datatables/DatatableList'
 import DatatablePictures from '@components/Datatables/DatatablePictures'
+import Producto from '@cruds/Products/Producto'
 
 export default {
   components: {
+    Producto,
     GlobalSearch,
     HeaderSettings
   },
@@ -144,9 +149,13 @@ export default {
       }
     }
   },
-  beforeDestroy() {
-    this.resetState()
+  async created()
+  {
+    await this.fetchIndexData()
   },
+  /* beforeDestroy() {
+    this.resetState()
+  }, */
   computed: {
     ...mapGetters('ProductsIndex', ['data', 'total', 'loading'])
   },
@@ -164,3 +173,32 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.containerProductos {
+  padding: 30px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 15px;
+  justify-content: center;
+}
+
+@media (max-width: 1400px) {
+  .containerProductos {
+    grid-template-columns:1fr 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 980px) {
+  .containerProductos {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 780px) {
+  .containerProductos {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+</style>

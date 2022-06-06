@@ -26,6 +26,11 @@ import GlobalDirectives from './globalDirectives'
 import GlobalMixins from './mixins/global'
 import { mapGetters, mapActions } from 'vuex'
 
+import Vuetify from "vuetify";
+import 'vuetify/dist/vuetify.min.css'
+import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
+Vue.use(Vuetify);
+
 Vue.use(GlobalComponents)
 Vue.use(GlobalDirectives)
 Vue.use(GlobalMixins)
@@ -41,6 +46,9 @@ const app = new Vue({
   render: h => h(App),
   router,
   store,
+  vuetify: new Vuetify({icons: {
+    iconfont: 'mdi', // default - only for display purposes
+  }}),
   i18n,
   created() {
     this.fetchLanguages()

@@ -7,25 +7,27 @@ function initialState() {
     data: [],
     total: 0,
     query: {},
-    loading: false
+    loading: false,
+    dolar: null,
   }
 }
 
 const route = 'products'
 
 const getters = {
+  getDolar: state => state.dolar,
   data: state => state.data,
   total: state => state.total,
   loading: state => state.loading
 }
-
 const actions = {
-  fetchIndexData({ commit, state }) {
+  async fetchIndexData({ commit, state, dispatch }) {
     commit('setLoading', true)
-    axios
-      .get(route, { params: state.query })
+    await axios
+      .get('https://dummyjson.com/products', { params: state.query })
       .then(response => {
-        commit('setData', response.data.data)
+        /* commit('setData', response.data.data) */
+        commit('setData', response.data.products)
         commit('setTotal', response.data.total)
       })
       .catch(error => {
@@ -47,6 +49,20 @@ const actions = {
         // TODO error handling
       })
   },
+
+  fetchDolar({commit})
+  {
+    axios
+    .get("https://www.dolarsi.com/api/api.php?type=valoresprincipales")
+    .then((response) => {
+      let dolar = response.data.find((a) => {
+        return (a['casa'].nombre === 'Dolar Oficial')
+      })['casa']
+
+      commit("setDolar", dolar)
+    })
+  },
+
   setQuery({ commit }, value) {
     commit('setQuery', _.cloneDeep(value))
   },
@@ -56,6 +72,10 @@ const actions = {
 }
 
 const mutations = {
+  setDolar(state, value)
+  {
+    state.dolar = value;
+  },
   setData: set('data'),
   setTotal: set('total'),
   setQuery(state, query) {
