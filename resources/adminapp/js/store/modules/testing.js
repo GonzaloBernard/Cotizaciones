@@ -10,7 +10,12 @@ function getDefaultState() {
 
     test({dispatch}){
         dispatch(
-            'ProductsIndex/fetchIndexData',
+            'ClientesSingle/updateData',
+            { },
+            { root: true }
+          )
+        dispatch(
+            'ClientesIndex/fetchIndexData',
             { },
             { root: true }
           )
