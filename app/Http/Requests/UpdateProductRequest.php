@@ -51,6 +51,10 @@ class UpdateProductRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'iva' => [
+                'numeric',
+                'nullable',
+            ],
         ];
     }
 }
