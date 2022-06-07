@@ -5,22 +5,9 @@
         style="border-radius: 25px;"
     >
         <!-- Imagen del producto -->
-        <v-carousel
-            height="200"
-            hide-delimiters
-            hide-delimiter-background
-            show-arrows-on-hover
-        >
-            <template v-slot:prev="{ on, attrs }">
-                <v-icon v-bind="attrs" v-on="on"> mdi-chevron-left</v-icon>
-            </template>
-            <template v-slot:next="{ on, attrs }">
-                <v-icon v-bind="attrs" v-on="on"> mdi-chevron-right</v-icon>
-            </template>
-            <v-carousel-item v-for="(item, i) in producto.images" :key="i">
-                <v-img height="200" :src="item" contain></v-img>
-            </v-carousel-item>
-        </v-carousel>
+   
+                <v-img height="200" :src="producto.img ? producto.img : ''" contain></v-img>
+
 
         <!-- Titulo del producto -->
         <v-card-title>{{ producto.name }}</v-card-title>
@@ -97,14 +84,14 @@ export default {
     computed: {
         ...mapGetters("ProductsIndex", ["getDolar"]),
 
-        precioDolar() {
+        precioPesos() {
             return (
-                this.producto.price / parseFloat(this.getDolar?.venta)
+                this.producto.price * parseFloat(this.getDolar?.venta)
             ).toFixed(2);
         },
 
-        precioPesos() {
-            return (this.precioDolar * this.producto.price).toFixed(2);
+        precioDolar() {
+            return this.producto.price
         },
     },
 };

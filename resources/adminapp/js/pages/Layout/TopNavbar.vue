@@ -32,7 +32,7 @@
             <!-- Collapsable -->
             <div class="collapse navbar-collapse justify-content-end">
                 <ul class="navbar-nav">
-                    <v-menu open-on-hover offset-y style="transform: translateX(-20rem);">
+                    <v-menu open-on-hover offset-y>
                         <template v-slot:activator="{ on, attrs }">
                             <v-badge
                                 :content="productos"

@@ -77,6 +77,12 @@ export default {
               gate: 'product_category_access'
             },
             {
+              title: 'Secciones',
+              icon: 'table_view',
+              path: { name: 'product_sections.index' },
+              gate: 'product_category_access'
+            },
+            {
               title: 'cruds.productTag.title',
               icon: 'table_view',
               path: { name: 'product_tags.index' },
