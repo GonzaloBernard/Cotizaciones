@@ -11,7 +11,7 @@ class StoreProductCategoryRequest extends FormRequest
 {
     public function authorize()
     {
-        return Gate::allows('product_category_create');
+        return true;//Gate::allows('product_category_create');
     }
 
     public function rules()

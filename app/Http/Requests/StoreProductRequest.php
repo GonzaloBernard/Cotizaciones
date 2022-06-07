@@ -11,7 +11,7 @@ class StoreProductRequest extends FormRequest
 {
     public function authorize()
     {
-        return Gate::allows('product_create');
+        return true;//Gate::allows('product_create');
     }
 
     public function rules()
@@ -32,9 +32,9 @@ class StoreProductRequest extends FormRequest
             'category' => [
                 'array',
             ],
-            'category.*.id' => [
+            'categoria_id' => [
                 'integer',
-                'exists:product_categories,id',
+                'required',
             ],
             'tag' => [
                 'array',
@@ -50,6 +50,10 @@ class StoreProductRequest extends FormRequest
             'photo.*.id' => [
                 'integer',
                 'exists:media,id',
+            ],
+            'stock' => [
+                'integer',
+                'required',
             ],
         ];
     }

@@ -11,7 +11,7 @@ class StoreContactContactRequest extends FormRequest
 {
     public function authorize()
     {
-        return Gate::allows('contact_contact_create');
+        return true;//Gate::allows('contact_contact_create');
     }
 
     public function rules()

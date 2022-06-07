@@ -16,7 +16,7 @@ class UsersApiController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new UserResource(User::with(['roles'])->advancedFilter());
     }
@@ -33,7 +33,7 @@ class UsersApiController extends Controller
 
     public function create()
     {
-        abort_if(Gate::denies('user_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('user_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return response([
             'meta' => [
@@ -44,7 +44,7 @@ class UsersApiController extends Controller
 
     public function show(User $user)
     {
-        abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new UserResource($user->load(['roles']));
     }
@@ -61,7 +61,7 @@ class UsersApiController extends Controller
 
     public function edit(User $user)
     {
-        abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return response([
             'data' => new UserResource($user->load(['roles'])),
@@ -73,7 +73,7 @@ class UsersApiController extends Controller
 
     public function destroy(User $user)
     {
-        abort_if(Gate::denies('user_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('user_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $user->delete();
 

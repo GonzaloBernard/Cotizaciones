@@ -11,7 +11,7 @@ class UpdateIncomeCategoryRequest extends FormRequest
 {
     public function authorize()
     {
-        return Gate::allows('income_category_edit');
+        return true;//Gate::allows('income_category_edit');
     }
 
     public function rules()

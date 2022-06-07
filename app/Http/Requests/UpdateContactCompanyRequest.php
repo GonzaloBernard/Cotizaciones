@@ -11,7 +11,7 @@ class UpdateContactCompanyRequest extends FormRequest
 {
     public function authorize()
     {
-        return Gate::allows('contact_company_edit');
+        return true;//Gate::allows('contact_company_edit');
     }
 
     public function rules()

@@ -15,7 +15,7 @@ class ContactCompanyApiController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('contact_company_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('contact_company_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new ContactCompanyResource(ContactCompany::advancedFilter());
     }
@@ -31,7 +31,7 @@ class ContactCompanyApiController extends Controller
 
     public function create()
     {
-        abort_if(Gate::denies('contact_company_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('contact_company_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return response([
             'meta' => [],
@@ -40,7 +40,7 @@ class ContactCompanyApiController extends Controller
 
     public function show(ContactCompany $contactCompany)
     {
-        abort_if(Gate::denies('contact_company_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('contact_company_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new ContactCompanyResource($contactCompany);
     }
@@ -56,7 +56,7 @@ class ContactCompanyApiController extends Controller
 
     public function edit(ContactCompany $contactCompany)
     {
-        abort_if(Gate::denies('contact_company_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('contact_company_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return response([
             'data' => new ContactCompanyResource($contactCompany),
@@ -66,7 +66,7 @@ class ContactCompanyApiController extends Controller
 
     public function destroy(ContactCompany $contactCompany)
     {
-        abort_if(Gate::denies('contact_company_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('contact_company_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $contactCompany->delete();
 

@@ -11,7 +11,7 @@ class UpdateExpenseRequest extends FormRequest
 {
     public function authorize()
     {
-        return Gate::allows('expense_edit');
+        return true;//Gate::allows('expense_edit');
     }
 
     public function rules()

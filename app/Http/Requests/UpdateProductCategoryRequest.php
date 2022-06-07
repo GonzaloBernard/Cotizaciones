@@ -11,7 +11,7 @@ class UpdateProductCategoryRequest extends FormRequest
 {
     public function authorize()
     {
-        return Gate::allows('product_category_edit');
+        return true;//Gate::allows('product_category_edit');
     }
 
     public function rules()

@@ -2,27 +2,20 @@ function initialState() {
   return {
     entry: {
       id: null,
-      name: '',
-      description: '',
-      price: '',
-      categoria_id: 1,
-      category: [],
-      tag: [],
-      photo: [],
-      stock:0,
+      nombre: '',
+      cuit: null,
       created_at: '',
       updated_at: '',
       deleted_at: ''
     },
     lists: {
-      category: [],
-      tag: []
+      cliente_category: []
     },
     loading: false
   }
 }
 
-const route = 'products'
+const route = 'clientes'
 
 const getters = {
   entry: state => state.entry,
@@ -94,27 +87,6 @@ const actions = {
         })
     })
   },
-  setName({ commit }, value) {
-    commit('setName', value)
-  },
-  setDescription({ commit }, value) {
-    commit('setDescription', value)
-  },
-  setPrice({ commit }, value) {
-    commit('setPrice', value)
-  },
-  setCategory({ commit }, value) {
-    commit('setCategory', value)
-  },
-  setTag({ commit }, value) {
-    commit('setTag', value)
-  },
-  insertPhotoFile({ commit }, file) {
-    commit('insertPhotoFile', file)
-  },
-  removePhotoFile({ commit }, file) {
-    commit('removePhotoFile', file)
-  },
   setCreatedAt({ commit }, value) {
     commit('setCreatedAt', value)
   },
@@ -148,29 +120,6 @@ const actions = {
 const mutations = {
   setEntry(state, entry) {
     state.entry = entry
-  },
-  setName(state, value) {
-    state.entry.name = value
-  },
-  setDescription(state, value) {
-    state.entry.description = value
-  },
-  setPrice(state, value) {
-    state.entry.price = value
-  },
-  setCategory(state, value) {
-    state.entry.category = value
-  },
-  setTag(state, value) {
-    state.entry.tag = value
-  },
-  insertPhotoFile(state, file) {
-    state.entry.photo.push(file)
-  },
-  removePhotoFile(state, file) {
-    state.entry.photo = state.entry.photo.filter(item => {
-      return item.id !== file.id
-    })
   },
   setCreatedAt(state, value) {
     state.entry.created_at = value

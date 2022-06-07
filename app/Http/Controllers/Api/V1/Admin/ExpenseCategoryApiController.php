@@ -15,7 +15,7 @@ class ExpenseCategoryApiController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('expense_category_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('expense_category_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new ExpenseCategoryResource(ExpenseCategory::advancedFilter());
     }
@@ -31,7 +31,7 @@ class ExpenseCategoryApiController extends Controller
 
     public function create()
     {
-        abort_if(Gate::denies('expense_category_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('expense_category_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return response([
             'meta' => [],
@@ -40,7 +40,7 @@ class ExpenseCategoryApiController extends Controller
 
     public function show(ExpenseCategory $expenseCategory)
     {
-        abort_if(Gate::denies('expense_category_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('expense_category_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new ExpenseCategoryResource($expenseCategory);
     }
@@ -56,7 +56,7 @@ class ExpenseCategoryApiController extends Controller
 
     public function edit(ExpenseCategory $expenseCategory)
     {
-        abort_if(Gate::denies('expense_category_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('expense_category_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return response([
             'data' => new ExpenseCategoryResource($expenseCategory),
@@ -66,7 +66,7 @@ class ExpenseCategoryApiController extends Controller
 
     public function destroy(ExpenseCategory $expenseCategory)
     {
-        abort_if(Gate::denies('expense_category_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('expense_category_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $expenseCategory->delete();
 

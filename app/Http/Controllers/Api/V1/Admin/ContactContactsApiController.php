@@ -16,7 +16,7 @@ class ContactContactsApiController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('contact_contact_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('contact_contact_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new ContactContactResource(ContactContact::with(['company'])->advancedFilter());
     }
@@ -32,7 +32,7 @@ class ContactContactsApiController extends Controller
 
     public function create()
     {
-        abort_if(Gate::denies('contact_contact_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('contact_contact_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return response([
             'meta' => [
@@ -43,7 +43,7 @@ class ContactContactsApiController extends Controller
 
     public function show(ContactContact $contactContact)
     {
-        abort_if(Gate::denies('contact_contact_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('contact_contact_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new ContactContactResource($contactContact->load(['company']));
     }
@@ -59,7 +59,7 @@ class ContactContactsApiController extends Controller
 
     public function edit(ContactContact $contactContact)
     {
-        abort_if(Gate::denies('contact_contact_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('contact_contact_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return response([
             'data' => new ContactContactResource($contactContact->load(['company'])),
@@ -71,7 +71,7 @@ class ContactContactsApiController extends Controller
 
     public function destroy(ContactContact $contactContact)
     {
-        abort_if(Gate::denies('contact_contact_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('contact_contact_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $contactContact->delete();
 
