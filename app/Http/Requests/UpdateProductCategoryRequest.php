@@ -25,13 +25,9 @@ class UpdateProductCategoryRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'photo' => [
-                'array',
-                'nullable',
-            ],
-            'photo.*.id' => [
+            'section_id' => [
                 'integer',
-                'exists:media,id',
+                'nullable',
             ],
         ];
     }
