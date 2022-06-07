@@ -43,17 +43,13 @@ class StoreProductRequest extends FormRequest
                 'integer',
                 'exists:product_tags,id',
             ],
-            'photo' => [
-                'array',
-                'nullable',
-            ],
-            'photo.*.id' => [
-                'integer',
-                'exists:media,id',
-            ],
             'stock' => [
                 'integer',
                 'required',
+            ],
+            'img' => [
+                'string',
+                'nullable',
             ],
         ];
     }

@@ -25,11 +25,11 @@ class ProductCategoryApiController extends Controller
     {
         $productCategory = ProductCategory::create($request->validated());
 
-        if ($media = $request->input('photo', [])) {
+/*         if ($media = $request->input('photo', [])) {
             Media::whereIn('id', data_get($media, '*.id'))
                 ->where('model_id', 0)
                 ->update(['model_id' => $productCategory->id]);
-        }
+        } */
 
         return (new ProductCategoryResource($productCategory))
             ->response()

@@ -43,13 +43,13 @@ class UpdateProductRequest extends FormRequest
                 'integer',
                 'exists:product_tags,id',
             ],
-            'photo' => [
-                'array',
-                'nullable',
-            ],
-            'photo.*.id' => [
+            'stock' => [
                 'integer',
-                'exists:media,id',
+                'required',
+            ],
+            'img' => [
+                'string',
+                'nullable',
             ],
         ];
     }

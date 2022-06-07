@@ -25,11 +25,11 @@ class ProductSectionApiController extends Controller
     {
         $productSection = ProductSection::create($request->validated());
 
-        if ($media = $request->input('photo', [])) {
+/*         if ($media = $request->input('photo', [])) {
             Media::whereIn('id', data_get($media, '*.id'))
                 ->where('model_id', 0)
                 ->update(['model_id' => $productSection->id]);
-        }
+        } */
 
         return (new ProductSectionResource($productSection))
             ->response()
