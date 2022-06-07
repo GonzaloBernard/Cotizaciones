@@ -9,7 +9,7 @@ function getDefaultState() {
   const actions = {
 
     test({dispatch}){
-        dispatch(
+/*         dispatch(
             'ClientesSingle/updateData',
             { },
             { root: true }
@@ -18,7 +18,17 @@ function getDefaultState() {
             'ClientesIndex/fetchIndexData',
             { },
             { root: true }
-          )
+          ) */
+
+
+          axios
+          .get('/product-sections', {  })
+          .then(response => {
+            console.log(response.data)
+          })
+
+
+
     }
   }
 

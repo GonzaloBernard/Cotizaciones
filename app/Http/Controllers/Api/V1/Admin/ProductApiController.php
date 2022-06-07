@@ -30,11 +30,11 @@ class ProductApiController extends Controller
         $product = Product::create($request->validated());
         //$product->category()->sync($request->input('category.*.id', []));
         //$product->tag()->sync($request->input('tag.*.id', []));
-        if ($media = $request->input('photo', [])) {
+/*         if ($media = $request->input('photo', [])) {
             Media::whereIn('id', data_get($media, '*.id'))
                 ->where('model_id', 0)
                 ->update(['model_id' => $product->id]);
-        }
+        } */
 
         return (new ProductResource($product))
             ->response()
