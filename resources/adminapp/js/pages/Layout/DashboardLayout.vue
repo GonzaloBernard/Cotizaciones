@@ -6,10 +6,15 @@
     </side-bar>
 
     <div class="main-panel">
+      
+      <v-app>
       <top-navbar></top-navbar>
-      <div class="content">
+      <div class="content mt-16">
         <dashboard-content></dashboard-content>
       </div>
+        
+      </v-app>
+
     </div>
   </div>
 </template>

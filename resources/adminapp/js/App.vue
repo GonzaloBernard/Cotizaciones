@@ -1,7 +1,5 @@
 <template>
-<v-app>
   <router-view></router-view>
-</v-app>
 </template>
 
 <script>
@@ -12,3 +10,10 @@ export default {
   },
 }
 </script>
+
+<style>
+
+.v-application ol, .v-application ul {
+  padding-left: 0px !important;
+}
+</style>

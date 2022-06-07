@@ -1,12 +1,12 @@
 <template>
     <v-card
-        :max-width="$vuetify.breakpoint.width > 970 ? 220 : 500"
-        style="border-radius: 25px"
+
+        :max-width="$vuetify.breakpoint.width > 970 ? 220 : 300"
+        style="border-radius: 25px;"
     >
         <!-- Imagen del producto -->
         <v-carousel
             height="200"
-            cycle
             hide-delimiters
             hide-delimiter-background
             show-arrows-on-hover
@@ -23,9 +23,9 @@
         </v-carousel>
 
         <!-- Titulo del producto -->
-        <v-card-title>{{ producto.title }}</v-card-title>
+        <v-card-title>{{ producto.name }}</v-card-title>
 
-        <v-card-text>
+        <v-card-text class="d-flex-column">
             <v-row justify="center">
                 <v-col cols="auto" align-self="center">
                     <span
@@ -43,7 +43,7 @@
                 </v-col>
             </v-row>
 
-            <div>{{ producto.description.substring(0,80) + '...' }}</div>
+            <div>{{ producto.description.substring(0,50) + '...' }}</div>
             <div class="my-4 text-subtitle-1">
                 {{ producto.stock }} disponibles
             </div>
@@ -63,16 +63,16 @@
                     </template>
                 </v-slider>
             </div>
-            <v-container>
+            <div class="d-flex align-end my-auto mx-auto">
                 <v-row justify="center">
                     <v-col align-self="stretch">
                         <v-btn color="#801515" dark x-small block>
                             Agregar al presupuesto
                         </v-btn>
-
                     </v-col>
                 </v-row>
-            </v-container>
+
+            </div>
         </v-card-text>
     </v-card>
 </template>

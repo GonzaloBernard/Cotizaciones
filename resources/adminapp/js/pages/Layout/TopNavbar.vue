@@ -32,7 +32,7 @@
             <!-- Collapsable -->
             <div class="collapse navbar-collapse justify-content-end">
                 <ul class="navbar-nav">
-                    <v-menu open-on-hover offset-y>
+                    <v-menu open-on-hover offset-y style="transform: translateX(-20rem);">
                         <template v-slot:activator="{ on, attrs }">
                             <v-badge
                                 :content="productos"
@@ -61,8 +61,7 @@
 
                                 <v-btn class="mt-2" dark block x-small color="red lighten-3" >Vaciar Presupuesto</v-btn>
 
-                                
-
+                
                             </v-row>
                         </v-list>
                     </v-menu>
