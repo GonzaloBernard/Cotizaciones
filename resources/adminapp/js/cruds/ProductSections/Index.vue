@@ -90,22 +90,10 @@ export default {
           colStyle: 'width: 100px;'
         },
         {
-          title: 'cruds.productCategory.fields.name',
-          field: 'name',
-          thComp: TranslatedHeader,
-          sortable: true
-        },
-        {
           title: 'cruds.productCategory.fields.description',
-          field: 'description',
+          field: 'descripcion',
           thComp: TranslatedHeader,
           sortable: true
-        },
-        {
-          title: 'cruds.productCategory.fields.photo',
-          field: 'photo',
-          thComp: TranslatedHeader,
-          tdComp: DatatablePictures
         },
         {
           title: 'global.actions',
@@ -119,8 +107,8 @@ export default {
       ],
       query: { sort: 'id', order: 'desc', limit: 100, s: '' },
       xprops: {
-        module: 'ProductCategoriesIndex',
-        route: 'product_categories',
+        module: 'ProductSectionsIndex',
+        route: 'product_sections',
         permission_prefix: 'product_category_'
       }
     }
@@ -129,7 +117,7 @@ export default {
     this.resetState()
   },
   computed: {
-    ...mapGetters('ProductCategoriesIndex', ['data', 'total', 'loading'])
+    ...mapGetters('ProductSectionsIndex', ['data', 'total', 'loading'])
   },
   watch: {
     query: {
@@ -141,7 +129,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions('ProductCategoriesIndex', [
+    ...mapActions('ProductSectionsIndex', [
       'fetchIndexData',
       'setQuery',
       'resetState'

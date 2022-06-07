@@ -116,6 +116,10 @@ const actions = {
   setName({ commit }, value) {
     commit('setName', value)
   },
+  setStock({commit}, value)
+  {
+    commit('setStock', value)
+  },
   setDescription({ commit }, value) {
     commit('setDescription', value)
   },
@@ -185,6 +189,10 @@ const mutations = {
   },
   insertPhotoFile(state, file) {
     state.entry.photo.push(file)
+  },
+  setStock(state, value)
+  {
+    state.entry.stock = value
   },
   removePhotoFile(state, file) {
     state.entry.photo = state.entry.photo.filter(item => {

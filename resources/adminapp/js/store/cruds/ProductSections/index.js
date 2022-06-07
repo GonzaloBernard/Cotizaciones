@@ -23,10 +23,10 @@ const actions = {
   fetchIndexData({ commit, state }) {
     commit('setLoading', true)
     axios
-      .get(route, { params: state.query })
+      .get(route)
       .then(response => {
         commit('setData', response.data.data)
-        commit('setTotal', response.data.total)
+        commit('setTotal', response.data.data.length)
       })
       .catch(error => {
         message = error.response.data.message || error.message

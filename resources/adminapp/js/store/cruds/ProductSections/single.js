@@ -2,9 +2,8 @@ function initialState() {
   return {
     entry: {
       id: null,
-      name: '',
-      description: '',
-      photo: [],
+      descripcion: '',
+      section_id: null,
       created_at: '',
       updated_at: '',
       deleted_at: ''
@@ -96,6 +95,7 @@ const actions = {
   removePhotoFile({ commit }, file) {
     commit('removePhotoFile', file)
   },
+
   setCreatedAt({ commit }, value) {
     commit('setCreatedAt', value)
   },
@@ -150,6 +150,7 @@ const mutations = {
   setLoading(state, loading) {
     state.loading = loading
   },
+
   resetState(state) {
     state = Object.assign(state, initialState())
   }

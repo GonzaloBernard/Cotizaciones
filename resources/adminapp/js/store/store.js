@@ -32,6 +32,8 @@ import IncomesSingle from './cruds/Incomes/single'
 import ExpenseReports from './cruds/ExpenseReports'
 import ClientesIndex from './cruds/Clientes/index'
 import ClientesSingle from './cruds/Clientes/single'
+import ProductSectionsIndex from './cruds/ProductSections/index'
+import ProductSectionsSingle from './cruds/ProductSections/single'
 
 Vue.use(Vuex)
 
@@ -68,7 +70,9 @@ export default new Vuex.Store({
     IncomesSingle,
     ExpenseReports,
     ClientesIndex,
-    ClientesSingle
+    ClientesSingle,
+    ProductSectionsIndex,
+ProductSectionsSingle
   },
   strict: debug
 })

@@ -67,6 +67,19 @@
                                             @blur="clearFocus"
                                         ></textarea>
                                     </div>
+                                                                        <div class="form-group">
+                                        <label>{{
+                                            $t("cruds.product.fields.photo")
+                                        }}</label>
+                                        <UploadImages
+                                            class="mb-8"
+                                            @changed="subirImagen"
+                                            maxError="1 Imágen máximo"
+                                            clearAll="Limpiar imágenes"
+                                            :max="1"
+                                            uploadMsg="Click aquí o arrastre una imágen"
+                                        />
+                                    </div>
                                     <div
                                         class="form-group bmd-form-group"
                                         :class="{
@@ -113,10 +126,7 @@
                                             :closeOnSelect="false"
                                             multiple
                                             @input="updateCategory"
-                                            @search.focus="
-                                                focusField('category')
-                                            "
-                                            @search.blur="clearFocus"
+        
                                         />
                                     </div>
                                     <div
@@ -138,23 +148,34 @@
                                             :closeOnSelect="false"
                                             multiple
                                             @input="updateTag"
-                                            @search.focus="focusField('tag')"
-                                            @search.blur="clearFocus"
+    
                                         />
                                     </div>
-                                    <div class="form-group">
-                                        <label>{{
-                                            $t("cruds.product.fields.photo")
-                                        }}</label>
-                                        <UploadImages
-                                            class="mb-8"
-                                            @changed="subirImagen"
-                                            maxError="1 Imágen máximo"
-                                            clearAll="Limpiar imágenes"
-                                            :max="1"
-                                            uploadMsg="Click aquí o arrastre una imágen"
-                                        />
+                                        <label class="bmd-label-floating mt-4">
+                                            Stock Inicial
+                                        </label>
+                                    <div
+                                        class="form-group bmd-form-group"
+                                    >
+                                            <v-slider
+                                                :value="entry.stock"
+                                                :max="9999"
+                                                class="align-center"
+                                                @input="updateStock"
+                                            >
+                                                <template v-slot:append>
+                                                    <v-text-field
+                                                        :value="entry.stock"
+                                                         @input="updateStock"
+                                                        class="text-center mt-0 pt-0"
+                                                        type="number"
+                                                        style="width: 120px"
+                                                    ></v-text-field>
+                                                </template>
+                                            </v-slider>
+                                       
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -163,7 +184,7 @@
                                 class="btn-primary"
                                 :status="status"
                                 :isLoading="loading"
-                                :disabled="loading"
+                                :disabled="!imagen"
                             >
                                 {{ $t("global.save") }}
                             </vue-button-spinner>
@@ -179,15 +200,15 @@
 import { mapGetters, mapActions } from "vuex";
 import UploadImages from "vue-upload-drop-images";
 
-
 export default {
     components: {
-          UploadImages,
+        UploadImages,
     },
     data() {
         return {
             status: "",
             activeField: "",
+            imagen: null,
         };
     },
     computed: {
@@ -211,15 +232,16 @@ export default {
             "insertPhotoFile",
             "removePhotoFile",
             "fetchCreateData",
-            "uploadImagen"
+            "uploadImagen",
+            "setStock"
         ]),
 
-      async subirImagen(e) {
-      const file = e[0];
-      const uploadedImage = await this.uploadImagen({ file });
+        async subirImagen(e) {
+            const file = e[0];
+            const uploadedImage = await this.uploadImagen({ file });
 
-      this.imagen = uploadedImage;
-    },
+            this.imagen = uploadedImage;
+        },
 
         updateName(e) {
             this.setName(e.target.value);
@@ -235,6 +257,9 @@ export default {
         },
         updateTag(value) {
             this.setTag(value);
+        },
+        updateStock(value) {
+            this.setStock(value);
         },
         getRoute(name) {
             return `${axios.defaults.baseURL}${name}/media`;

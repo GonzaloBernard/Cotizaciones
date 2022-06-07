@@ -20,7 +20,8 @@ const getters = {
 }
 
 const actions = {
-  fetchIndexData({ commit, state }) {
+  fetchIndexData({ commit, state, dispatch }) {
+    dispatch('ProductSectionsIndex/fetchIndexData', null, { root: true })
     commit('setLoading', true)
     axios
       .get(route, { params: state.query })
