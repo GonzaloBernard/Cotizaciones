@@ -8,9 +8,6 @@ function initialState() {
       updated_at: '',
       deleted_at: ''
     },
-    lists: {
-      cliente_category: []
-    },
     loading: false
   }
 }
