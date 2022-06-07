@@ -103,6 +103,34 @@ const routes = [
         component: View,
         redirect: { name: 'product_categories.index' },
         children: [
+
+          //SECCIONES
+          {
+            path: 'product-sections',
+            name: 'product_sections.index',
+            component: () => import('@cruds/ProductSections/Index.vue'),
+            meta: { title: 'Secciones' }
+          },
+          {
+            path: 'product-sections/create',
+            name: 'product_sections.create',
+            component: () => import('@cruds/ProductSections/Create.vue'),
+            meta: { title: 'Secciones' }
+          },
+          {
+            path: 'product-sections/:id',
+            name: 'product_sections.show',
+            component: () => import('@cruds/ProductSections/Show.vue'),
+            meta: { title: 'Secciones' }
+          },
+          {
+            path: 'product-sections/:id/edit',
+            name: 'product_sections.edit',
+            component: () => import('@cruds/ProductSections/Edit.vue'),
+            meta: { title: 'Secciones' }
+          },
+
+
           {
             path: 'product-categories',
             name: 'product_categories.index',

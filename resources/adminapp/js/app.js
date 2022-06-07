@@ -35,6 +35,13 @@ Vue.use(GlobalComponents)
 Vue.use(GlobalDirectives)
 Vue.use(GlobalMixins)
 
+import firebase from '@/helpers/firebase'
+import firebaseConfig from '@/config/firebase'
+
+Vue.use(firebase);
+
+firebase.initializeApp(firebaseConfig)
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

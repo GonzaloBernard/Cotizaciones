@@ -6,10 +6,15 @@
     </side-bar>
 
     <div class="main-panel">
+      
+      <v-app>
       <top-navbar></top-navbar>
-      <div class="content">
+      <div class="content mt-16">
         <dashboard-content></dashboard-content>
       </div>
+        
+      </v-app>
+
     </div>
   </div>
 </template>
@@ -69,6 +74,12 @@ export default {
               title: 'Categorias',
               icon: 'table_view',
               path: { name: 'product_categories.index' },
+              gate: 'product_category_access'
+            },
+            {
+              title: 'Secciones',
+              icon: 'table_view',
+              path: { name: 'product_sections.index' },
               gate: 'product_category_access'
             },
             {

@@ -1,33 +1,22 @@
-import firebase from '@/helpers/firebase'
 function initialState() {
   return {
     entry: {
       id: null,
       name: '',
       description: '',
-      price: '',
-      categoria_id: 1,
-      category: [],
-      tag: [],
-      img: null,
-      stock:0,
+      photo: [],
       created_at: '',
       updated_at: '',
       deleted_at: ''
-    },
-    lists: {
-      category: [],
-      tag: []
     },
     loading: false
   }
 }
 
-const route = 'products'
+const route = 'product-categories'
 
 const getters = {
   entry: state => state.entry,
-  lists: state => state.lists,
   loading: state => state.loading
 }
 
@@ -95,38 +84,11 @@ const actions = {
         })
     })
   },
-
-  async uploadImagen ({ commit }, { file, filename }) {
-    if (!file) return null
-    filename = Math.random()
-    try {
-      const storageBucket = firebase
-        .storage()
-        .ref()
-        .child(`mipUploads/images/${Date.now()}-${filename}`)
-      const snapshot = await storageBucket.put(file)
-      const url = await snapshot.ref.getDownloadURL()
-      commit('setImg', url)
-      return url
-    } catch (error) {
-      console.log(error)
-    }
-  },
-
   setName({ commit }, value) {
     commit('setName', value)
   },
   setDescription({ commit }, value) {
     commit('setDescription', value)
-  },
-  setPrice({ commit }, value) {
-    commit('setPrice', value)
-  },
-  setCategory({ commit }, value) {
-    commit('setCategory', value)
-  },
-  setTag({ commit }, value) {
-    commit('setTag', value)
   },
   insertPhotoFile({ commit }, file) {
     commit('insertPhotoFile', file)
@@ -143,15 +105,9 @@ const actions = {
   setDeletedAt({ commit }, value) {
     commit('setDeletedAt', value)
   },
-  fetchCreateData({ commit }) {
-    axios.get(`${route}/create`).then(response => {
-      commit('setLists', response.data.meta)
-    })
-  },
   fetchEditData({ commit, dispatch }, id) {
     axios.get(`${route}/${id}/edit`).then(response => {
       commit('setEntry', response.data.data)
-      commit('setLists', response.data.meta)
     })
   },
   fetchShowData({ commit, dispatch }, id) {
@@ -174,15 +130,6 @@ const mutations = {
   setDescription(state, value) {
     state.entry.description = value
   },
-  setPrice(state, value) {
-    state.entry.price = value
-  },
-  setCategory(state, value) {
-    state.entry.category = value
-  },
-  setTag(state, value) {
-    state.entry.tag = value
-  },
   insertPhotoFile(state, file) {
     state.entry.photo.push(file)
   },
@@ -197,16 +144,8 @@ const mutations = {
   setUpdatedAt(state, value) {
     state.entry.updated_at = value
   },
-  setImg(state, value)
-  {
-    console.log(value)
-    state.entry.img = value;
-  },
   setDeletedAt(state, value) {
     state.entry.deleted_at = value
-  },
-  setLists(state, lists) {
-    state.lists = lists
   },
   setLoading(state, loading) {
     state.loading = loading

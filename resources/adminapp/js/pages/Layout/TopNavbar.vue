@@ -61,8 +61,7 @@
 
                                 <v-btn class="mt-2" dark block x-small color="red lighten-3" >Vaciar Presupuesto</v-btn>
 
-                                
-
+                
                             </v-row>
                         </v-list>
                     </v-menu>
