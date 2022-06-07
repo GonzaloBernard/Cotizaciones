@@ -57,7 +57,7 @@ class CreateMipsTables extends Migration
             $table->foreign('section_id', 'section_id_5551404')->references('id')->on('product_category_section');
         });
         Schema::table('products', function (Blueprint $table) {
-            $table->string('img');
+            $table->string('img')->nullable();
             $table->integer('stock');
             $table->unsignedBigInteger('categoria_id');
             $table->foreign('categoria_id', 'categoria_id_fk_4221404')->references('id')->on('product_categories');

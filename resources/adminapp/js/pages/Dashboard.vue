@@ -29,7 +29,13 @@ export default {
   },
     created()
   {
-    //this.$store.dispatch("Testing/test")
+    // || NO BORRAR
+    // || TESTING --------------------------------------
+
+    this.$store.dispatch("Testing/test")
+
+    // || TESTING --------------------------------------
+    // || NO BORRAR
   },
 }
 </script>

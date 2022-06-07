@@ -7,27 +7,25 @@ function initialState() {
     data: [],
     total: 0,
     query: {},
-    loading: false,
-    dolar: null,
+    loading: false
   }
 }
 
-const route = 'products'
+const route = 'clientes'
 
 const getters = {
-  getDolar: state => state.dolar,
   data: state => state.data,
   total: state => state.total,
   loading: state => state.loading
 }
+
 const actions = {
-  async fetchIndexData({ commit, state, dispatch }) {
+  fetchIndexData({ commit, state }) {
     commit('setLoading', true)
-    await axios
+    axios
       .get(route, { params: state.query })
       .then(response => {
         commit('setData', response.data.data)
-        /* commit('setData', response.data.products) */
         commit('setTotal', response.data.total)
       })
       .catch(error => {
@@ -49,20 +47,6 @@ const actions = {
         // TODO error handling
       })
   },
-
-  fetchDolar({commit})
-  {
-    axios
-    .get("https://www.dolarsi.com/api/api.php?type=valoresprincipales")
-    .then((response) => {
-      let dolar = response.data.find((a) => {
-        return (a['casa'].nombre === 'Dolar Oficial')
-      })['casa']
-
-      commit("setDolar", dolar)
-    })
-  },
-
   setQuery({ commit }, value) {
     commit('setQuery', _.cloneDeep(value))
   },
@@ -72,10 +56,6 @@ const actions = {
 }
 
 const mutations = {
-  setDolar(state, value)
-  {
-    state.dolar = value;
-  },
   setData: set('data'),
   setTotal: set('total'),
   setQuery(state, query) {

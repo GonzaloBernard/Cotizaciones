@@ -50,6 +50,8 @@ class Product extends Model implements HasMedia
         'name',
         'description',
         'price',
+        'stock',
+        'categoria_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -75,7 +77,7 @@ class Product extends Model implements HasMedia
 
     public function category()
     {
-        return $this->belongsToMany(ProductCategory::class);
+        return $this->belongsTo(ProductCategory::class);
     }
 
     public function tag()
