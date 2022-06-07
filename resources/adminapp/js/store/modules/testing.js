@@ -21,11 +21,11 @@ function getDefaultState() {
           ) */
 
 
-          axios
+        /*   axios
           .get('/product-sections', {  })
           .then(response => {
             console.log(response.data)
-          })
+          }) */
 
 
 

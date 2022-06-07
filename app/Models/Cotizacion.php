@@ -27,18 +27,15 @@ class Cotizacion extends Model
     protected $orderable = [
         'id',
         'descripcion',
-        'iva',
     ];
 
     protected $filterable = [
         'id',
         'descripcion',
-        'iva',
     ];
 
     protected $fillable = [
         'descripcion',
-        'iva',
         'cliente_id',
         'created_at',
         'updated_at',
