@@ -20,6 +20,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', /
     // Product Category
     Route::post('product-categories/media', 'ProductCategoryApiController@storeMedia')->name('product-categories.storeMedia');
     Route::resource('product-categories', 'ProductCategoryApiController');
+    Route::resource('product-sections', 'ProductSectionApiController');
 
     // Product Tag
     Route::resource('product-tags', 'ProductTagApiController');
