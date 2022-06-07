@@ -7,7 +7,7 @@ use App\Support\HasAdvancedFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductCategory extends Model
+class ProductSection extends Model
 {
     use HasAdvancedFilter;
 
