@@ -16,7 +16,7 @@
                         </v-fade-transition>
                         <v-img
                             height="180"
-                            :src="producto.images[0] ? producto.images[0] : ''"
+                            :src="producto.img ? producto.img : ''"
                             contain
                         ></v-img>
                     </div>
@@ -24,7 +24,7 @@
             </v-hover>
 
             <!-- Titulo del producto -->
-            <v-card-title>{{ producto.title }}</v-card-title>
+            <v-card-title>{{ producto.name }}</v-card-title>
 
             <v-card-text class="d-flex-column">
                 <v-row justify="center">

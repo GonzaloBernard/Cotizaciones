@@ -25,10 +25,10 @@ const actions = {
     commit('setLoading', true)
     dispatch('ProductCategoriesIndex/fetchIndexData', null, {root: true})
     await axios
-      .get("https://dummyjson.com/products", { params: state.query })
+      .get(route, { params: state.query })
       .then(response => {
- /*        commit('setData', response.data.data) */
-        commit('setData', response.data.products)
+        commit('setData', response.data.data)
+        /* commit('setData', response.data.products) */
         commit('setTotal', response.data.total)
       })
       .catch(error => {
