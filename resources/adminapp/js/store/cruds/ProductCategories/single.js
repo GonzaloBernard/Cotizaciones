@@ -105,6 +105,10 @@ const actions = {
   setDeletedAt({ commit }, value) {
     commit('setDeletedAt', value)
   },
+    setSection({commit}, value)
+  {
+    commit('setSection', value)
+  },
   fetchEditData({ commit, dispatch }, id) {
     axios.get(`${route}/${id}/edit`).then(response => {
       commit('setEntry', response.data.data)
@@ -121,6 +125,10 @@ const actions = {
 }
 
 const mutations = {
+    setSection(state, value)
+  {
+    state.entry.section_id = value.id
+  },
   setEntry(state, entry) {
     state.entry = entry
   },
