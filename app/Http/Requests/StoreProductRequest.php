@@ -51,6 +51,10 @@ class StoreProductRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'iva' => [
+                'integer',
+                'required',
+            ],
         ];
     }
 }

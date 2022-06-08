@@ -15,6 +15,7 @@ const route = 'product-categories'
 
 const getters = {
   data: state => state.data,
+  getCategories: state => state.data,
   total: state => state.total,
   loading: state => state.loading
 }

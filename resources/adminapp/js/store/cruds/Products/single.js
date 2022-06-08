@@ -9,6 +9,7 @@ function initialState() {
       categoria_id: 1,
       category: [],
       tag: [],
+      iva: 21,
       img: null,
       stock:0,
       created_at: '',

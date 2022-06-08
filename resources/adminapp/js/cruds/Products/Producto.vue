@@ -1,67 +1,91 @@
 <template>
-    <v-card
+    <div>
+        <v-card
+            :max-width="$vuetify.breakpoint.width > 970 ? 220 : 300"
+            style="border-radius: 25px"
+        >
+            <!-- Imagen del producto -->
 
-        :max-width="$vuetify.breakpoint.width > 970 ? 220 : 300"
-        style="border-radius: 25px;"
-    >
-        <!-- Imagen del producto -->
-   
-                <v-img height="200" :src="producto.img ? producto.img : ''" contain></v-img>
+            <v-hover>
+                <template v-slot:default="{ hover }">
+                    <div>
+                        <v-fade-transition>
+                            <v-overlay v-if="hover" absolute color="#fafafa">
+                                <v-btn small color="red darken-3" @click="verProducto = true">Ver Producto</v-btn>
+                            </v-overlay>
+                        </v-fade-transition>
+                        <v-img
+                            height="180"
+                            :src="producto.images[0] ? producto.images[0] : ''"
+                            contain
+                        ></v-img>
+                    </div>
+                </template>
+            </v-hover>
 
+            <!-- Titulo del producto -->
+            <v-card-title>{{ producto.title }}</v-card-title>
 
-        <!-- Titulo del producto -->
-        <v-card-title>{{ producto.name }}</v-card-title>
-
-        <v-card-text class="d-flex-column">
-            <v-row justify="center">
-                <v-col cols="auto" align-self="center">
-                    <span
-                        style="font-size: 0.55rem !important"
-                        class="text-overline font-weight-medium"
-                        >{{ precioDolar }} USD</span
-                    >
-                </v-col>
-                <v-col cols="auto" align-self="center">
-                    <span
-                        style="font-size: 0.55rem !important"
-                        class="text-overline font-weight-medium"
-                        >{{ precioPesos }} ARS</span
-                    >
-                </v-col>
-            </v-row>
-
-            <div>{{ producto.description.substring(0,50) + '...' }}</div>
-            <div class="my-4 text-subtitle-1">
-                {{ producto.stock }} disponibles
-            </div>
-            <div>
-                <v-slider
-                    v-model="slider"
-                    :max="producto.stock"
-                    class="align-center mt-4"
-                >
-                    <template v-slot:append>
-                        <v-text-field
-                            v-model="slider"
-                            class="text-center mt-0 pt-0"
-                            type="number"
-                            style="width: 40px"
-                        ></v-text-field>
-                    </template>
-                </v-slider>
-            </div>
-            <div class="d-flex align-end my-auto mx-auto">
+            <v-card-text class="d-flex-column">
                 <v-row justify="center">
-                    <v-col align-self="stretch">
-                        <v-btn color="#801515" dark x-small block>
-                            Agregar al presupuesto
-                        </v-btn>
+                    <v-col cols="auto" align-self="center">
+                        <span
+                            style="font-size: 0.65rem !important"
+                            class="text-overline font-weight-medium"
+                            >{{ precioDolar }} USD</span
+                        >
+                    </v-col>
+                    <v-col cols="auto" align-self="center">
+                        <span
+                            style="font-size: 0.65rem !important"
+                            class="text-overline font-weight-medium"
+                            >{{ precioPesos }} ARS</span
+                        >
                     </v-col>
                 </v-row>
 
-            </div>
-        </v-card-text>
-    </v-card>
+                <v-row justify="center">
+                    {{ producto.description.substring(0, 50) + "..." }}
+                    <div class="my-4 text-subtitle-1">
+                        <strong>{{ producto.stock }} disponibles</strong>
+                    </div>
+                    <v-col cols="12">
+                        <v-slider
+                            v-model="slider"
+                            :max="producto.stock"
+                            class="align-center"
+                        >
+                            <template v-slot:append>
+                                <v-text-field
+                                    v-model="slider"
+                                    class="text-center mt-0 pt-0"
+                                    type="number"
+                                    style="width: 40px"
+                                ></v-text-field>
+                            </template>
+                        </v-slider>
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <div class="d-flex align-end my-auto mx-auto">
+                        <v-row justify="center" class="mb-2">
+                            <v-col align-self="stretch">
+                                <v-btn color="#801515" dark x-small block>
+                                    Agregar al presupuesto
+                                </v-btn>
+                            </v-col>
+                        </v-row>
+                    </div>
+                </v-row>
+            </v-card-text>
+        </v-card>
+
+        <v-dialog v-model="verProducto" width="500">
+            <v-card>
+                ¿Descripcion Larga?
+            </v-card>
+        </v-dialog>
+    </div>
 </template>
 
 <script>
@@ -70,6 +94,7 @@ export default {
     data() {
         return {
             slider: 0,
+            verProducto: false,
         };
     },
     props: {
@@ -91,7 +116,7 @@ export default {
         },
 
         precioDolar() {
-            return this.producto.price
+            return this.producto.price;
         },
     },
 };

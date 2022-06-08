@@ -23,11 +23,12 @@ const getters = {
 const actions = {
   async fetchIndexData({ commit, state, dispatch }) {
     commit('setLoading', true)
+    dispatch('ProductCategoriesIndex/fetchIndexData', null, {root: true})
     await axios
-      .get(route, { params: state.query })
+      .get("https://dummyjson.com/products", { params: state.query })
       .then(response => {
-        commit('setData', response.data.data)
-        /* commit('setData', response.data.products) */
+ /*        commit('setData', response.data.data) */
+        commit('setData', response.data.products)
         commit('setTotal', response.data.total)
       })
       .catch(error => {

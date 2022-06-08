@@ -37,13 +37,38 @@
                                 {{ $t("global.refresh") }}
                             </button>
                         </div>
+                        <v-row class="mt-4">
+                            <v-col cols="3">
+                                <v-text-field
+                                    v-model="busqueda"
+                                    solo
+                                    label="Búsqueda..."
+                                    prepend-inner-icon="mdi-magnify"
+                                ></v-text-field>
+                            </v-col>
+                            <v-col cols="5">
+                                <v-autocomplete
+                                    v-model="values"
+                                    :items="getCategories"
+                                    item-text="name"
+                                    item-value="id"
+                                    solo
+                                    chips
+                                    small-chips
+                                    label="Filtrar por Categoría"
+                                    multiple
+                                ></v-autocomplete>
+                            </v-col>
+                        </v-row>
                     </div>
 
                     <div class="card-body">
                         <div class="row">
                             <div
                                 class="col-md-12 containerProductos"
-                                style="background-color: #eee5cb"
+                                style="
+                                    background-color: rgba(207, 199, 184, 0.15);
+                                "
                             >
                                 <!-- <div class="table-overlay" v-show="loading">
                   <div class="table-overlay-container">
@@ -66,7 +91,7 @@
  -->
 
                                 <Producto
-                                    v-for="product in data"
+                                    v-for="product in productos"
                                     :key="product.id"
                                     :producto="product"
                                 />
@@ -97,6 +122,9 @@ export default {
     },
     data() {
         return {
+            values: null,
+            busqueda: "",
+            items: ["Foo", "Bar", "Fizz", "Buzz"],
             columns: [
                 {
                     title: "cruds.product.fields.id",
@@ -162,11 +190,29 @@ export default {
     async created() {
         await this.fetchIndexData();
     },
+
     /* beforeDestroy() {
     this.resetState()
   }, */
     computed: {
         ...mapGetters("ProductsIndex", ["data", "total", "loading"]),
+        ...mapGetters("ProductCategoriesIndex", ["getCategories"]),
+
+        productos() {
+            if (this.query.length < 3) {
+                return this.data;
+            } else {
+                return this.data.filter(
+                    (producto) =>
+                        producto.title
+                            .toLowerCase()
+                            .includes(this.busqueda.toLowerCase()) ||
+                        producto.description
+                            .toLowerCase()
+                            .includes(this.busqueda.toLowerCase())
+                );
+            }
+        },
     },
     watch: {
         query: {
