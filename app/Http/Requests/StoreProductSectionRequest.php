@@ -17,10 +17,6 @@ class StoreProductSectionRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => [
-                'string',
-                'required',
-            ],
             'description' => [
                 'string',
                 'required',
