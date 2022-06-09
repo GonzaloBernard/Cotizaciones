@@ -79,7 +79,7 @@ class Product extends Model implements HasMedia
 
     public function category()
     {
-        return $this->belongsTo(ProductCategory::class);
+        return $this->belongsTo(ProductCategory::class, 'categoria_id');
     }
 
     public function tag()
