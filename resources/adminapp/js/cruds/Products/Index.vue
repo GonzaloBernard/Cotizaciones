@@ -40,15 +40,16 @@
                         <v-row class="mt-4">
                             <v-col cols="3">
                                 <v-text-field
-                                    v-model="busqueda"
+                                    @input="filtrar"
                                     solo
+                                    v-model="busqueda"
                                     label="Búsqueda..."
                                     prepend-inner-icon="mdi-magnify"
                                 ></v-text-field>
                             </v-col>
                             <v-col cols="5">
                                 <v-autocomplete
-                                    v-model="values"
+                                    v-model="categoriasFilter"
                                     :items="getCategories"
                                     item-text="name"
                                     item-value="id"
@@ -57,6 +58,7 @@
                                     small-chips
                                     label="Filtrar por Categoría"
                                     multiple
+                                    @input="filtrar"
                                 ></v-autocomplete>
                             </v-col>
                         </v-row>
@@ -91,7 +93,7 @@
  -->
 
                                 <Producto
-                                    v-for="product in productos"
+                                    v-for="product in productosFiltrados"
                                     :key="product.id"
                                     :producto="product"
                                 />
@@ -122,7 +124,8 @@ export default {
     },
     data() {
         return {
-            values: null,
+            productosFiltrados: [],
+            categoriasFilter: [],
             busqueda: "",
             items: ["Foo", "Bar", "Fizz", "Buzz"],
             columns: [
@@ -189,6 +192,8 @@ export default {
     },
     async created() {
         await this.fetchIndexData();
+
+        this.productosFiltrados = this.data;
     },
 
     /* beforeDestroy() {
@@ -197,22 +202,6 @@ export default {
     computed: {
         ...mapGetters("ProductsIndex", ["data", "total", "loading"]),
         ...mapGetters("ProductCategoriesIndex", ["getCategories"]),
-
-        productos() {
-            if (this.query.length < 3) {
-                return this.data;
-            } else {
-                return this.data.filter(
-                    (producto) =>
-                        producto.title
-                            .toLowerCase()
-                            .includes(this.busqueda.toLowerCase()) ||
-                        producto.description
-                            .toLowerCase()
-                            .includes(this.busqueda.toLowerCase())
-                );
-            }
-        },
     },
     watch: {
         query: {
@@ -229,6 +218,43 @@ export default {
             "setQuery",
             "resetState",
         ]),
+
+        filtrar(){
+            console.log("|||")
+            this.filterByCategoria();
+            this.filterByName(this.busqueda);
+        },
+        filterByName(e) {
+            if(e.length > 2)
+            this.productosFiltrados = this.productosFiltrados.filter(
+                (producto) =>
+                    producto.name
+                        .toLowerCase()
+                        .includes(e.toLowerCase()) ||
+                    producto.description
+                        .toLowerCase()
+                        .includes(e.toLowerCase())
+            );
+        },
+
+        filterByCategoria() {
+            let productosFiltradosPorCategorias = [];
+            this.categoriasFilter?.forEach((categoria) => {
+                Array.prototype.push.apply(
+                    productosFiltradosPorCategorias,
+                    this.data.filter((producto) => {
+                        return producto.categoria_id === categoria;
+                    })
+                );
+            });
+
+            if (productosFiltradosPorCategorias.length > 0) {
+                this.productosFiltrados = productosFiltradosPorCategorias;
+            } else {
+                this.productosFiltrados = this.data;
+            }
+            console.log(this.productosFiltrados);
+        },
     },
 };
 </script>
