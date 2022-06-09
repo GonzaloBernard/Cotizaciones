@@ -61,7 +61,7 @@ class CreateMipsTables extends Migration
             $table->integer('stock');
             $table->unsignedBigInteger('categoria_id');
             $table->foreign('categoria_id', 'categoria_id_fk_4221404')->references('id')->on('product_categories');
-            $table->decimal('iva', 2, 2);
+            $table->decimal('iva', 5, 2);
         });
         Schema::create('cotizacion', function (Blueprint $table) {
             $table->id();

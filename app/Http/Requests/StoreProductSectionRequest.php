@@ -7,7 +7,7 @@ use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 
-class StoreProductCategoryRequest extends FormRequest
+class StoreProductSectionRequest extends FormRequest
 {
     public function authorize()
     {
