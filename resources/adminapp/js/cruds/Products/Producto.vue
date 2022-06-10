@@ -69,9 +69,14 @@
                 <v-row>
                     <div class="d-flex align-end my-auto mx-auto">
                         <v-row justify="center" class="mb-2">
-                            <v-col align-self="stretch">
-                                <v-btn color="#801515" dark x-small block>
-                                    Agregar al presupuesto
+                            <v-col cols="6"  md="6" sm="12" align-self="stretch">
+                                <v-btn class="pa-4" color="#801515" dark x-small block>
+                                    <v-icon>mdi-cart</v-icon>
+                                </v-btn>
+                            </v-col>
+                            <v-col cols="6" md="6" sm="12" align-self="stretch">
+                                <v-btn class="pa-4" color="#801515" dark x-small block>
+                                    <v-icon>mdi-table-of-contents</v-icon>
                                 </v-btn>
                             </v-col>
                         </v-row>

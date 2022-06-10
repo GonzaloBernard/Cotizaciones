@@ -9,7 +9,7 @@
             </div>
             <h4 class="card-title">
               {{ $t('global.table') }}
-              <strong>{{ $t('Categorias') }}</strong>
+              <strong>Secciones</strong>
             </h4>
           </div>
           <div class="card-body">

@@ -12,7 +12,7 @@ function initialState() {
   }
 }
 
-const route = 'product-categories'
+const route = 'product-sections'
 
 const getters = {
   entry: state => state.entry,
@@ -128,7 +128,7 @@ const mutations = {
     state.entry.name = value
   },
   setDescription(state, value) {
-    state.entry.description = value
+    state.entry.descripcion = value
   },
   insertPhotoFile(state, file) {
     state.entry.photo.push(file)

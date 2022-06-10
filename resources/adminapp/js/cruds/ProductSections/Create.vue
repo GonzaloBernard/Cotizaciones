@@ -10,9 +10,7 @@
               </div>
               <h4 class="card-title">
                 {{ $t('global.create') }}
-                <strong>{{
-                  $t('Categoria')
-                }}</strong>
+                <strong>Sección</strong>
               </h4>
             </div>
             <div class="card-body">
@@ -25,58 +23,22 @@
                   <div
                     class="form-group bmd-form-group"
                     :class="{
-                      'has-items': entry.name,
-                      'is-focused': activeField == 'name'
+                      'has-items': entry.descripcion,
+                      'is-focused': activeField == 'descripcion'
                     }"
                   >
                     <label class="bmd-label-floating required">{{
-                      $t('cruds.productCategory.fields.name')
-                    }}</label>
-                    <input
-                      class="form-control"
-                      type="text"
-                      :value="entry.name"
-                      @input="updateName"
-                      @focus="focusField('name')"
-                      @blur="clearFocus"
-                      required
-                    />
-                  </div>
-                  <div
-                    class="form-group bmd-form-group"
-                    :class="{
-                      'has-items': entry.description,
-                      'is-focused': activeField == 'description'
-                    }"
-                  >
-                    <label class="bmd-label-floating required">{{
-                      $t('cruds.productCategory.fields.description')
+                      $t('cruds.productCategory.fields.descripcion')
                     }}</label>
                     <textarea
                       class="form-control"
                       rows="5"
-                      :value="entry.description"
+                      :value="entry.descripcion"
                       @input="updateDescription"
-                      @focus="focusField('description')"
+                      @focus="focusField('descripcion')"
                       @blur="clearFocus"
                       required
                     ></textarea>
-                  </div>
-                  <div class="form-group">
-                    <label>{{
-                      $t('cruds.productCategory.fields.photo')
-                    }}</label>
-                    <attachment
-                      :route="getRoute('product-categories')"
-                      :collection-name="'product_category_photo'"
-                      :media="entry.photo"
-                      :max-file-size="2"
-                      :component="'pictures'"
-                      :accept="'image/*'"
-                      @file-uploaded="insertPhotoFile"
-                      @file-removed="removePhotoFile"
-                      :max-files="1"
-                    />
                   </div>
                 </div>
               </div>
@@ -113,13 +75,13 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('ProductCategoriesSingle', ['entry', 'loading'])
+    ...mapGetters('ProductSectionsSingle', ['entry', 'loading'])
   },
   beforeDestroy() {
     this.resetState()
   },
   methods: {
-    ...mapActions('ProductCategoriesSingle', [
+    ...mapActions('ProductSectionsSingle', [
       'storeData',
       'resetState',
       'setName',
@@ -139,7 +101,7 @@ export default {
     submitForm() {
       this.storeData()
         .then(() => {
-          this.$router.push({ name: 'product_categories.index' })
+          this.$router.push({ name: 'product_sections.index' })
           this.$eventHub.$emit('create-success')
         })
         .catch(error => {

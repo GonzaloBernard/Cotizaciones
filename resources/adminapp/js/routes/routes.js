@@ -1,9 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+
 Vue.use(VueRouter)
 
 const View = { template: '<router-view></router-view>' }
+const originalPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err);
+}
 
 const routes = [
   {
@@ -16,6 +21,12 @@ const routes = [
         name: 'dashboard',
         component: () => import('@pages/Dashboard.vue'),
         meta: { title: 'global.dashboard' }
+      },
+      {
+        path: 'products/:sectionId',
+        name: 'products.index',
+        component: () => import('@cruds/Products/Index.vue'),
+        meta: { title: 'Productos' }
       },
       {
         path: 'user-management',
@@ -101,9 +112,7 @@ const routes = [
         path: 'product-management',
         name: 'product_management',
         component: View,
-        redirect: { name: 'product_categories.index' },
         children: [
-
           //SECCIONES
           {
             path: 'product-sections',
@@ -129,8 +138,6 @@ const routes = [
             component: () => import('@cruds/ProductSections/Edit.vue'),
             meta: { title: 'Secciones' }
           },
-
-
           {
             path: 'product-categories',
             name: 'product_categories.index',
@@ -179,12 +186,7 @@ const routes = [
             component: () => import('@cruds/ProductTags/Edit.vue'),
             meta: { title: 'cruds.productTag.title' }
           },
-          {
-            path: 'products',
-            name: 'products.index',
-            component: () => import('@cruds/Products/Index.vue'),
-            meta: { title: 'Productos' }
-          },
+
           {
             path: 'products/create',
             name: 'products.create',

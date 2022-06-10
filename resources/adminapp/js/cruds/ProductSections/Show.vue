@@ -8,8 +8,8 @@
               <i class="material-icons">remove_red_eye</i>
             </div>
             <h4 class="card-title">
-              {{ $t('global.view') }}
-              <strong>{{ $t('Categoria') }}</strong>
+              Ver
+              <strong>Sección</strong>
             </h4>
           </div>
           <div class="card-body">
@@ -31,27 +31,10 @@
                       </tr>
                       <tr>
                         <td class="text-primary">
-                          {{ $t('cruds.productCategory.fields.name') }}
-                        </td>
-                        <td>
-                          {{ entry.name }}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-primary">
                           {{ $t('cruds.productCategory.fields.description') }}
                         </td>
                         <td>
                           {{ entry.description }}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-primary">
-                          {{ $t('cruds.productCategory.fields.photo') }}
-                        </td>
-                        <td>
-                          <datatable-pictures :row="entry" :field="'photo'">
-                          </datatable-pictures>
                         </td>
                       </tr>
                     </tbody>
@@ -81,7 +64,7 @@ export default {
     this.resetState()
   },
   computed: {
-    ...mapGetters('ProductCategoriesSingle', ['entry'])
+    ...mapGetters('ProductSectionsSingle', ['entry'])
   },
   watch: {
     '$route.params.id': {
@@ -93,7 +76,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions('ProductCategoriesSingle', ['fetchShowData', 'resetState'])
+    ...mapActions('ProductSectionsSingle', ['fetchShowData', 'resetState'])
   }
 }
 </script>
