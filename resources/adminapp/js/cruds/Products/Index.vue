@@ -193,8 +193,6 @@ export default {
     async created() {
         await this.fetchIndexData();
 
-        console.log(this.$route)
-
         if(this.$route.params.sectionId)
         {
         this.productosFiltrados = this.data.filter(prod => {
@@ -261,7 +259,6 @@ export default {
             } else {
                 this.productosFiltrados = this.data;
             }
-            console.log(this.productosFiltrados);
         },
     },
 };
