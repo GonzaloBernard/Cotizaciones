@@ -44,15 +44,15 @@ export default {
                     gate: "product_management_access",
                     children: [
                         {
-                            title: "Categorias",
-                            icon: "table_view",
-                            path: { name: "product_categories.index" },
-                            gate: "product_category_access",
-                        },
-                        {
                             title: "Secciones",
                             icon: "table_view",
                             path: { name: "product_sections.index" },
+                            gate: "product_category_access",
+                        },
+                        {
+                            title: "Categorias",
+                            icon: "table_view",
+                            path: { name: "product_categories.index" },
                             gate: "product_category_access",
                         },
                         /* {
