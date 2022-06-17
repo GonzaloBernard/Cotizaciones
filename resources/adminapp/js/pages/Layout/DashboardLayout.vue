@@ -38,32 +38,6 @@ export default {
                     path: { name: "dashboard" },
                 },
                 {
-                    title: "Parámetros",
-                    icon: "table_view",
-                    path: { name: "product_management" },
-                    gate: "product_management_access",
-                    children: [
-                        {
-                            title: "Secciones",
-                            icon: "table_view",
-                            path: { name: "product_sections.index" },
-                            gate: "product_category_access",
-                        },
-                        {
-                            title: "Categorias",
-                            icon: "table_view",
-                            path: { name: "product_categories.index" },
-                            gate: "product_category_access",
-                        },
-                        /* {
-                            title: "cruds.productTag.title",
-                            icon: "table_view",
-                            path: { name: "product_tags.index" },
-                            gate: "product_tag_access",
-                        }, */
-                    ],
-                },
-                {
                     title: "cruds.userManagement.title",
                     icon: "person",
                     path: { name: "user_management" },
@@ -87,6 +61,32 @@ export default {
                             path: { name: "users.index" },
                             gate: "user_access",
                         },
+                    ],
+                },
+                {
+                    title: "Parámetros",
+                    icon: "table_view",
+                    path: { name: "product_management" },
+                    gate: "product_management_access",
+                    children: [
+                        {
+                            title: "Secciones",
+                            icon: "table_view",
+                            path: { name: "product_sections.index" },
+                            gate: "product_category_access",
+                        },
+                        {
+                            title: "Categorias",
+                            icon: "table_view",
+                            path: { name: "product_categories.index" },
+                            gate: "product_category_access",
+                        },
+                        /* {
+                            title: "cruds.productTag.title",
+                            icon: "table_view",
+                            path: { name: "product_tags.index" },
+                            gate: "product_tag_access",
+                        }, */
                     ],
                 },
                 {
