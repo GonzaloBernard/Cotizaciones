@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>
-        {{ trans('panel.site_title') }}
+        MIP
     </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <meta name="app-locale" content="{{ App::getLocale() }}">
