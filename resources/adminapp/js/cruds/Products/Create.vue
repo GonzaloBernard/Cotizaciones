@@ -126,10 +126,10 @@
                                             :closeOnSelect="false"
                                             multiple
                                             @input="updateCategory"
-        
+
                                         />
                                     </div>
-                                    <div
+                                    <!-- <div
                                         class="form-group bmd-form-group"
                                         :class="{
                                             'has-items': entry.tag.length !== 0,
@@ -148,9 +148,9 @@
                                             :closeOnSelect="false"
                                             multiple
                                             @input="updateTag"
-    
+
                                         />
-                                    </div>
+                                    </div> -->
                                         <label class="bmd-label-floating mt-4">
                                             Stock Inicial
                                         </label>
@@ -173,7 +173,7 @@
                                                     ></v-text-field>
                                                 </template>
                                             </v-slider>
-                                       
+
                                     </div>
 
                                 </div>
