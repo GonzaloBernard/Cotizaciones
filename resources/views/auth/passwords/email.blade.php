@@ -29,7 +29,7 @@
                                                 <i class="material-icons">email</i>
                                             </span>
                                         </div>
-                                        <input name="email" type="email" class="form-control" placeholder="{{ trans('global.login_email') }}..." value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                        <input name="email" type="email" class="form-control" placeholder="Usuario..." value="{{ old('email') }}" required autocomplete="email" autofocus>
                                     </div>
                                     @error('email')
                                         <div class="error">

@@ -9,7 +9,7 @@
                         @csrf
                         <div class="card card-login">
                             <div class="card-header card-header-primary text-center">
-                                <h4 class="card-title">{{ __('global.login') }}</h4>
+                                <h4 class="card-title">Iniciar Sesión</h4>
                             </div>
 
                             @if(session('status'))
@@ -27,7 +27,7 @@
                                                 <i class="material-icons">email</i>
                                             </span>
                                         </div>
-                                        <input name="email" type="email" class="form-control" placeholder="{{ __('global.login_email') }}..." value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                        <input name="email" type="email" class="form-control" placeholder="Usuario" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                     </div>
                                     @error('email')
                                         <div class="error" for="email">
@@ -42,7 +42,7 @@
                                                 <i class="material-icons">lock_outline</i>
                                             </span>
                                         </div>
-                                        <input name="password" type="password" class="form-control" placeholder="{{ __('global.login_password') }}..." autocomplete="current-password" required>
+                                        <input name="password" type="password" class="form-control" placeholder="Contraseña..." autocomplete="current-password" required>
                                     </div>
                                     @error('password')
                                         <div class="error" for="email">
@@ -60,7 +60,7 @@
                             </div>
                             <div class="card-footer justify-content-center flex-column">
                                 <button type="submit" class="btn btn-round btn-primary">
-                                    {{ __('global.login') }}
+                                    Ingresar
                                 </button>
 
                                 <div class="d-flex justify-content-between">
