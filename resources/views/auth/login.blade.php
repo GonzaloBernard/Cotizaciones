@@ -50,20 +50,20 @@
                                         </div>
                                     @enderror
                                 </div>
-                                <div class="form-check">
+                                {{-- <div class="form-check">
                                     <label class="form-check-label">
                                         <input type="checkbox" name="remember" class="form-check-input">
                                         <span class="form-check-sign"><span class="check"></span></span>
                                         Remember me
                                     </label>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="card-footer justify-content-center flex-column">
                                 <button type="submit" class="btn btn-round btn-primary">
                                     Ingresar
                                 </button>
 
-                                <div class="d-flex justify-content-between">
+                                {{-- <div class="d-flex justify-content-between">
                                     @if(Route::has('password.request'))
                                         <a class="btn btn-link btn-primary" href="{{ route('password.request') }}">
                                             {{ __('global.forgot_password') }}
@@ -75,7 +75,7 @@
                                             {{ __('global.register') }}
                                         </a>
                                     @endif
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </form>
