@@ -38,11 +38,30 @@ export default {
                     path: { name: "dashboard" },
                 },
                 {
-                    title: "Productos",
+                    title: "Parámetros",
                     icon: "table_view",
-                    path: { name: "products.index" },
-                    gate: "product_category_access",
-                    children: this.sidebarSectionLinks,
+                    path: { name: "product_management" },
+                    gate: "product_management_access",
+                    children: [
+                        {
+                            title: "Categorias",
+                            icon: "table_view",
+                            path: { name: "product_categories.index" },
+                            gate: "product_category_access",
+                        },
+                        {
+                            title: "Secciones",
+                            icon: "table_view",
+                            path: { name: "product_sections.index" },
+                            gate: "product_category_access",
+                        },
+                        {
+                            title: "cruds.productTag.title",
+                            icon: "table_view",
+                            path: { name: "product_tags.index" },
+                            gate: "product_tag_access",
+                        },
+                    ],
                 },
                 {
                     title: "cruds.userManagement.title",
@@ -71,36 +90,17 @@ export default {
                     ],
                 },
                 {
-                    title: "Parámetros",
+                    title: "Productos",
                     icon: "table_view",
-                    path: { name: "product_management" },
-                    gate: "product_management_access",
-                    children: [
-                        {
-                            title: "Categorias",
-                            icon: "table_view",
-                            path: { name: "product_categories.index" },
-                            gate: "product_category_access",
-                        },
-                        {
-                            title: "Secciones",
-                            icon: "table_view",
-                            path: { name: "product_sections.index" },
-                            gate: "product_category_access",
-                        },
-                        {
-                            title: "cruds.productTag.title",
-                            icon: "table_view",
-                            path: { name: "product_tags.index" },
-                            gate: "product_tag_access",
-                        },
-                    ],
+                    path: { name: "products.index" },
+                    gate: "product_category_access",
+                    children: this.sidebarSectionLinks,
                 },
                 {
                     title: "Proveedores",
                     icon: "import_contacts",
                     path: { name: "contact_management" },
-                    gate: "contact_management_access",
+                    gate: "proveedores",
                     children: [
                         {
                             title: "Empresas",
@@ -120,7 +120,7 @@ export default {
                     title: "Balances",
                     icon: "account_balance_wallet",
                     path: { name: "expense_management" },
-                    gate: "expense_management_access",
+                    gate: "balances",
                     children: [
                         {
                             title: "cruds.expenseCategory.title",
