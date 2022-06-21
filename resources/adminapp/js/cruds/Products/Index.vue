@@ -72,31 +72,12 @@
                                     background-color: rgba(207, 199, 184, 0.15);
                                 "
                             >
-                                <!-- <div class="table-overlay" v-show="loading">
-                  <div class="table-overlay-container">
-                    <material-spinner></material-spinner>
-                    <span>Loading...</span>
-                  </div>
-                </div>
-                <datatable
-                  :columns="columns"
-                  :data="data"
-                  :total="total"
-                  :query="query"
-                  :xprops="xprops"
-                  :HeaderSettings="false"
-                  :pageSizeOptions="[10, 25, 50, 100]"
-                >
-                  <global-search :query="query" class="pull-left" />
-                  <header-settings :columns="columns" class="pull-right" />
-                </datatable>
- -->
-
                                 <Producto
                                     v-for="product in productosFiltrados"
                                     :key="product.id"
                                     :producto="product"
                                     @deletedProduct="deleteProduct($event)"
+                                    @agregarProducto="addProduct($event)"
                                 />
                             </div>
                         </div>
@@ -202,6 +183,7 @@ export default {
     computed: {
         ...mapGetters("ProductsIndex", ["data", "total", "loading"]),
         ...mapGetters("ProductCategoriesIndex", ["getCategories"]),
+        ...mapGetters("Cotizaciones", ["getStockError"])
     },
     watch: {
         query: {
@@ -219,6 +201,15 @@ export default {
             "resetState",
             "destroyData",
         ]),
+
+        ...mapActions("Cotizaciones", ["addProductToPartialCotization"]),
+
+        addProduct(prod)
+        {
+           this.addProductToPartialCotization(prod)
+           if(this.getStockError) alert('error de stock')
+           else alert('Producto añadido')
+        },
 
         async deleteProduct(id) {
             await this.destroyData(id);

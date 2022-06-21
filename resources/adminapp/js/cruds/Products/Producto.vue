@@ -83,6 +83,7 @@
                                             color="#801515"
                                             dark
                                             x-small
+                                            @click="$emit('agregarProducto', {producto: producto, cantidad: slider > 0 ? slider : 0})"
                                         >
                                             <v-icon small>mdi-cart</v-icon>
                                         </v-btn>
@@ -99,6 +100,7 @@
                                             color="#801515"
                                             dark
                                             x-small
+                                            @click="$router.push({name: 'products.edit', params: {id: producto.id} })"
                                         >
                                             <v-icon small>mdi-pencil</v-icon>
                                         </v-btn>

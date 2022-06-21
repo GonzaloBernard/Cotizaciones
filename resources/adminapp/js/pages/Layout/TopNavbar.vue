@@ -35,8 +35,8 @@
                     <v-menu open-on-hover offset-y>
                         <template v-slot:activator="{ on, attrs }">
                             <v-badge
-                                :content="productos"
-                                :value="productos"
+                                :content="getCotizacionParcial.length"
+                                :value="getCotizacionParcial.length"
                                 overlap
                                 color="green"
                             >
@@ -46,22 +46,38 @@
                             </v-badge>
                         </template>
 
-                        <v-list>
-                            <v-list-item
-                                v-for="(item, index) in items"
-                                :key="index"
-                            >
-                                <v-list-item-title>{{
-                                    item.title
-                                }}</v-list-item-title>
-                                
-                            </v-list-item>
+                        <v-list three-line>
+                            <template v-for="producto in getCotizacionParcial">
+                                <v-list-item :key="producto.id">
+                                    <v-list-item-avatar class="mt-4">
+                                        <v-img :src="producto.img"></v-img>
+                                    </v-list-item-avatar>
+
+                                    <v-list-item-content>
+                                        <v-list-item-title
+                                            v-html="producto.description"
+                                        ></v-list-item-title>
+                                        <v-list-item-subtitle
+                                        ><span>Cantidad: {{producto.cantidad}}</span></v-list-item-subtitle>
+                                    </v-list-item-content>
+                                </v-list-item>
+                                <v-divider :key="producto.id"></v-divider>
+                            </template>
+
+
                             <v-row justify="center" class="ma-4">
-                                <v-btn dark block x-small color="red darken-3" >Ir al Presupuesto</v-btn>
+                                <v-btn dark block x-small color="red darken-3"
+                                    >Ir al Presupuesto</v-btn
+                                >
 
-                                <v-btn class="mt-2" dark block x-small color="red lighten-3" >Vaciar Presupuesto</v-btn>
-
-                
+                                <v-btn
+                                    class="mt-2"
+                                    dark
+                                    block
+                                    x-small
+                                    color="red lighten-3"
+                                    >Vaciar Presupuesto</v-btn
+                                >
                             </v-row>
                         </v-list>
                     </v-menu>
@@ -77,12 +93,6 @@ export default {
     data() {
         return {
             productos: 4,
-            items: [
-                { title: "Producto 1 sadjkasdsa" },
-                { title: "Producto 1 sadjkasdsa" },
-                { title: "Producto 1 sadjkasdsa" },
-                { title: "Producto 1 sadjkasdsa" },
-            ],
         };
     },
     methods: {
@@ -92,6 +102,7 @@ export default {
     },
     computed: {
         ...mapGetters("ProductsIndex", ["getDolar"]),
+        ...mapGetters("Cotizaciones", ["getCotizacionParcial"]),
     },
 };
 </script>
