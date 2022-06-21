@@ -6,11 +6,12 @@ use \DateTimeInterface;
 use App\Support\HasAdvancedFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ProductSection extends Model
 {
     use HasAdvancedFilter;
-
+    use SoftDeletes;
 
     use HasFactory;
 
@@ -19,7 +20,7 @@ class ProductSection extends Model
     protected $dates = [
         'created_at',
         'updated_at',
-
+        'deleted_at',
     ];
 
     protected $fillable = [
@@ -27,6 +28,7 @@ class ProductSection extends Model
         'descripcion',
         'created_at',
         'updated_at',
+        'deleted_at',
 
     ];
 
