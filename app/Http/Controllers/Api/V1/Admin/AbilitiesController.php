@@ -11,7 +11,7 @@ class AbilitiesController extends Controller
 {
     public function index()
     {
-        $permissions = /* auth()->user()->roles()-> */Role::with('permissions')->get()
+        $permissions = auth()->user()->roles()->with('permissions')->get() /*Role::with('permissions')->get() */
             ->pluck('permissions')
             ->flatten()
             ->pluck('title')

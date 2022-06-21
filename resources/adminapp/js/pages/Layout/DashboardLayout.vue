@@ -36,24 +36,25 @@ export default {
                     title: "global.dashboard",
                     icon: "dashboard",
                     path: { name: "dashboard" },
+                    gate: "admin",
                 },
                 {
                     title: "cruds.userManagement.title",
                     icon: "person",
                     path: { name: "user_management" },
-                    gate: "user_management_access",
+                    gate: "admin",
                     children: [
                         {
                             title: "cruds.permission.title",
                             icon: "perm_data_setting",
                             path: { name: "permissions.index" },
-                            gate: "permission_access",
+                            gate: "OCULTO",
                         },
                         {
                             title: "cruds.role.title",
                             icon: "group",
                             path: { name: "roles.index" },
-                            gate: "role_access",
+                            gate: "OCULTO",
                         },
                         {
                             title: "cruds.user.title",
@@ -67,19 +68,19 @@ export default {
                     title: "Parámetros",
                     icon: "table_view",
                     path: { name: "product_management" },
-                    gate: "product_management_access",
+                    gate: "admin",
                     children: [
                         {
                             title: "Secciones",
                             icon: "table_view",
                             path: { name: "product_sections.index" },
-                            gate: "product_category_access",
+                            gate: "admin",
                         },
                         {
                             title: "Categorias",
                             icon: "table_view",
                             path: { name: "product_categories.index" },
-                            gate: "product_category_access",
+                            gate: "admin",
                         },
                         /* {
                             title: "cruds.productTag.title",
@@ -89,13 +90,14 @@ export default {
                         }, */
                     ],
                 },
-                {
+/*                 {
                     title: "Productos",
                     icon: "table_view",
                     path: { name: "products.index" },
                     gate: "product_category_access",
                     children: this.sidebarSectionLinks,
-                },
+                }, */
+                ...this.sidebarSectionLinks,
                 {
                     title: "Proveedores",
                     icon: "import_contacts",

@@ -24,7 +24,6 @@ const getters = {
             path: { name: 'products.index', params: {sectionId: section.id}},
             name: 'products.index',
             component: () => import('@cruds/Products/Index.vue'),
-            gate: "product_category_access"
         }
     })
 }

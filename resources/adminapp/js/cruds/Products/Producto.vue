@@ -74,7 +74,7 @@
                 <v-row>
                     <div class="d-flex align-end my-auto mx-auto">
                         <v-row justify="center" class="mb-2 mr-1">
-                            <v-col cols="2" class="mr-3">
+                            <v-col v-if="$can('cotizador')"  cols="2" class="mr-3">
                                 <v-tooltip bottom>
                                     <template v-slot:activator="{ on, attrs }">
                                         <v-btn
@@ -90,7 +90,7 @@
                                     <span>Agregar al Carrito</span>
                                 </v-tooltip>
                             </v-col>
-                            <v-col cols="2" class="mr-3">
+                            <v-col v-if="$can('admin')"  cols="2" class="mr-3">
                                 <v-tooltip bottom>
                                     <template v-slot:activator="{ on, attrs }">
                                         <v-btn
@@ -106,7 +106,7 @@
                                     <span>Editar Producto</span>
                                 </v-tooltip>
                             </v-col>
-                            <v-col cols="2" class="mr-3">
+                            <v-col v-if="$can('admin')" cols="2" class="mr-3">
                                 <v-tooltip bottom>
                                     <template v-slot:activator="{ on, attrs }">
                                         <v-btn
