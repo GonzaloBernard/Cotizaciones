@@ -63,9 +63,9 @@ class ProductApiController extends Controller
     public function update(UpdateProductRequest $request, Product $product)
     {
         $product->update($request->validated());
-        $product->category()->sync($request->input('category.*.id', []));
-        $product->tag()->sync($request->input('tag.*.id', []));
-        $product->updateMedia($request->input('photo', []), 'product_photo');
+       /*  $product->category()->sync($request->input('category.*.id', []));
+        $product->tag()->sync($request->input('tag.*.id', [])); */
+       /*  $product->updateMedia($request->input('photo', []), 'product_photo'); */
 
         return (new ProductResource($product))
             ->response()

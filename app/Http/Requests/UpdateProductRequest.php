@@ -29,9 +29,9 @@ class UpdateProductRequest extends FormRequest
                 'numeric',
                 'required',
             ],
-            'category' => [
+/*             'category' => [
                 'array',
-            ],
+            ], */
             'categoria_id' => [
                 'integer',
                 'required',
@@ -39,10 +39,10 @@ class UpdateProductRequest extends FormRequest
             'tag' => [
                 'array',
             ],
-            'tag.*.id' => [
+            /* 'tag.*.id' => [
                 'integer',
                 'exists:product_tags,id',
-            ],
+            ], */
             'stock' => [
                 'integer',
                 'required',
