@@ -19,7 +19,7 @@ class StoreProductSectionRequest extends FormRequest
         return [
             'descripcion' => [
                 'string',
-                'required',
+                'nullable',
             ],
         ];
     }

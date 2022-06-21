@@ -23,7 +23,7 @@ class UpdateProductCategoryRequest extends FormRequest
             ],
             'description' => [
                 'string',
-                'required',
+                'nullable',
             ],
         ];
     }
