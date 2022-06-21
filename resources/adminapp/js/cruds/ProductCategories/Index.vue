@@ -95,7 +95,7 @@ export default {
           thComp: TranslatedHeader,
           sortable: true
         },
-        {
+        /* {
           title: 'cruds.productCategory.fields.description',
           field: 'description',
           thComp: TranslatedHeader,
@@ -106,7 +106,7 @@ export default {
           field: 'photo',
           thComp: TranslatedHeader,
           tdComp: DatatablePictures
-        },
+        }, */
         {
           title: 'global.actions',
           thComp: TranslatedHeader,

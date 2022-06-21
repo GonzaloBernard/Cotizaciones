@@ -23,7 +23,7 @@ class StoreProductCategoryRequest extends FormRequest
             ],
             'description' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'section_id' => [
                 'integer',

@@ -47,7 +47,7 @@
                                             required
                                         />
                                     </div>
-                                    <div
+                                    <!-- <div
                                         class="form-group bmd-form-group"
                                         :class="{
                                             'has-items': entry.description,
@@ -72,7 +72,7 @@
                                             @blur="clearFocus"
                                             required
                                         ></textarea>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group bmd-form-group">
                                         <label class="bmd-label-floating"
                                             >Sección</label
