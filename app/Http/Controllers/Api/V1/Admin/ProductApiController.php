@@ -28,6 +28,8 @@ class ProductApiController extends Controller
     public function store(StoreProductRequest $request)
     {
         $product = Product::create($request->validated());
+        $product->categoria_id = $request->category[0]['id'];
+        $product->update();
         //$product->category()->sync($request->input('category.*.id', []));
         //$product->tag()->sync($request->input('tag.*.id', []));
 /*         if ($media = $request->input('photo', [])) {
