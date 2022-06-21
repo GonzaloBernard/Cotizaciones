@@ -96,6 +96,7 @@
                                     v-for="product in productosFiltrados"
                                     :key="product.id"
                                     :producto="product"
+                                    @deletedProduct="deleteProduct($event)"
                                 />
                             </div>
                         </div>
@@ -122,6 +123,7 @@ export default {
         GlobalSearch,
         HeaderSettings,
     },
+
     data() {
         return {
             productosFiltrados: [],
@@ -191,15 +193,7 @@ export default {
         };
     },
     async created() {
-        await this.fetchIndexData();
-
-        if(this.$route.params.sectionId)
-        {
-        this.productosFiltrados = this.data.filter(prod => {
-            return prod.category.section_id === parseInt(this.$route.params.sectionId)
-        })
-        }
-        else  this.productosFiltrados = this.data;
+        await this.getProductosFiltradosOnCreateOrUpdate()
     },
 
     /* beforeDestroy() {
@@ -223,24 +217,28 @@ export default {
             "fetchIndexData",
             "setQuery",
             "resetState",
+            "destroyData",
         ]),
 
-        filtrar(){
-            console.log("|||")
+        async deleteProduct(id) {
+            await this.destroyData(id);
+            await this.getProductosFiltradosOnCreateOrUpdate()
+        },
+
+        filtrar() {
+            console.log("|||");
             this.filterByCategoria();
             this.filterByName(this.busqueda);
         },
         filterByName(e) {
-            if(e.length > 2)
-            this.productosFiltrados = this.productosFiltrados.filter(
-                (producto) =>
-                    producto.name
-                        .toLowerCase()
-                        .includes(e.toLowerCase()) ||
-                    producto.description
-                        .toLowerCase()
-                        .includes(e.toLowerCase())
-            );
+            if (e.length > 2)
+                this.productosFiltrados = this.productosFiltrados.filter(
+                    (producto) =>
+                        producto.name.toLowerCase().includes(e.toLowerCase()) ||
+                        producto.description
+                            .toLowerCase()
+                            .includes(e.toLowerCase())
+                );
         },
 
         filterByCategoria() {
@@ -260,6 +258,21 @@ export default {
                 this.productosFiltrados = this.data;
             }
         },
+
+        async getProductosFiltradosOnCreateOrUpdate()
+        {
+
+            await this.fetchIndexData();
+
+            if (this.$route.params.sectionId) {
+                this.productosFiltrados = this.data.filter((prod) => {
+                    return (
+                        prod.category.section_id ===
+                        parseInt(this.$route.params.sectionId)
+                    );
+                });
+            } else this.productosFiltrados = this.data;
+        }
     },
 };
 </script>

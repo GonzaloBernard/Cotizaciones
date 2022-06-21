@@ -11,7 +11,12 @@
                     <div>
                         <v-fade-transition>
                             <v-overlay v-if="hover" absolute color="#fafafa">
-                                <v-btn small color="red darken-3" @click="verProducto = true">Ver Producto</v-btn>
+                                <v-btn
+                                    small
+                                    color="red darken-3"
+                                    @click="verProducto = true"
+                                    >Ver Producto</v-btn
+                                >
                             </v-overlay>
                         </v-fade-transition>
                         <v-img
@@ -68,16 +73,55 @@
                 </v-row>
                 <v-row>
                     <div class="d-flex align-end my-auto mx-auto">
-                        <v-row justify="center" class="mb-2">
-                            <v-col cols="6"  md="6" sm="12" align-self="stretch">
-                                <v-btn class="pa-4" color="#801515" dark x-small block>
-                                    <v-icon>mdi-cart</v-icon>
-                                </v-btn>
+                        <v-row justify="center" class="mb-2 mr-1">
+                            <v-col cols="2" class="mr-3">
+                                <v-tooltip bottom>
+                                    <template v-slot:activator="{ on, attrs }">
+                                        <v-btn
+                                            v-bind="attrs"
+                                            v-on="on"
+                                            color="#801515"
+                                            dark
+                                            x-small
+                                        >
+                                            <v-icon small>mdi-cart</v-icon>
+                                        </v-btn>
+                                    </template>
+                                    <span>Agregar al Carrito</span>
+                                </v-tooltip>
                             </v-col>
-                            <v-col cols="6" md="6" sm="12" align-self="stretch">
-                                <v-btn class="pa-4" color="#801515" dark x-small block>
-                                    <v-icon>mdi-table-of-contents</v-icon>
-                                </v-btn>
+                            <v-col cols="2" class="mr-3">
+                                <v-tooltip bottom>
+                                    <template v-slot:activator="{ on, attrs }">
+                                        <v-btn
+                                            v-bind="attrs"
+                                            v-on="on"
+                                            color="#801515"
+                                            dark
+                                            x-small
+                                        >
+                                            <v-icon small>mdi-pencil</v-icon>
+                                        </v-btn>
+                                    </template>
+                                    <span>Editar Producto</span>
+                                </v-tooltip>
+                            </v-col>
+                            <v-col cols="2" class="mr-3">
+                                <v-tooltip bottom>
+                                    <template v-slot:activator="{ on, attrs }">
+                                        <v-btn
+                                            v-bind="attrs"
+                                            v-on="on"
+                                            color="#801515"
+                                            dark
+                                            x-small
+                                            @click="$emit('deletedProduct', producto.id)"
+                                        >
+                                            <v-icon small>mdi-delete</v-icon>
+                                        </v-btn>
+                                    </template>
+                                    <span>Borrar Producto</span>
+                                </v-tooltip>
                             </v-col>
                         </v-row>
                     </div>
@@ -86,15 +130,13 @@
         </v-card>
 
         <v-dialog v-model="verProducto" width="500">
-            <v-card>
-                ¿Descripcion Larga?
-            </v-card>
+            <v-card> ¿Descripcion Larga? </v-card>
         </v-dialog>
     </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
     data() {
         return {
@@ -108,8 +150,6 @@ export default {
             type: Object,
         },
     },
-
-    methods: {},
 
     computed: {
         ...mapGetters("ProductsIndex", ["getDolar"]),

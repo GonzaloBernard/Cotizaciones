@@ -2,6 +2,7 @@ const set = key => (state, val) => {
   state[key] = val
 }
 
+
 function initialState() {
   return {
     data: [],
