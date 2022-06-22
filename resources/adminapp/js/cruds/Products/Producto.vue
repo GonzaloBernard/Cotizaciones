@@ -6,7 +6,7 @@
         >
             <!-- Imagen del producto -->
 
-            <v-hover>
+            <v-hover absolute>
                 <template v-slot:default="{ hover }">
                     <div>
                         <v-fade-transition>

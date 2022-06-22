@@ -46,7 +46,8 @@
                             </v-badge>
                         </template>
 
-                        <v-list three-line>
+
+                        <v-list two-line>
                             <template v-for="producto in getCotizacionParcial">
                                 <v-list-item :key="producto.id">
                                     <v-list-item-avatar class="mt-4">
@@ -61,7 +62,7 @@
                                         ><span>Cantidad: {{producto.cantidad}}</span></v-list-item-subtitle>
                                     </v-list-item-content>
                                 </v-list-item>
-                                <v-divider :key="producto.id"></v-divider>
+                                <v-divider class="mx-4" :key="producto.id"></v-divider>
                             </template>
 
 
