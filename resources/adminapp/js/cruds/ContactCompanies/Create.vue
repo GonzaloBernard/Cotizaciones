@@ -27,9 +27,7 @@
                       'is-focused': activeField == 'company_name'
                     }"
                   >
-                    <label class="bmd-label-floating">{{
-                      $t('cruds.contactCompany.fields.company_name')
-                    }}</label>
+                    <label class="bmd-label-floating">Nombre</label>
                     <input
                       class="form-control"
                       type="text"
@@ -46,9 +44,7 @@
                       'is-focused': activeField == 'company_address'
                     }"
                   >
-                    <label class="bmd-label-floating">{{
-                      $t('cruds.contactCompany.fields.company_address')
-                    }}</label>
+                    <label class="bmd-label-floating">Cuit</label>
                     <input
                       class="form-control"
                       type="text"
@@ -58,7 +54,7 @@
                       @blur="clearFocus"
                     />
                   </div>
-                  <div
+                  <!-- <div
                     class="form-group bmd-form-group"
                     :class="{
                       'has-items': entry.company_website,
@@ -95,7 +91,7 @@
                       @focus="focusField('company_email')"
                       @blur="clearFocus"
                     />
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>

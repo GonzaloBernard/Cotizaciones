@@ -17,11 +17,11 @@ class StoreClienteRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => [
+            'company_name' => [
                 'string',
                 'required',
             ],
-            'cuit' => [
+            'company_address' => [
                 'string',
                 'required',
             ],

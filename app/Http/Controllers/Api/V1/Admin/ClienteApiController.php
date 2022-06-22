@@ -22,7 +22,11 @@ class ClienteApiController extends Controller
 
     public function store(StoreClienteRequest $request)
     {
-        $cliente = Cliente::create($request->validated());
+        $request->validated();
+        $cliente = Cliente::create([
+            'nombre' => $request->company_name,
+            'cuit' => $request->company_address,
+        ]);
 
         return (new ClienteResource($cliente))
             ->response()

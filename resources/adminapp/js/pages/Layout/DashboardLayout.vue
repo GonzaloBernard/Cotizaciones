@@ -99,6 +99,12 @@ export default {
                 }, */
                 ...this.sidebarSectionLinks,
                 {
+                    title: "Clientes",
+                    icon: "import_contacts",
+                    path: { name: "contact_companies.index" },
+                    gate: "admin",
+                },
+                {
                     title: "Proveedores",
                     icon: "import_contacts",
                     path: { name: "contact_management" },

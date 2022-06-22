@@ -23,38 +23,38 @@
                   <div
                     class="form-group bmd-form-group"
                     :class="{
-                      'has-items': entry.company_name,
-                      'is-focused': activeField == 'company_name'
+                      'has-items': entry.nombre,
+                      'is-focused': activeField == 'nombre'
                     }"
                   >
                     <label class="bmd-label-floating">{{
-                      $t('cruds.contactCompany.fields.company_name')
+                      $t('cruds.contactCompany.fields.nombre')
                     }}</label>
                     <input
                       class="form-control"
                       type="text"
-                      :value="entry.company_name"
-                      @input="updateCompanyName"
-                      @focus="focusField('company_name')"
+                      :value="entry.nombre"
+                      @input="updateNombre"
+                      @focus="focusField('nombre')"
                       @blur="clearFocus"
                     />
                   </div>
                   <div
                     class="form-group bmd-form-group"
                     :class="{
-                      'has-items': entry.company_address,
-                      'is-focused': activeField == 'company_address'
+                      'has-items': entry.cuit,
+                      'is-focused': activeField == 'cuit'
                     }"
                   >
                     <label class="bmd-label-floating">{{
-                      $t('cruds.contactCompany.fields.company_address')
+                      $t('cruds.contactCompany.fields.cuit')
                     }}</label>
                     <input
                       class="form-control"
                       type="text"
-                      :value="entry.company_address"
-                      @input="updateCompanyAddress"
-                      @focus="focusField('company_address')"
+                      :value="entry.cuit"
+                      @input="updateCuit"
+                      @focus="focusField('cuit')"
                       @blur="clearFocus"
                     />
                   </div>
@@ -151,10 +151,10 @@ export default {
       'setCompanyWebsite',
       'setCompanyEmail'
     ]),
-    updateCompanyName(e) {
+    updateNombre(e) {
       this.setCompanyName(e.target.value)
     },
-    updateCompanyAddress(e) {
+    updateCuit(e) {
       this.setCompanyAddress(e.target.value)
     },
     updateCompanyWebsite(e) {

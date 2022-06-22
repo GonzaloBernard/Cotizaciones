@@ -14,7 +14,7 @@ function initialState() {
   }
 }
 
-const route = 'contact-companies'
+const route = 'clientes'
 
 const getters = {
   entry: state => state.entry,

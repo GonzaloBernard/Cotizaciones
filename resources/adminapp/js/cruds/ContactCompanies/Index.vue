@@ -89,26 +89,14 @@ export default {
           colStyle: 'width: 100px;'
         },
         {
-          title: 'cruds.contactCompany.fields.company_name',
-          field: 'company_name',
+          title: 'Nombre',
+          field: 'nombre',
           thComp: TranslatedHeader,
           sortable: true
         },
         {
-          title: 'cruds.contactCompany.fields.company_address',
-          field: 'company_address',
-          thComp: TranslatedHeader,
-          sortable: true
-        },
-        {
-          title: 'cruds.contactCompany.fields.company_website',
-          field: 'company_website',
-          thComp: TranslatedHeader,
-          sortable: true
-        },
-        {
-          title: 'cruds.contactCompany.fields.company_email',
-          field: 'company_email',
+          title: 'CUIT',
+          field: 'cuit',
           thComp: TranslatedHeader,
           sortable: true
         },
