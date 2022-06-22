@@ -9,7 +9,7 @@
             </div>
             <h4 class="card-title">
               {{ $t('global.table') }}
-              <strong>{{ $t('Empresas') }}</strong>
+              <strong>Clientes</strong>
             </h4>
           </div>
           <div class="card-body">
