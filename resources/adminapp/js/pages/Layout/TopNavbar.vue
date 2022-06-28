@@ -67,7 +67,7 @@
 
 
                             <v-row justify="center" class="ma-4">
-                                <v-btn dark block x-small color="red darken-3"
+                                <v-btn @click="$router.push({name: 'cotizacion.create'})" dark block x-small color="red darken-3"
                                     >Ir al Presupuesto</v-btn
                                 >
 

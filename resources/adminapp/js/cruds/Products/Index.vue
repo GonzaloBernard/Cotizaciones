@@ -174,7 +174,7 @@ export default {
         };
     },
     async created() {
-        await this.getProductosFiltradosOnCreateOrUpdate()
+        await this.getProductosFiltradosOnCreateOrUpdate();
     },
 
     /* beforeDestroy() {
@@ -183,7 +183,7 @@ export default {
     computed: {
         ...mapGetters("ProductsIndex", ["data", "total", "loading"]),
         ...mapGetters("ProductCategoriesIndex", ["getCategories"]),
-        ...mapGetters("Cotizaciones", ["getStockError"])
+        ...mapGetters("Cotizaciones", ["getStockError"]),
     },
     watch: {
         query: {
@@ -204,16 +204,37 @@ export default {
 
         ...mapActions("Cotizaciones", ["addProductToPartialCotization"]),
 
-        addProduct(prod)
-        {
-           this.addProductToPartialCotization(prod)
-           if(this.getStockError) alert('error de stock')
-           else alert('Producto añadido')
+        addProduct(prod) {
+            const Toast = this.$swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener("mouseenter", this.$swal.stopTimer);
+                    toast.addEventListener("mouseleave", this.$swal.resumeTimer);
+                },
+            });
+            this.addProductToPartialCotization(prod);
+            if (this.getStockError)
+            {
+                Toast.fire({
+                    icon: "error",
+                    title: "Error de stock. Cantidad máxima de productos excedida" ,
+                });
+            }
+            else {
+                Toast.fire({
+                    icon: "success",
+                    title: `Ha añadido correctamente ${prod.cantidad} ${prod.producto.name}` ,
+                });
+            }
         },
 
         async deleteProduct(id) {
             await this.destroyData(id);
-            await this.getProductosFiltradosOnCreateOrUpdate()
+            await this.getProductosFiltradosOnCreateOrUpdate();
         },
 
         filtrar() {
@@ -250,9 +271,7 @@ export default {
             }
         },
 
-        async getProductosFiltradosOnCreateOrUpdate()
-        {
-
+        async getProductosFiltradosOnCreateOrUpdate() {
             await this.fetchIndexData();
 
             if (this.$route.params.sectionId) {
@@ -263,7 +282,7 @@ export default {
                     );
                 });
             } else this.productosFiltrados = this.data;
-        }
+        },
     },
 };
 </script>

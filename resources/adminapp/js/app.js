@@ -31,6 +31,9 @@ import 'vuetify/dist/vuetify.min.css'
 import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
 Vue.use(Vuetify);
 
+import VueSweetalert2 from "vue-sweetalert2";
+Vue.use(VueSweetalert2);
+
 Vue.use(GlobalComponents)
 Vue.use(GlobalDirectives)
 Vue.use(GlobalMixins)

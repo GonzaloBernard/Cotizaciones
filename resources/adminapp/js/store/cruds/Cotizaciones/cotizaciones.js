@@ -46,6 +46,11 @@ const actions = {
         commit('addProductToPartialCotization', prod)
     },
 
+    setCantidad({commit}, obj)
+    {
+        commit("setCantidad", obj)
+    },
+
     destroyData({ commit, state, dispatch }, id) {
         axios
             .delete(`${route}/${id}`)
@@ -72,6 +77,12 @@ const mutations = {
         query.page = (query.offset + query.limit) / query.limit;
         state.query = query;
     },
+
+    setCantidad(state, value)
+    {
+        state.cotizacionSinConfirmar.find(cot => cot.id === value.id).cantidad = value.cantidad
+    },
+
     addProductToPartialCotization(state, value)
     {
     let productoEnExistencia = state.cotizacionSinConfirmar.find(producto => producto.id === value.producto.id)

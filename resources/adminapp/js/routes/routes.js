@@ -23,6 +23,11 @@ const routes = [
         meta: { title: 'global.dashboard' }
       },
       {
+        path: 'cotizacionCreate',
+        name: 'cotizacion.create',
+        component: () => import('@pages/Cotizacion.vue'),
+      },
+      {
         path: 'products/:sectionId',
         name: 'products.index',
         component: () => import('@cruds/Products/Index.vue'),
