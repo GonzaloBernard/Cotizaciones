@@ -13,7 +13,7 @@ function initialState() {
     }
 }
 
-const route = "product-sections";
+const route = "cotizacion";
 
 const getters = {
     data: (state) => state.data,

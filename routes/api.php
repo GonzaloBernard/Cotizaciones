@@ -54,5 +54,5 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', /
     Route::resource('clientes', 'ClienteApiController');
 
     // Cotizacion
-    Route::post('cotizacion', 'ProductApiController@postCotizacion')->name('postCotizacion');
+    Route::resource('cotizacion', 'CotizacionApiController');
 });
