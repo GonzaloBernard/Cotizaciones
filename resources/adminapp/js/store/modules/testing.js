@@ -10,7 +10,7 @@ function getDefaultState() {
 
     test({dispatch}){
         dispatch(
-            'Cotizaciones/fetchIndexData',
+            'CotizacionesIndex/fetchIndexData',
             { },
             { root: true }
           )
