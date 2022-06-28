@@ -36,6 +36,7 @@ import ProductSectionsIndex from './cruds/ProductSections/index'
 import ProductSectionsSingle from './cruds/ProductSections/single'
 import CotizacionParcial from './cruds/Cotizaciones/cotizacionParcial'
 import CotizacionesSingle from './cruds/Cotizaciones/single'
+import CotizacionesIndex from './cruds/Cotizaciones/index'
 
 Vue.use(Vuex)
 
@@ -77,6 +78,7 @@ export default new Vuex.Store({
     ProductSectionsSingle,
     CotizacionParcial,
     CotizacionesSingle,
+    CotizacionesIndex,
 
   },
   strict: debug
