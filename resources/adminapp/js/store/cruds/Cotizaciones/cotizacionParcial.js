@@ -24,6 +24,11 @@ const actions = {
         commit("setCantidad", obj)
     },
 
+    vaciarPresupuesto({commit})
+    {
+        commit("vaciarPresupuesto")
+    },
+
     resetState({ commit }) {
         commit("resetState");
     },
@@ -36,8 +41,14 @@ const mutations = {
         state.cotizacionSinConfirmar.find(cot => cot.id === value.id).cantidad = value.cantidad
     },
 
+    vaciarPresupuesto(state)
+    {
+        state.cotizacionSinConfirmar = []
+    },
+
     addProductToPartialCotization(state, value)
     {
+    state.stockError = null
     let productoEnExistencia = state.cotizacionSinConfirmar.find(producto => producto.id === value.producto.id)
 
     if( productoEnExistencia && (productoEnExistencia.cantidad + value.cantidad > value.producto.stock))
@@ -46,7 +57,6 @@ const mutations = {
     }
     if( productoEnExistencia && (productoEnExistencia.cantidad + value.cantidad <= value.producto.stock))
     {
-
         state.cotizacionSinConfirmar.find(producto => producto.id === value.producto.id).cantidad += value.cantidad
     }
     if (!productoEnExistencia) {

@@ -207,28 +207,40 @@ export default {
         addProduct(prod) {
             const Toast = this.$swal.mixin({
                 toast: true,
-                position: "top-end",
+                position: "bottom-end",
                 showConfirmButton: false,
                 timer: 2000,
                 timerProgressBar: true,
                 didOpen: (toast) => {
                     toast.addEventListener("mouseenter", this.$swal.stopTimer);
-                    toast.addEventListener("mouseleave", this.$swal.resumeTimer);
+                    toast.addEventListener(
+                        "mouseleave",
+                        this.$swal.resumeTimer
+                    );
                 },
             });
             this.addProductToPartialCotization(prod);
-            if (this.getStockError)
-            {
-                Toast.fire({
-                    icon: "error",
-                    title: "Error de stock. Cantidad máxima de productos excedida" ,
-                });
-            }
-            else {
-                Toast.fire({
-                    icon: "success",
-                    title: `Ha añadido correctamente ${prod.cantidad} ${prod.producto.name}` ,
-                });
+
+            switch (true) {
+                case this.getStockError:
+                    Toast.fire({
+                        icon: "error",
+                        title: "Error de stock. Cantidad máxima de productos excedida",
+                    });
+                    break;
+
+                case prod.cantidad === 0:
+                    Toast.fire({
+                        icon: "error",
+                        title: "Debe agregar al menos 1 (un) producto",
+                    });
+                    break;
+
+                default:
+                    Toast.fire({
+                        icon: "success",
+                        title: `Ha añadido correctamente ${prod.cantidad} ${prod.producto.name}`,
+                    });
             }
         },
 
