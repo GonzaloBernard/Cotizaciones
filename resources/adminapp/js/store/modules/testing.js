@@ -9,6 +9,17 @@ function getDefaultState() {
   const actions = {
 
     test({dispatch}){
+        dispatch(
+            'Cotizaciones/fetchIndexData',
+            { },
+            { root: true }
+          )
+
+          dispatch(
+            'CotizacionesSingle/storeData',
+            { },
+            { root: true }
+          )
 /*         dispatch(
             'ClientesSingle/updateData',
             { },

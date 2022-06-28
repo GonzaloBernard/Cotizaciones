@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Http\Resources\Admin\ProductResource;
-use App\Http\Resources\Admin\CotizacionResource;
+
 use App\Models\Product;
-use App\Models\Cotizacion;
+
 use App\Models\ProductCategory;
 use App\Models\ProductTag;
 use Gate;
@@ -112,16 +112,5 @@ class ProductApiController extends Controller
         $media         = $model->addMediaFromRequest('file')->toMediaCollection($request->input('collection_name'));
 
         return response()->json($media, Response::HTTP_CREATED);
-    }
-
-    // Cotizaciones
-    public function postCotizacion(Request $request){
-        $cotizacion = Cotizacion::create([
-            'descripcion' => $request->descripcion,
-        ]);
-
-        return (new CotizacionResource($cotizacion))
-            ->response()
-            ->setStatusCode(Response::HTTP_CREATED);
     }
 }
