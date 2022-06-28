@@ -109,10 +109,10 @@ export default {
         };
     },
     computed: {
-        ...mapGetters("Cotizaciones", ["getCotizacionParcial"]),
+        ...mapGetters("CotizacionParcial", ["getCotizacionParcial"]),
     },
     methods: {
-        ...mapActions("Cotizaciones", ["setCantidad"]),
+        ...mapActions("CotizacionParcial", ["setCantidad"]),
         modalEditCantidad(cot) {
             this.cotizacionEditCantidad = cot.cantidad
             this.cotizacionEdit = cot;

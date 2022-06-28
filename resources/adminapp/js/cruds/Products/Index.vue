@@ -183,7 +183,7 @@ export default {
     computed: {
         ...mapGetters("ProductsIndex", ["data", "total", "loading"]),
         ...mapGetters("ProductCategoriesIndex", ["getCategories"]),
-        ...mapGetters("Cotizaciones", ["getStockError"]),
+        ...mapGetters("CotizacionParcial", ["getStockError"]),
     },
     watch: {
         query: {
@@ -202,14 +202,14 @@ export default {
             "destroyData",
         ]),
 
-        ...mapActions("Cotizaciones", ["addProductToPartialCotization"]),
+        ...mapActions("CotizacionParcial", ["addProductToPartialCotization"]),
 
         addProduct(prod) {
             const Toast = this.$swal.mixin({
                 toast: true,
                 position: "top-end",
                 showConfirmButton: false,
-                timer: 3000,
+                timer: 2000,
                 timerProgressBar: true,
                 didOpen: (toast) => {
                     toast.addEventListener("mouseenter", this.$swal.stopTimer);

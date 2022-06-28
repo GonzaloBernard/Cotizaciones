@@ -103,7 +103,7 @@ export default {
     },
     computed: {
         ...mapGetters("ProductsIndex", ["getDolar"]),
-        ...mapGetters("Cotizaciones", ["getCotizacionParcial"]),
+        ...mapGetters("CotizacionParcial", ["getCotizacionParcial"]),
     },
 };
 </script>
