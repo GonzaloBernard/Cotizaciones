@@ -27,8 +27,8 @@ class CotizacionApiController extends Controller
 
         foreach($request->productos as $producto){
             CotizacionProducto::create([
-                'id' => $producto->id,
-                'cantidad' => $producto->cantidad
+                'id' => $producto['id'],
+                'cantidad' => $producto['cantidad']
             ]);
         }
 
