@@ -7,6 +7,7 @@ use App\Http\Requests\StoreCotizacionRequest;
 use App\Http\Requests\UpdateCotizacionRequest;
 use App\Http\Resources\Admin\CotizacionResource;
 use App\Models\Cotizacion;
+use App\Models\CotizacionProducto;
 use Gate;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
