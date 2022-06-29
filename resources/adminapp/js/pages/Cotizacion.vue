@@ -1,15 +1,16 @@
 <template>
-    <v-container>
+    <v-container class="mt-4">
         <v-card>
             <v-row justify="center"> <h3>Nueva Cotizacion</h3> </v-row>
-            <v-row justify="center" class="mt-4">
+            <v-row justify="space-between" class="mt-4">
                 <v-col cols="1" align-self="center" class="ml-4 font-weight-bold">
                     Imagen
                 </v-col>
-                <v-col align-self="center font-weight-bold"> Descripcion </v-col>
+                <v-col align-self="center font-weight-bold"> Nombre </v-col>
                 <v-col align-self="center font-weight-bold"> Categoría </v-col>
                 <v-col align-self="center font-weight-bold"> Stock </v-col>
                 <v-col align-self="center font-weight-bold"> Precio </v-col>
+                <v-col align-self="center font-weight-bold"> IVA </v-col>
                 <v-col align-self="center font-weight-bold"> Cantidad </v-col>
                 <v-col align-self="center font-weight-bold"> Subtotal </v-col>
             </v-row>
@@ -17,14 +18,14 @@
                 v-for="(cotizacion, index) in getCotizacionParcial"
                 :key="index"
             >
-                <v-row justify="center" class="mt-2">
+                <v-row justify="space-between" class="mt-2">
                     <v-col cols="1" align-self="center" class="ml-6">
                         <v-list-item-avatar>
                             <v-img :src="cotizacion.img"></v-img>
                         </v-list-item-avatar>
                     </v-col>
                     <v-col align-self="center">
-                        {{ cotizacion.description }}
+                        {{ cotizacion.name }}
                     </v-col>
                     <v-col align-self="center">
                         {{ cotizacion.category.name }}
@@ -34,6 +35,9 @@
                     </v-col>
                     <v-col align-self="center">
                         $ {{ cotizacion.price }}
+                    </v-col>
+                    <v-col align-self="center">
+                         {{ cotizacion.iva }} %
                     </v-col>
                     <v-col class="ml-4" align-self="center">
                         {{ cotizacion.cantidad }}

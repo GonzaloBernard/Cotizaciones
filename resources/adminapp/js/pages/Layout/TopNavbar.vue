@@ -66,8 +66,8 @@
                             </template>
 
 
-                            <v-row justify="center" class="ma-4">
-                                <v-btn @click="$router.push({name: 'cotizacion.create'})" dark block x-small color="red darken-3"
+                            <v-row justify="center" v-if="getCotizacionParcial.length" class="ma-4">
+                                <v-btn  @click="$router.push({name: 'cotizacion.create'})" dark block x-small color="red darken-3"
                                     >Ir al Presupuesto</v-btn
                                 >
 
@@ -77,8 +77,12 @@
                                     block
                                     x-small
                                     color="red lighten-3"
+                                    @click="vaciarPresupuesto"
                                     >Vaciar Presupuesto</v-btn
                                 >
+                            </v-row>
+                            <v-row justify="center" class="ma-4" v-else>
+                                No hay productos añadidos
                             </v-row>
                         </v-list>
                     </v-menu>
@@ -89,7 +93,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
     data() {
         return {
@@ -97,6 +101,7 @@ export default {
         };
     },
     methods: {
+        ...mapActions("CotizacionParcial", ["vaciarPresupuesto"]),
         toggleSidebar() {
             this.$sidebar.displaySidebar(!this.$sidebar.showSidebar);
         },
