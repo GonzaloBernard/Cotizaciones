@@ -29,6 +29,7 @@ class CotizacionApiController extends Controller
             CotizacionProducto::create([
                 'id' => $producto['id'],
                 'cantidad' => $producto['cantidad'],
+                'monto_unitario' => 10,
                 'cotizacion_id' => $cotizacion->id,
             ]);
         }
