@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateCotizacionRequest;
 use App\Http\Resources\Admin\CotizacionResource;
 use App\Models\Cotizacion;
 use App\Models\CotizacionProducto;
+use App\Models\Product;
 use Gate;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
