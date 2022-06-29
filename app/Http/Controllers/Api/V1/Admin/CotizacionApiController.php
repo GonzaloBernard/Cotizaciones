@@ -23,7 +23,6 @@ class CotizacionApiController extends Controller
 
     public function store(StoreCotizacionRequest $request)
     {
-        return $request;
         $cotizacion = Cotizacion::create($request->validated());
 
         foreach($request->productos as $producto){
