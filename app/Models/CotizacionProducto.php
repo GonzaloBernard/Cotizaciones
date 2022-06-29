@@ -9,13 +9,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
-class Cotizacion extends Model
+class CotizacionProducto extends Model
 {
     use HasAdvancedFilter;
     use SoftDeletes;
     use HasFactory;
 
-    public $table = 'cotizacion';
+    public $table = 'cotizacion_producto';
 
 
     protected $dates = [
@@ -25,17 +25,24 @@ class Cotizacion extends Model
     ];
 
     protected $orderable = [
-        'id',
-        'descripcion',
+        'cotizacion_id',
+        'producto_id',
+        'cantidad',
+        'monto_unitario',
     ];
 
     protected $filterable = [
-        'id',
-        'descripcion',
+        'cotizacion_id',
+        'producto_id',
+        'cantidad',
+        'monto_unitario',
     ];
 
     protected $fillable = [
-        'descripcion',
+        'cotizacion_id',
+        'producto_id',
+        'cantidad',
+        'monto_unitario',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -44,17 +51,12 @@ class Cotizacion extends Model
 
 /*     public function category()
     {
-        return $this->belongsToMany(CotizacionCategory::class);
+        return $this->belongsToMany(CotizacionProductoCategory::class);
     } */
 
 
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
-    }
-
-    public function cotizacionProductos()
-    {
-        return $this->hasMany(CotizacionProducto::class);
     }
 }

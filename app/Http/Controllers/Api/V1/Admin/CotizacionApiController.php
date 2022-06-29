@@ -17,7 +17,7 @@ class CotizacionApiController extends Controller
     {
         //abort_if(Gate::denies('cotizacion_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new CotizacionResource(Cotizacion::advancedFilter());
+        return new CotizacionResource(Cotizacion::with('cotizacionProductos')->advancedFilter());
     }
 
     public function store(StoreCotizacionRequest $request)
