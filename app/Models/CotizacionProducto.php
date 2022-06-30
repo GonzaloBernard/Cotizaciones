@@ -17,7 +17,6 @@ class CotizacionProducto extends Model
 
     public $table = 'cotizacion_producto';
 
-
     protected $dates = [
         'created_at',
         'updated_at',
@@ -49,11 +48,10 @@ class CotizacionProducto extends Model
     ];
 
 
-/*     public function category()
+    public function producto()
     {
-        return $this->belongsToMany(CotizacionProductoCategory::class);
-    } */
-
+        return $this->belongsTo(Product::class, 'producto_id');
+    }
 
     protected function serializeDate(DateTimeInterface $date)
     {

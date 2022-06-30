@@ -15,11 +15,11 @@ function getDefaultState() {
             { root: true }
           )
 
-          dispatch(
+/*           dispatch(
             'CotizacionesSingle/storeData',
             { },
             { root: true }
-          )
+          ) */
 /*         dispatch(
             'ClientesSingle/updateData',
             { },
