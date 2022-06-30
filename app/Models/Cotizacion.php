@@ -57,4 +57,9 @@ class Cotizacion extends Model
     {
         return $this->hasMany(CotizacionProducto::class);
     }
+
+    public function clientes()
+    {
+        return $this->belongsToMany(Cliente::class, 'cotizacion_cliente');
+    }
 }
