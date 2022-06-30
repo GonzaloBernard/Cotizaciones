@@ -9,11 +9,11 @@
             </div>
             <h4 class="card-title">
               {{ $t('global.table') }}
-              <strong>{{ $t('cruds.income.title') }}</strong>
+              <strong>Cotizaciones</strong>
             </h4>
           </div>
           <div class="card-body">
-            <router-link
+<!--             <router-link
               class="btn btn-primary"
               v-if="$can(xprops.permission_prefix + 'create')"
               :to="{ name: xprops.route + '.create' }"
@@ -22,7 +22,7 @@
                 add
               </i>
               {{ $t('global.add') }}
-            </router-link>
+            </router-link> -->
             <button
               type="button"
               class="btn btn-default"

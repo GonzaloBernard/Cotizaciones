@@ -88,7 +88,7 @@ export default {
     this.resetState()
   },
   computed: {
-    ...mapGetters('ContactCompaniesSingle', ['entry'])
+    ...mapGetters('ClientesSingle', ['entry'])
   },
   watch: {
     '$route.params.id': {
@@ -100,7 +100,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions('ContactCompaniesSingle', ['fetchShowData', 'resetState'])
+    ...mapActions('ClientesSingle', ['fetchShowData', 'resetState'])
   }
 }
 </script>

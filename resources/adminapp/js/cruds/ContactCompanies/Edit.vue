@@ -127,7 +127,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('ContactCompaniesSingle', ['entry', 'loading'])
+    ...mapGetters('ClientesSingle', ['entry', 'loading'])
   },
   beforeDestroy() {
     this.resetState()
@@ -142,7 +142,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions('ContactCompaniesSingle', [
+    ...mapActions('ClientesSingle', [
       'fetchEditData',
       'updateData',
       'resetState',

@@ -112,7 +112,7 @@ export default {
       ],
       query: { sort: 'id', order: 'desc', limit: 100, s: '' },
       xprops: {
-        module: 'ContactCompaniesIndex',
+        module: 'ClientesIndex',
         route: 'contact_companies',
         permission_prefix: 'contact_company_'
       }
@@ -122,7 +122,7 @@ export default {
     this.resetState()
   },
   computed: {
-    ...mapGetters('ContactCompaniesIndex', ['data', 'total', 'loading'])
+    ...mapGetters('ClientesIndex', ['data', 'total', 'loading'])
   },
   watch: {
     query: {
@@ -134,7 +134,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions('ContactCompaniesIndex', [
+    ...mapActions('ClientesIndex', [
       'fetchIndexData',
       'setQuery',
       'resetState'

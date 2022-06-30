@@ -123,13 +123,13 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('ContactCompaniesSingle', ['entry', 'loading'])
+    ...mapGetters('ClientesSingle', ['entry', 'loading'])
   },
   beforeDestroy() {
     this.resetState()
   },
   methods: {
-    ...mapActions('ContactCompaniesSingle', [
+    ...mapActions('ClientesSingle', [
       'storeData',
       'resetState',
       'setCompanyName',
