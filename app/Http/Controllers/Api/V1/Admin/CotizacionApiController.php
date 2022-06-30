@@ -26,6 +26,7 @@ class CotizacionApiController extends Controller
     {
         $cotizacion = Cotizacion::create($request->validated());
 
+        if(!empty($request->productos)){
         foreach($request->productos as $producto){
             CotizacionProducto::create([
                 'producto_id' => $producto['id'],
@@ -34,6 +35,7 @@ class CotizacionApiController extends Controller
                 'cotizacion_id' => $cotizacion->id,
             ]);
         }
+    }
 
         // Si hay clientes agregarlos
         if(!empty($request->clientes)){
