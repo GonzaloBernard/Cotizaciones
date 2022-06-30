@@ -17,8 +17,8 @@ import ProductTagsIndex from './cruds/ProductTags'
 import ProductTagsSingle from './cruds/ProductTags/single'
 import ProductsIndex from './cruds/Products'
 import ProductsSingle from './cruds/Products/single'
-import ContactCompaniesIndex from './cruds/ContactCompanies'
-import ContactCompaniesSingle from './cruds/ContactCompanies/single'
+import ClientesIndex from './cruds/ContactCompanies'
+import ClientesSingle from './cruds/ContactCompanies/single'
 import ContactContactsIndex from './cruds/ContactContacts'
 import ContactContactsSingle from './cruds/ContactContacts/single'
 import ExpenseCategoriesIndex from './cruds/ExpenseCategories'
@@ -30,8 +30,6 @@ import ExpensesSingle from './cruds/Expenses/single'
 import IncomesIndex from './cruds/Incomes'
 import IncomesSingle from './cruds/Incomes/single'
 import ExpenseReports from './cruds/ExpenseReports'
-import ClientesIndex from './cruds/Clientes/index'
-import ClientesSingle from './cruds/Clientes/single'
 import ProductSectionsIndex from './cruds/ProductSections/index'
 import ProductSectionsSingle from './cruds/ProductSections/single'
 import CotizacionParcial from './cruds/Cotizaciones/cotizacionParcial'
@@ -59,8 +57,6 @@ export default new Vuex.Store({
     ProductTagsSingle,
     ProductsIndex,
     ProductsSingle,
-    ContactCompaniesIndex,
-    ContactCompaniesSingle,
     ContactContactsIndex,
     ContactContactsSingle,
     ExpenseCategoriesIndex,
@@ -79,7 +75,6 @@ export default new Vuex.Store({
     CotizacionParcial,
     CotizacionesSingle,
     CotizacionesIndex,
-
   },
   strict: debug
 })

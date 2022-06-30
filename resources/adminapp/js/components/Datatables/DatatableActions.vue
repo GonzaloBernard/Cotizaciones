@@ -19,11 +19,17 @@
     <a
       href="#"
       class="btn btn-just-icon btn-round btn-link text-rose"
-      v-if="$can(xprops.permission_prefix + 'delete')"
+      v-if="$can(xprops.permission_prefix + 'delete') && xprops.route !== 'cotizacion'"
       @click.prevent="destroyData(row.id)"
       type="button"
     >
       <i class="material-icons">delete</i>
+    </a>
+
+    <a href="#">
+    <v-icon color="red darken-3" v-if="xprops.route === 'cotizacion'">
+        mdi-file-document
+    </v-icon>
     </a>
   </div>
 </template>

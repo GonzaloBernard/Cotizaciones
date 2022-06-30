@@ -27,6 +27,24 @@ const routes = [
         name: 'cotizacion.create',
         component: () => import('@pages/Cotizacion.vue'),
       },
+
+      {
+        path: 'cotizaciones',
+        name: 'cotizaciones',
+        component: () => import('@cruds/Cotizacion/CotizacionIndex.vue'),
+      },
+      {
+        path: 'cotizacion/:id',
+        name: 'cotizacion.show',
+        component: () => import('@cruds/Cotizacion/CotizacionShow.vue'),
+      },
+      {
+        path: 'cotizacion/:id/edit',
+        name: 'cotizacion.edit',
+        component: () => import('@cruds/Cotizacion/CotizacionEdit.vue'),
+        meta: { title: 'cruds.role.title' }
+      },
+
       {
         path: 'products/:sectionId',
         name: 'products.index',

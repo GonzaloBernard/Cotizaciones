@@ -3,16 +3,34 @@
         <v-card>
             <v-row justify="center"> <h3>Nueva Cotizacion</h3> </v-row>
             <v-row justify="space-between" class="mt-4">
-                <v-col cols="1" align-self="center" class="ml-4 font-weight-bold">
+                <v-col
+                    cols="1"
+                    align-self="center"
+                    class="ml-4 font-weight-bold"
+                >
                     Imagen
                 </v-col>
-                <v-col align-self="center font-weight-bold"> Nombre </v-col>
-                <v-col align-self="center font-weight-bold"> Categoría </v-col>
-                <v-col align-self="center font-weight-bold"> Stock </v-col>
-                <v-col align-self="center font-weight-bold"> Precio </v-col>
-                <v-col align-self="center font-weight-bold"> IVA </v-col>
-                <v-col align-self="center font-weight-bold"> Cantidad </v-col>
-                <v-col align-self="center font-weight-bold"> Subtotal </v-col>
+                <v-col align-self="center" class="font-weight-bold">
+                    Nombre
+                </v-col>
+                <v-col align-self="center" class="font-weight-bold">
+                    Categoría
+                </v-col>
+                <v-col align-self="center" class="font-weight-bold">
+                    Stock
+                </v-col>
+                <v-col align-self="center" class="font-weight-bold">
+                    Precio
+                </v-col>
+                <v-col align-self="center" class="font-weight-bold">
+                    IVA
+                </v-col>
+                <v-col align-self="center" class="font-weight-bold">
+                    Cantidad
+                </v-col>
+                <v-col align-self="center" class="font-weight-bold">
+                    Subtotal
+                </v-col>
             </v-row>
             <v-card
                 v-for="(cotizacion, index) in getCotizacionParcial"
@@ -36,9 +54,7 @@
                     <v-col align-self="center">
                         $ {{ cotizacion.price }}
                     </v-col>
-                    <v-col align-self="center">
-                         {{ cotizacion.iva }} %
-                    </v-col>
+                    <v-col align-self="center"> {{ cotizacion.iva }} % </v-col>
                     <v-col class="ml-4" align-self="center">
                         {{ cotizacion.cantidad }}
                         <v-btn
@@ -99,6 +115,22 @@
                 </v-row>
             </v-card>
         </v-dialog>
+        <v-row justify="space-around" class="mt-8">
+            <v-col cols="6">
+                <v-select
+                    placeholder="Seleccione un cliente"
+                    name="clientes"
+                    label="nombre"
+                    :multiple="true"
+                    :key="'nombre'"
+                    v-model="clientes"
+                    :options="data"
+                />
+            </v-col>
+            <v-col cols="3">
+                <v-btn @click="save"> Guardar Cotizacion </v-btn>
+            </v-col>
+        </v-row>
     </v-container>
 </template>
 
@@ -110,19 +142,36 @@ export default {
             cotizacionEditCantidad: 0,
             cotizacionEdit: null,
             editCantidad: false,
+            clientes: null,
         };
+    },
+    created() {
+        this.fetchIndexData();
     },
     computed: {
         ...mapGetters("CotizacionParcial", ["getCotizacionParcial"]),
+        ...mapGetters("ClientesIndex", ["data"]),
     },
     methods: {
-        ...mapActions("CotizacionParcial", ["setCantidad"]),
+        ...mapActions("ClientesIndex", ["fetchIndexData"]),
+        ...mapActions("CotizacionParcial", [
+            "setCantidad",
+            "setClienteInCotizacion",
+        ]),
+        ...mapActions("CotizacionesSingle", ["storeData"]),
         modalEditCantidad(cot) {
-            this.cotizacionEditCantidad = cot.cantidad
+            this.cotizacionEditCantidad = cot.cantidad;
             this.cotizacionEdit = cot;
             this.editCantidad = true;
         },
 
+        save() {
+            const c = this.clientes.map((cliente) => {
+                return cliente.id;
+            });
+            this.storeData(c);
+            this.$router.push({name: 'cotizaciones'})
+        },
         actualizarCantidadEnCotizacion() {
             this.setCantidad({
                 id: this.cotizacionEdit.id,

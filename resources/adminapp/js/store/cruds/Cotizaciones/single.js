@@ -1,3 +1,5 @@
+import store from "../../store"
+
 function initialState() {
     return {
       entry: {
@@ -20,15 +22,19 @@ function initialState() {
   }
 
   const actions = {
-    storeData({ commit, state, dispatch }) {
+    storeData({ commit, dispatch, rootGetters}, clientes) {
+
       commit('setLoading', true)
       dispatch('Alert/resetState', null, { root: true })
 
       return new Promise((resolve, reject) => {
-        let params = objectToFormData(state.entry, {
-          indices: true,
-          booleansAsIntegers: true
-        })
+        let params = {
+        descripcion: "Descripcion generica",
+        productos: rootGetters['CotizacionParcial/getCotizacionParcial'].map(prod => {
+            return {cantidad: prod.cantidad, id: prod.id}
+            }),
+        clientes
+        }
         axios
           .post(route, params)
           .then(response => {
