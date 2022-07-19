@@ -115,7 +115,7 @@
                 </v-row>
             </v-card>
         </v-dialog>
-        <v-row justify="space-around" class="mt-8">
+        <v-row justify="space-around" class="my-8">
             <v-col cols="6">
                 <v-select
                     placeholder="Seleccione un cliente"
@@ -128,7 +128,7 @@
                 />
             </v-col>
             <v-col cols="3">
-                <v-btn @click="save"> Guardar Cotizacion </v-btn>
+                <v-btn color="red darken-3" dark @click="save"><v-icon class="mr-1">mdi-check-decagram</v-icon> Guardar Cotizacion </v-btn>
             </v-col>
         </v-row>
     </v-container>
@@ -170,7 +170,6 @@ export default {
                 return cliente.id;
             });
             this.storeData(c);
-            this.$router.push({name: 'cotizaciones'})
         },
         actualizarCantidadEnCotizacion() {
             this.setCantidad({

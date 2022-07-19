@@ -1,10 +1,11 @@
-import store from "../../store"
-
+import router from '../../../routes/routes'
 function initialState() {
     return {
+      ultimaCotizacion: null,
       entry: {
         id: null,
         descripcion: '',
+        productos: [],
         created_at: '',
         updated_at: '',
         deleted_at: ''
@@ -18,7 +19,8 @@ function initialState() {
   const getters = {
     entry: state => state.entry,
     lists: state => state.lists,
-    loading: state => state.loading
+    loading: state => state.loading,
+    cotizacionActual: state => state.cotizacionActual
   }
 
   const actions = {
@@ -38,6 +40,7 @@ function initialState() {
         axios
           .post(route, params)
           .then(response => {
+            router.push({name: 'cotizacion.show', params: {id: response.data.data.id}})
             resolve(response)
           })
           .catch(error => {
@@ -120,6 +123,9 @@ function initialState() {
   }
 
   const mutations = {
+    setCotizacionActual(state, cotizacion) {
+        state.cotizacionActual = cotizacion
+    },
     setEntry(state, entry) {
       state.entry = entry
     },
