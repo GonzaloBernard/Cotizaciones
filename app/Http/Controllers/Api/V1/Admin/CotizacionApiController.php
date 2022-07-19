@@ -62,7 +62,7 @@ class CotizacionApiController extends Controller
     {
         //abort_if(Gate::denies('cotizacion_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new CotizacionResource($cotizacion->load('cotizacionProductos', 'cotizacionProductos.producto','clientes'));
+        return new CotizacionResource($cotizacion->load('cotizacionProductos', 'cotizacionProductos.producto', 'cotizacionProductos.producto.category','clientes'));
     }
 
     public function update(UpdateCotizacionRequest $request, Cotizacion $cotizacion)
