@@ -121,8 +121,6 @@ function initialState() {
       commit('resetState')
     },
     cotizacionPDF({ commit }, value) {
-        console.log('store cotizacionPDF( {}, value)')
-        console.log(value)
         commit('setLoading', true)
         //dispatch('Alert/resetState', null, { root: true })
 
@@ -134,8 +132,9 @@ function initialState() {
           axios
             .post(`${route}PDF`, params)
             .then(response => {
+                alert(response.data);
                 console.log(response.data);
-              resolve(response)
+                resolve(response)
             })
             .catch(error => {
               let message = error.response.data.message || error.message
