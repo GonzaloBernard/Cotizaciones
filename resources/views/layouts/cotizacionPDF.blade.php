@@ -100,7 +100,7 @@
         color: #ccae76;
       }
 
-      .caratula{
+      .item{
           font-size: 12px !important;
           color: #0E1A32;
       }
@@ -122,9 +122,49 @@
   </head>
   <body>
     <div class="invoice-box">
-        <h1>Cliente : {{ $cliente }}</h1>
-        <p>Cotizacion ID: {{ $cotizacion->id}} : {{ $cotizacion->descripcion }}</p>
-        <p>items : {{ $cotizacion->cotizacionProductos }}</p>
-    </div>
+        <table>
+          <tr class="top">
+            <td colspan="2">
+              <table>
+                <tr>
+                  <td class="title">
+                    <img src="" />
+                  </td>
+                </tr>
+                <tr>
+                  <td> Cotización #: {{ $cotizacion->id }}
+                    <br /> Fecha: {{\Carbon\Carbon::create($cotizacion->created_at)->format('d/m/Y')}}
+                    <br />
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr class="information">
+            <td colspan="2">
+              <table>
+                <tr>
+                  <td>
+                    {{ $cliente }}
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          @foreach($cotizacion->cotizacionProductos as $item)
+          <tr class="item last">
+            <td class="item">#{{ $item->producto_id }}  - {{ $item->producto->name }} - Cantidad: {{ $item->cantidad }} - Precio Unitario: $ {{ $item->monto_unitario}}- IVA {{ $item->producto->iva}} </td>
+
+          </tr>
+          @endforeach
+          <tr class="total">
+            <td></td>
+            <td>Total: $</td>
+          </tr>
+        </table>
+      </div>
+
+
   </body>
 </html>
