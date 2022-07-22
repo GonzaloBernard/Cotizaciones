@@ -33,78 +33,44 @@ export default {
         sidebarLinks() {
             return [
                 {
-                    title: "global.dashboard",
-                    icon: "dashboard",
-                    path: { name: "dashboard" },
-                    gate: "admin",
-                },
-                {
-                    title: "cruds.userManagement.title",
-                    icon: "person",
-                    path: { name: "user_management" },
-                    gate: "admin",
-                    children: [
-                        {
-                            title: "cruds.permission.title",
-                            icon: "perm_data_setting",
-                            path: { name: "permissions.index" },
-                            gate: "OCULTO",
-                        },
-                        {
-                            title: "cruds.role.title",
-                            icon: "group",
-                            path: { name: "roles.index" },
-                            gate: "OCULTO",
-                        },
-                        {
-                            title: "cruds.user.title",
-                            icon: "person",
-                            path: { name: "users.index" },
-                            gate: "user_access",
-                        },
-                    ],
-                },
-                {
-                    title: "Parámetros",
-                    icon: "table_view",
-                    path: { name: "product_management" },
-                    gate: "admin",
-                    children: [
-                        {
-                            title: "Secciones",
-                            icon: "table_view",
-                            path: { name: "product_sections.index" },
-                            gate: "admin",
-                        },
-                        {
-                            title: "Categorias",
-                            icon: "table_view",
-                            path: { name: "product_categories.index" },
-                            gate: "admin",
-                        },
-                        /* {
-                            title: "cruds.productTag.title",
-                            icon: "table_view",
-                            path: { name: "product_tags.index" },
-                            gate: "product_tag_access",
-                        }, */
-                    ],
-                },
-/*                 {
-                    title: "Productos",
-                    icon: "table_view",
-                    path: { name: "products.index" },
-                    gate: "product_category_access",
-                    children: this.sidebarSectionLinks,
-                }, */
-                ...this.sidebarSectionLinks,
-                {
                     title: "Clientes",
                     icon: "import_contacts",
                     path: { name: "contact_companies.index" },
                     gate: "admin",
                 },
                 {
+                    title: "Cotizaciones",
+                    icon: "attach_money",
+                    path: { name: "cotizaciones" },
+                },
+/*
+                {
+                    title: "global.dashboard",
+                    icon: "dashboard",
+                    path: { name: "dashboard" },
+                    gate: "admin",
+                }, */
+                {
+                    title: "Crear Secciones",
+                    icon: "table_view",
+                    path: { name: "product_sections.index" },
+                    gate: "admin",
+                },
+                {
+                    title: "Crear Categorias",
+                    icon: "table_view",
+                    path: { name: "product_categories.index" },
+                    gate: "admin",
+                },
+                {
+                    title: "Usuarios",
+                    icon: "person",
+                    path: { name: "users.index" },
+                    gate: "user_access",
+                },
+                ...this.sidebarSectionLinks,
+
+/*                 {
                     title: "Proveedores",
                     icon: "import_contacts",
                     path: { name: "contact_management" },
@@ -161,7 +127,7 @@ export default {
                             gate: "expense_report_access",
                         },
                     ],
-                },
+                }, */
             ];
         },
     },

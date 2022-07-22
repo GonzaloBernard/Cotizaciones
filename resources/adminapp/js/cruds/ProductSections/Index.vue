@@ -113,9 +113,9 @@ export default {
       }
     }
   },
-  beforeDestroy() {
+/*   beforeDestroy() {
     this.resetState()
-  },
+  }, */
   computed: {
     ...mapGetters('ProductSectionsIndex', ['data', 'total', 'loading'])
   },
