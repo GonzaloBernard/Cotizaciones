@@ -12,6 +12,9 @@ use App\Models\Product;
 use Gate;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use PDF;
+use Carbon\Carbon;
+use Storage;
 
 class CotizacionApiController extends Controller
 {
@@ -96,18 +99,18 @@ class CotizacionApiController extends Controller
     }
 
     public function postCotizacionPDF(Request $request){
-        return $this->generarPDF('Hola');
+        $cliente = $request->cliente;
+        $cotizacion = Cotizacion::find($request->cotizacion)->load('cotizacionProductos');
+        $data = [ 'cotizacion' => $cotizacion, 'cliente' => $request->cliente];
+        return $this->generarPDF($data);
     }
 
-    public function generarPDF($nombre){
-        $data = [
-            'nombre' => $nombre,
-            ];
-
+    public function generarPDF($data){
         $pdf = PDF::loadView('layouts/cotizacionPDF', $data);
 
-        $pdf_name = 'Cotizaciones/' .  $nombre . Carbon::now()->format('Ymdhi') .'.pdf' ;
+        $pdf_name = 'Cotizaciones/' .  str_replace(' ', '', $data['cliente']) . Carbon::now()->format('Ymdhis') .'.pdf' ;
 
         Storage::disk('public')->put($pdf_name, $pdf->output());
         return config('app.url').'/storage/' . $pdf_name;
+    }
 }

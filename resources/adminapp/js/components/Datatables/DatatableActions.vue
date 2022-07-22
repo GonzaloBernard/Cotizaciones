@@ -26,7 +26,9 @@
       <i class="material-icons">delete</i>
     </a>
 
-    <a href="#">
+    <a href="#"
+    @click.prevent="descargarPDF(row.id)"
+    >
     <v-icon color="red darken-3" v-if="xprops.route === 'cotizacion'">
         mdi-file-document
     </v-icon>
@@ -46,6 +48,27 @@ export default {
     // Code...
   },
   methods: {
+    descargarPDF(cotizacion) {
+      this.$swal({
+        title: 'Descargar PDF',
+        text: "",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Descargar',
+        confirmButtonColor: 'green',
+        focusCancel: true,
+        reverseButtons: true
+      }).then(result => {
+        if (result.value) {
+           let cliente = "Cliente elegido";
+          this.$store
+            .dispatch('CotizacionesSingle/cotizacionPDF', {cotizacion, cliente})
+            .then(result => {
+              //this.$eventHub.$emit('delete-success')
+            })
+        }
+      })
+    },
     destroyData(id) {
       this.$swal({
         title: 'Are you sure?',

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Comprobante CSSAyP Santa Fe</title>
+    <title>Cotizacion MIP</title>
     <!-- Invoice styling -->
     <style>
       body {
@@ -122,7 +122,8 @@
   </head>
   <body>
     <div class="invoice-box">
-      <h1>{{ $nombre }}</h1>
+        <h1>Cliente : {{ $cliente }}</h1>
+        <p>Cotizacion : {{ $cotizacion}}</p>
     </div>
   </body>
 </html>

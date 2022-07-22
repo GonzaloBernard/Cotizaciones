@@ -10,7 +10,7 @@ function getDefaultState() {
 
     test({dispatch}){
         dispatch(
-            'CotizacionesIndex/fetchIndexData',
+            'CotizacionesSingle/cotizacionPDF',
             { },
             { root: true }
           )

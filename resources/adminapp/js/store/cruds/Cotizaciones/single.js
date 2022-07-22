@@ -120,14 +120,16 @@ function initialState() {
     resetState({ commit }) {
       commit('resetState')
     },
-    cotizacionPDF({ commit, }) {
-
+    cotizacionPDF({ commit }, value) {
+        console.log('store cotizacionPDF( {}, value)')
+        console.log(value)
         commit('setLoading', true)
-        dispatch('Alert/resetState', null, { root: true })
+        //dispatch('Alert/resetState', null, { root: true })
 
         return new Promise((resolve, reject) => {
           let params = {
-          nombre: "HOLAA"
+          cliente: value.cliente,
+          cotizacion: value.cotizacion
           }
           axios
             .post(`${route}PDF`, params)
@@ -139,11 +141,11 @@ function initialState() {
               let message = error.response.data.message || error.message
               let errors = error.response.data.errors
 
-              dispatch(
+              /* dispatch(
                 'Alert/setAlert',
                 { message: message, errors: errors, color: 'danger' },
                 { root: true }
-              )
+              ) */
 
               reject(error)
             })
