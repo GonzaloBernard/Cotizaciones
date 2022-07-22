@@ -94,4 +94,20 @@ class CotizacionApiController extends Controller
 
         return response(null, Response::HTTP_NO_CONTENT);
     }
+
+    public function postCotizacionPDF(Request $request){
+        return $this->generarPDF('Hola');
+    }
+
+    public function generarPDF($nombre){
+        $data = [
+            'nombre' => $nombre,
+            ];
+
+        $pdf = PDF::loadView('layouts/cotizacionPDF', $data);
+
+        $pdf_name = 'Cotizaciones/' .  $nombre . Carbon::now()->format('Ymdhi') .'.pdf' ;
+
+        Storage::disk('public')->put($pdf_name, $pdf->output());
+        return config('app.url').'/storage/' . $pdf_name;
 }

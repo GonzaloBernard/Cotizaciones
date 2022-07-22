@@ -55,4 +55,5 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', /
 
     // Cotizacion
     Route::resource('cotizacion', 'CotizacionApiController');
+    Route::post('cotizacionPDF', 'CotizacionApiController@postCotizacionPDF');
 });

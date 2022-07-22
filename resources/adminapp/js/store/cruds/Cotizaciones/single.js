@@ -116,7 +116,39 @@ function initialState() {
     },
     resetState({ commit }) {
       commit('resetState')
-    }
+    },
+    cotizacionPDF({ commit, }) {
+
+        commit('setLoading', true)
+        dispatch('Alert/resetState', null, { root: true })
+
+        return new Promise((resolve, reject) => {
+          let params = {
+          nombre: "HOLAA"
+          }
+          axios
+            .post(`${route}PDF`, params)
+            .then(response => {
+                console.log(response.data);
+              resolve(response)
+            })
+            .catch(error => {
+              let message = error.response.data.message || error.message
+              let errors = error.response.data.errors
+
+              dispatch(
+                'Alert/setAlert',
+                { message: message, errors: errors, color: 'danger' },
+                { root: true }
+              )
+
+              reject(error)
+            })
+            .finally(() => {
+              commit('setLoading', false)
+            })
+        })
+      },
   }
 
   const mutations = {
