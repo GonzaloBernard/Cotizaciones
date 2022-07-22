@@ -100,7 +100,7 @@ class CotizacionApiController extends Controller
 
     public function postCotizacionPDF(Request $request){
         $cliente = $request->cliente;
-        $cotizacion = Cotizacion::find($request->cotizacion)->load('cotizacionProductos');
+        $cotizacion = Cotizacion::find($request->cotizacion);
         $data = [ 'cotizacion' => $cotizacion, 'cliente' => $request->cliente];
         return $this->generarPDF($data);
     }

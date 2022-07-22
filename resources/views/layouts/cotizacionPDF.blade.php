@@ -123,7 +123,8 @@
   <body>
     <div class="invoice-box">
         <h1>Cliente : {{ $cliente }}</h1>
-        <p>Cotizacion : {{ $cotizacion}}</p>
+        <p>Cotizacion ID: {{ $cotizacion->id}} : {{ $cotizacion->descripcion }}</p>
+        <p>items : {{ $cotizacion->cotizacionProductos }}</p>
     </div>
   </body>
 </html>
