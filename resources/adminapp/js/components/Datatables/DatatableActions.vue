@@ -50,8 +50,8 @@ export default {
   methods: {
     descargarPDF(cotizacion) {
       this.$swal({
-        title: 'Descargar PDF',
-        text: "",
+        title: 'Generar Cotización',
+        text: "Seleccione un cliente",
         type: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Descargar',
@@ -60,7 +60,7 @@ export default {
         reverseButtons: true
       }).then(result => {
         if (result.value) {
-           let cliente = "Cliente elegido";
+          let cliente = "Cliente elegido";
           this.$store
             .dispatch('CotizacionesSingle/cotizacionPDF', {cotizacion, cliente})
             .then(result => {
