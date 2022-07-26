@@ -13,16 +13,16 @@
             </h4>
           </div>
           <div class="card-body">
-<!--             <router-link
+            <router-link
               class="btn btn-primary"
               v-if="$can(xprops.permission_prefix + 'create')"
               :to="{ name: xprops.route + '.create' }"
             >
-              <i class="material-icons">
+              <!-- <i class="material-icons">
                 add
-              </i>
-              {{ $t('global.add') }}
-            </router-link> -->
+              </i> -->
+              Ver Carro de Cotización
+            </router-link>
             <button
               type="button"
               class="btn btn-default"
