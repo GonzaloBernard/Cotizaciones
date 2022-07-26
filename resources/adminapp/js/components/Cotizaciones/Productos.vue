@@ -2,7 +2,7 @@
 <div>
 <span v-for="producto in row.cotizacion_productos" :key="producto.id">
 
-{{producto.producto.name}}
+{{ producto.producto?producto.producto.name : ''}}
 </span>
 </div>
 </template>
