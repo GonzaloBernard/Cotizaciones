@@ -68,7 +68,7 @@ export default {
 
 
    agregarClienteCotizacion(row) {
-        let Clientes = this.data.map(cliente => {
+        const Clientes = this.data.map(cliente => {
         return `${cliente.id}- ${cliente.nombre}`
     })
       this.$swal({
@@ -95,7 +95,7 @@ export default {
       })
     },
     descargarPDF(cotizacion) {
-    let Clientes = cotizacion.clientes.map(cliente => {
+    const Clientes = cotizacion.clientes.map(cliente => {
         return `${cliente.nombre}`
     })
     console.log(Clientes)
