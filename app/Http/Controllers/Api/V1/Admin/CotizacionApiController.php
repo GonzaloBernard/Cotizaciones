@@ -98,6 +98,17 @@ class CotizacionApiController extends Controller
         return response(null, Response::HTTP_NO_CONTENT);
     }
 
+    public function postCotizacionCliente(Request $request)
+    {
+        $cotizacion = Cotizacion::find($request->cotizacion_id);
+        // Si hay clientes agregarlos
+        if(!empty($request->clientes)){
+            $cotizacion->clientes()->attach($request->clientes);
+        }
+
+        return response(null, Response::HTTP_ACCEPTED);
+    }
+
     public function postCotizacionPDF(Request $request){
         $cliente = $request->cliente;
         $cotizacion = Cotizacion::find($request->cotizacion);

@@ -98,6 +98,48 @@ const actions = {
                 });
         });
     },
+    postCotizacionCliente({ commit, state, dispatch }, value) {
+        commit("setLoading", true);
+        dispatch("Alert/resetState", null, { root: true });
+
+        return new Promise((resolve, reject) => {
+            let params = objectToFormData(
+                //Hacer llegar id de clientes y cotizacion_id
+                value,
+                {indices: true,booleansAsIntegers: true}
+            );
+            axios
+                .post(`${route}Cliente`, params)
+                .then((response) => {
+                    console.log(response)
+
+                    dispatch(
+                        "CotizacionesIndex/fetchIndexData",
+                        null,
+                        { root: true }
+                    );
+
+
+
+                    resolve(response);
+                })
+                .catch((error) => {
+                    let message = error.response.data.message || error.message;
+                    let errors = error.response.data.errors;
+
+                    dispatch(
+                        "Alert/setAlert",
+                        { message: message, errors: errors, color: "danger" },
+                        { root: true }
+                    );
+
+                    reject(error);
+                })
+                .finally(() => {
+                    commit("setLoading", false);
+                });
+        });
+    },
     setCreatedAt({ commit }, value) {
         commit("setCreatedAt", value);
     },
@@ -241,7 +283,7 @@ const actions = {
             pageLabel: "Page ",
         };
         const pdfObject = jsPDFInvoiceTemplate(props)
-        pdfObject.jsPDFDocObject.save(`${Date.now()}--${cotizacionObject.cotizacion.id}`)
+        pdfObject.jsPDFDocObject.save(`${Date.now()}-${cotizacionObject.cotizacion.clientes[cotizacionObject.clienteIndex].nombre}-${cotizacionObject.cotizacion.id}`)
         try {
             const storageBucket = firebase
             .storage()

@@ -9,11 +9,11 @@ function getDefaultState() {
   const actions = {
 
     test({dispatch}){
-        dispatch(
-            'CotizacionesSingle/cotizacionPDF',
+        /* dispatch(
+            'CotizacionesSingle/postCotizacionCliente',
             { },
             { root: true }
-          )
+          ) */
 
 /*           dispatch(
             'CotizacionesSingle/storeData',

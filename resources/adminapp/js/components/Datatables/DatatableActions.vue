@@ -10,11 +10,22 @@
 
     <router-link
       class="btn btn-just-icon btn-round btn-link text-success"
-      v-if="$can(xprops.permission_prefix + 'edit')"
+      v-if="xprops.route !== 'cotizacion' && $can(xprops.permission_prefix + 'edit')"
       :to="{ name: xprops.route + '.edit', params: { id: row.id } }"
     >
       <i class="material-icons">edit</i>
     </router-link>
+
+
+
+    <a href="#"
+    @click.prevent="agregarClienteCotizacion(row)"
+    >
+    <v-icon color="blue darken-3" v-if="xprops.route === 'cotizacion'">
+        mdi-account-plus
+    </v-icon>
+    </a>
+
 
     <a
       href="#"
@@ -37,6 +48,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 export default {
   props: ['row', 'xprops'],
   data() {
@@ -46,12 +58,47 @@ export default {
   },
   created() {
     // Code...
+    this.fetchIndexData();
   },
+  computed: {
+        ...mapGetters("ClientesIndex", ["data"]),
+    },
   methods: {
+    ...mapActions("ClientesIndex", ["fetchIndexData"]),
+
+
+   agregarClienteCotizacion(row) {
+        let Clientes = this.data.map(cliente => {
+        return `${cliente.id}- ${cliente.nombre}`
+    })
+      this.$swal({
+        title: 'Agregar Clientes a la Cotización',
+        text: "Seleccione un cliente",
+        input: 'select',
+        inputOptions: {
+            Clientes
+        },
+        showCancelButton: true,
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: 'green',
+        focusCancel: true,
+        reverseButtons: true
+      }).then(result => {
+        if (result.value) {
+        console.log(row.id  )
+        this.$store
+            .dispatch('CotizacionesSingle/postCotizacionCliente',  {'clientes': Clientes[parseInt(result.value)].split('-',1), 'cotizacion_id':row.id })
+            .then(result => {
+              //this.$eventHub.$emit('delete-success')
+            })
+        }
+      })
+    },
     descargarPDF(cotizacion) {
     let Clientes = cotizacion.clientes.map(cliente => {
         return `${cliente.nombre}`
     })
+    console.log(Clientes)
       this.$swal({
         title: 'Generar Cotización',
         text: "Seleccione un cliente",
