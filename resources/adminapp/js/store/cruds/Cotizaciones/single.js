@@ -182,20 +182,20 @@ const actions = {
                     }
                   },
                   {
-                    title: "Title",
+                    title: "Titulo",
                     style: {
                       width: 30
                     }
                   },
                   {
-                    title: "Description",
+                    title: "Descripcion",
                     style: {
                       width: 80
                     }
                   },
-                  { title: "Price"},
-                  { title: "Quantity"},
-                  { title: "Unit"},
+                  { title: "Precio"},
+                  { title: "Cantidad"},
+                  { title: "Medida"},
                   { title: "Total"}
                 ],
                 table: Array.from(cotizacionObject.cotizacion.cotizacion_productos, (item, index)=>([
