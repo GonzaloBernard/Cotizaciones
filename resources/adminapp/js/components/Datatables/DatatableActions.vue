@@ -27,7 +27,7 @@
     </a>
 
     <a href="#"
-    @click.prevent="descargarPDF(row.id)"
+    @click.prevent="descargarPDF(row)"
     >
     <v-icon color="red darken-3" v-if="xprops.route === 'cotizacion'">
         mdi-file-document
@@ -49,10 +49,16 @@ export default {
   },
   methods: {
     descargarPDF(cotizacion) {
+    let Clientes = cotizacion.clientes.map(cliente => {
+        return `${cliente.nombre}`
+    })
       this.$swal({
         title: 'Generar Cotización',
         text: "Seleccione un cliente",
-        type: 'warning',
+        input: 'select',
+        inputOptions: {
+            Clientes
+        },
         showCancelButton: true,
         confirmButtonText: 'Descargar',
         confirmButtonColor: 'green',
@@ -60,9 +66,8 @@ export default {
         reverseButtons: true
       }).then(result => {
         if (result.value) {
-          let cliente = "Cliente elegido";
           this.$store
-            .dispatch('CotizacionesSingle/cotizacionPDF', {cotizacion, cliente})
+            .dispatch('CotizacionesSingle/cotizacionPDF', {cotizacion: cotizacion, clienteIndex: parseInt(result.value)})
             .then(result => {
               //this.$eventHub.$emit('delete-success')
             })
