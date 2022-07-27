@@ -21,7 +21,7 @@
                                 <i class="material-icons"> add </i>
                                 {{ $t("global.add") }}
                             </router-link>
-                            <button
+                            <!-- <button
                                 type="button"
                                 class="btn btn-default"
                                 @click="fetchIndexData"
@@ -35,7 +35,7 @@
                                     refresh
                                 </i>
                                 {{ $t("global.refresh") }}
-                            </button>
+                            </button> -->
                         </div>
                         <v-row class="mt-4">
                             <v-col cols="3">
