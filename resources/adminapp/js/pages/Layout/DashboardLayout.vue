@@ -36,6 +36,7 @@ export default {
                     title: "Clientes",
                     icon: "import_contacts",
                     path: { name: "contact_companies.index" },
+                    gate: "user_access",
                 },
                 {
                     title: "Cotizaciones",
