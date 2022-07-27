@@ -38,7 +38,7 @@
                             {{ $t("global.refresh") }}
                         </button> -->
                     </div>
-                    <v-row class="mt-7">
+                    <v-row class="mt-4 ms-3">
                         <v-col cols="3">
                             <v-text-field
                                 @input="filtrar"
