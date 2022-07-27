@@ -32,17 +32,6 @@ class StoreProductRequest extends FormRequest
             'category' => [
                 'array',
             ],
-            'categoria_id' => [
-                'integer',
-                'required',
-            ],
-            'tag' => [
-                'array',
-            ],
-            'tag.*.id' => [
-                'integer',
-                'exists:product_tags,id',
-            ],
             'stock' => [
                 'integer',
                 'required',
