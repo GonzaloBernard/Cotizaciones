@@ -36,14 +36,13 @@ export default {
                     title: "Clientes",
                     icon: "import_contacts",
                     path: { name: "contact_companies.index" },
-                    gate: "admin",
                 },
                 {
                     title: "Cotizaciones",
                     icon: "attach_money",
                     path: { name: "cotizaciones" },
                 },
-/*
+                /*
                 {
                     title: "global.dashboard",
                     icon: "dashboard",
@@ -54,13 +53,13 @@ export default {
                     title: "Crear Secciones",
                     icon: "table_view",
                     path: { name: "product_sections.index" },
-                    gate: "admin",
+                    gate: "user_access",
                 },
                 {
                     title: "Crear Categorias",
                     icon: "table_view",
                     path: { name: "product_categories.index" },
-                    gate: "admin",
+                    gate: "user_access",
                 },
                 {
                     title: "Usuarios",
@@ -70,7 +69,7 @@ export default {
                 },
                 ...this.sidebarSectionLinks,
 
-/*                 {
+                /*                 {
                     title: "Proveedores",
                     icon: "import_contacts",
                     path: { name: "contact_management" },
