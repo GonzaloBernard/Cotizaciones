@@ -19,7 +19,7 @@
             <i class="material-icons">edit</i>
         </router-link>
 
-        <a href="#" @click.prevent="agregarClienteCotizacion(row)" class="ms-6">
+        <a href="#" @click.prevent="agregarClienteCotizacion(row)">
             <v-icon color="blue darken-3" v-if="xprops.route === 'cotizacion'">
                 mdi-account-plus
             </v-icon>
@@ -35,7 +35,7 @@
       <i class="material-icons">delete</i>
     </a> -->
 
-        <a href="#" @click.prevent="descargarPDF(row)" class="ms-6">
+        <a href="#" @click.prevent="descargarPDF(row)" class="ms-1">
             <v-icon color="red darken-3" v-if="xprops.route === 'cotizacion'">
                 mdi-file-document
             </v-icon>
