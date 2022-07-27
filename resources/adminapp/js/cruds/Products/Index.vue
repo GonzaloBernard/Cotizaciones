@@ -15,7 +15,7 @@
                     </div>
                     <div class="row justify-space-between">
                         <router-link
-                            class="btn btn-success"
+                            class="btn btn-success mt-2 ms-2"
                             v-if="$can(xprops.permission_prefix + 'create')"
                             :to="{ name: xprops.route + '.create' }"
                         >
