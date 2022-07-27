@@ -32,7 +32,7 @@ class ProductApiController extends Controller
             'description'=> $request->description,
             'price'=> $request->price,
             'categoria_id'=> $request->category[0]['id'],
-            'iva'=> $request->iva
+            'iva'=> $request->iva,
             'img'=> $request->img,
             'stock'=> $request->stock,
         ]);
