@@ -10,8 +10,7 @@
                             <i class="material-icons">assignment</i>
                         </div>
                         <h4 class="card-title">
-                            {{ $t("global.table") }}
-                            <strong>Clientes</strong>
+                            {{ $t("global.table") }} <strong>Clientes</strong>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -23,20 +22,18 @@
                             <i class="material-icons"> add </i>
                             {{ $t("global.add") }}
                         </router-link>
-                        <!--
-<button
-              type="button"
-              class="btn btn-default"
-              @click="fetchIndexData"
-              :disabled="loading"
-              :class="{ disabled: loading }"
-            >
-              <i class="material-icons" :class="{ 'fa-spin': loading }">
-                refresh
-              </i>
-              {{ $t('global.refresh') }}
-            </button>
--->
+                        <!--<button
+                        type="button"
+                        class="btn btn-default"
+                        @click="fetchIndexData"
+                        :disabled="loading"
+                        :class="{ disabled: loading }"
+                        >
+                        <i class="material-icons" :class="{ 'fa-spin': loading }">
+                            refresh
+                        </i>
+                        {{ $t('global.refresh') }}
+                        </button>-->
                     </div>
                     <div class="card-body">
                         <div class="row">

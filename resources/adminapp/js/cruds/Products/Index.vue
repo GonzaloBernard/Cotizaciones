@@ -9,60 +9,60 @@
                         <div class="card-icon">
                             <i class="material-icons">assignment</i>
                         </div>
-                        <div class="row justify-space-between">
-                            <h4 class="card-title">
-                                <strong>{{ $t("Productos") }}</strong>
-                            </h4>
-                            <router-link
-                                class="btn btn-success"
-                                v-if="$can(xprops.permission_prefix + 'create')"
-                                :to="{ name: xprops.route + '.create' }"
-                            >
-                                <i class="material-icons"> add </i>
-                                {{ $t("global.add") }}
-                            </router-link>
-                            <!-- <button
-                                type="button"
-                                class="btn btn-default"
-                                @click="fetchIndexData"
-                                :disabled="loading"
-                                :class="{ disabled: loading }"
-                            >
-                                <i
-                                    class="material-icons"
-                                    :class="{ 'fa-spin': loading }"
-                                >
-                                    refresh
-                                </i>
-                                {{ $t("global.refresh") }}
-                            </button> -->
-                        </div>
-                        <v-row class="mt-4">
-                            <v-col cols="3">
-                                <v-text-field
-                                    @input="filtrar"
-                                    solo
-                                    v-model="busqueda"
-                                    label="Búsqueda..."
-                                    prepend-inner-icon="mdi-magnify"
-                                ></v-text-field>
-                            </v-col>
-                            <v-col cols="5">
-                                <v-autocomplete
-                                    v-model="categoriasFilter"
-                                    :items="getCategories"
-                                    item-text="name"
-                                    item-value="id"
-                                    solo
-                                    chips
-                                    small-chips
-                                    label="Filtrar por Categoría"
-                                    multiple
-                                    @input="filtrar"
-                                ></v-autocomplete>
-                            </v-col>
-                        </v-row>
+                        <h4 class="card-title">
+                            <strong>{{ $t("Productos") }}</strong>
+                        </h4>
                     </div>
+                    <div class="row justify-space-between">
+                        <router-link
+                            class="btn btn-success"
+                            v-if="$can(xprops.permission_prefix + 'create')"
+                            :to="{ name: xprops.route + '.create' }"
+                        >
+                            <i class="material-icons"> add </i>
+                            {{ $t("global.add") }}
+                        </router-link>
+                        <!-- <button
+                            type="button"
+                            class="btn btn-default"
+                            @click="fetchIndexData"
+                            :disabled="loading"
+                            :class="{ disabled: loading }"
+                        >
+                            <i
+                                class="material-icons"
+                                :class="{ 'fa-spin': loading }"
+                            >
+                                refresh
+                            </i>
+                            {{ $t("global.refresh") }}
+                        </button> -->
+                    </div>
+                    <v-row class="mt-4">
+                        <v-col cols="3">
+                            <v-text-field
+                                @input="filtrar"
+                                solo
+                                v-model="busqueda"
+                                label="Búsqueda..."
+                                prepend-inner-icon="mdi-magnify"
+                            ></v-text-field>
+                        </v-col>
+                        <v-col cols="5">
+                            <v-autocomplete
+                                v-model="categoriasFilter"
+                                :items="getCategories"
+                                item-text="name"
+                                item-value="id"
+                                solo
+                                chips
+                                small-chips
+                                label="Filtrar por Categoría"
+                                multiple
+                                @input="filtrar"
+                            ></v-autocomplete>
+                        </v-col>
+                    </v-row>
 
                     <div class="card-body">
                         <div class="row">
