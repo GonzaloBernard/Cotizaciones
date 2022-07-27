@@ -1,7 +1,7 @@
 function initialState() {
     return {
         cotizacionSinConfirmar: [
-            {
+            /* {
                 id: 14,
                 name: "Camara",
                 description: "asdasdas",
@@ -112,7 +112,7 @@ function initialState() {
                 tag: [],
                 media: [],
                 cantidad: 1,
-            },
+            }, */
         ],
         clientes: [],
         stockError: false,
