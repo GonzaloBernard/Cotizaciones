@@ -6,7 +6,7 @@ function initialState() {
       name: '',
       description: '',
       price: '',
-      categoria_id: 1,
+   //   categoria_id: 1,
       category: [],
       tag: [],
       iva: 21,

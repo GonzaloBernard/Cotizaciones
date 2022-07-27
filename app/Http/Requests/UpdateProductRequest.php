@@ -32,10 +32,10 @@ class UpdateProductRequest extends FormRequest
 /*             'category' => [
                 'array',
             ], */
-            'categoria_id' => [
+/*             'categoria_id' => [
                 'integer',
                 'required',
-            ],
+            ], */
             'tag' => [
                 'array',
             ],
