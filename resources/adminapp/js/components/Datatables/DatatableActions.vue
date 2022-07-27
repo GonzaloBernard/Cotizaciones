@@ -35,7 +35,7 @@
       <i class="material-icons">delete</i>
     </a> -->
 
-        <a href="#" @click.prevent="descargarPDF(row)">
+        <a href="#" @click.prevent="descargarPDF(row)" class="ms-6">
             <v-icon color="red darken-3" v-if="xprops.route === 'cotizacion'">
                 mdi-file-document
             </v-icon>
