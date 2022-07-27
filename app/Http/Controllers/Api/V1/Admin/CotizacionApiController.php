@@ -15,6 +15,7 @@ use Illuminate\Http\Response;
 use PDF;
 use Carbon\Carbon;
 use Storage;
+use Log;
 
 class CotizacionApiController extends Controller
 {
@@ -102,8 +103,8 @@ class CotizacionApiController extends Controller
     {
         $cotizacion = Cotizacion::find($request->cotizacion_id);
         // Si hay clientes agregarlos
-        if(!empty($request->clientes)){
-            $cotizacion->clientes()->attach($request->clientes);
+        if(!empty($request->clientes) ){
+            $cotizacion->clientes()->syncWithoutDetaching($request->clientes);
         }
 
         return response(null, Response::HTTP_ACCEPTED);
