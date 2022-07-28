@@ -168,8 +168,16 @@ const actions = {
     resetState({ commit }) {
         commit("resetState");
     },
-    async cotizacionPDF({ commit }, cotizacionObject) {
+    async cotizacionPDF({ commit,rootGetters }, cotizacionObject) {
+        console.log(cotizacionObject)
         commit("setLoading", true);
+        const precioDolar = parseFloat(rootGetters["ProductsIndex/getDolar"].venta)
+
+        let sumaTotal = 0
+        cotizacionObject.cotizacion.cotizacion_productos.forEach((item) => {
+            sumaTotal += (item.cantidad * parseFloat(item.monto_unitario) * precioDolar)
+        })
+
         var props = {
             outputType: 'blob',
             returnJsPDFDocObject: true,
@@ -177,21 +185,10 @@ const actions = {
             orientationLandscape: false,
             compress: true,
             logo: {
-                src: "https://raw.githubusercontent.com/edisonneza/jspdf-invoice-template/demo/images/logo.png",
+                src: "",
                 type: 'PNG', //optional, when src= data:uri (nodejs case)
                 width: 53.33, //aspect ratio = width/height
                 height: 26.66,
-                margin: {
-                    top: 0, //negative or positive num, from the current position
-                    left: 0 //negative or positive num, from the current position
-                }
-            },
-            stamp: {
-                inAllPages: true, //by default = false, just in the last page
-                src: "https://raw.githubusercontent.com/edisonneza/jspdf-invoice-template/demo/images/qr_code.jpg",
-                type: 'JPG', //optional, when src= data:uri (nodejs case)
-                width: 20, //aspect ratio = width/height
-                height: 20,
                 margin: {
                     top: 0, //negative or positive num, from the current position
                     left: 0 //negative or positive num, from the current position
@@ -205,9 +202,9 @@ const actions = {
                 website: "www.mip.com",
             },
             contact: {
-                label: "Factura generada para:",
-                name: cotizacionObject.cotizacion.clientes[cotizacionObject.clienteIndex].nombre,
-                address: `CUIT: ${cotizacionObject.cotizacion.clientes[cotizacionObject.clienteIndex].cuit}`,
+                label: cotizacionObject.clienteIndex ? "Factura generada para:" : 'Cotizacion sin cliente asociado',
+                name: cotizacionObject.clienteIndex ? cotizacionObject.cotizacion.clientes[cotizacionObject.clienteIndex].nombre : '',
+                address: cotizacionObject.clienteIndex ? `CUIT: ${cotizacionObject.cotizacion.clientes[cotizacionObject.clienteIndex].cuit}`: '',
             },
             invoice: {
                 label: "Cotizacion #: ",
@@ -237,7 +234,6 @@ const actions = {
                   },
                   { title: "Precio"},
                   { title: "Cantidad"},
-                  { title: "Medida"},
                   { title: "Total"}
                 ],
                 table: Array.from(cotizacionObject.cotizacion.cotizacion_productos, (item, index)=>([
@@ -246,49 +242,46 @@ const actions = {
                     item.producto.description,
                     item.producto.price,
                     item.cantidad,
-                    "unidad",
-                    parseFloat(item.cantidad * item.monto_unitario)
+                    item.cantidad * parseFloat(item.monto_unitario) * parseFloat(rootGetters["ProductsIndex/getDolar"].venta)
                 ])),
                 additionalRows: [{
                     col1: 'Total:',
-                    col2: '145,250.50',
-                    col3: 'ALL',
+                    col2: sumaTotal.toFixed(2),
                     style: {
                         fontSize: 14 //optional, default 12
                     }
                 },
-                {
+/*                 {
                     col1: 'VAT:',
                     col2: '20',
                     col3: '%',
                     style: {
                         fontSize: 10 //optional, default 12
                     }
-                },
+                }, */
                 {
                     col1: 'SubTotal:',
                     col2: '116,199.90',
-                    col3: 'ALL',
                     style: {
                         fontSize: 10 //optional, default 12
                     }
                 }],
-                invDescLabel: "Invoice Note",
-                invDesc: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary.",
+                invDescLabel: "Notas de la cotizacion",
+                invDesc: "Aca puede ir informacion relevante.",
             },
             footer: {
-                text: "The invoice is created on a computer and is valid without the signature and stamp.",
+                text: "Esta cotización se creo en una computadora y es válida sin firma ni sello.",
             },
             pageEnable: true,
-            pageLabel: "Page ",
+            pageLabel: "Página ",
         };
         const pdfObject = jsPDFInvoiceTemplate(props)
-        pdfObject.jsPDFDocObject.save(`${Date.now()}-${cotizacionObject.cotizacion.clientes[cotizacionObject.clienteIndex].nombre}-${cotizacionObject.cotizacion.id}`)
+        pdfObject.jsPDFDocObject.save(`${Date.now()}-${cotizacionObject.cotizacion.id}`)
         try {
             const storageBucket = firebase
             .storage()
             .ref()
-            .child(`mipUploads/cotizaciones/${Date.now()}-${cotizacionObject.cotizacion.clientes[cotizacionObject.clienteIndex].nombre}-${cotizacionObject.cotizacion.id}.pdf`)
+            .child(`mipUploads/cotizaciones/${Date.now()}-${cotizacionObject.cotizacion.id}.pdf`)
             const snapshot = await storageBucket.put(pdfObject.blob)
             const url = await snapshot.ref.getDownloadURL() // ver que hacer con esta url ?
             commit("setLoading", false);

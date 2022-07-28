@@ -3,9 +3,11 @@
         <router-link
             v-if="$can(xprops.permission_prefix + 'show')"
             :to="{ name: xprops.route + '.show', params: { id: row.id } }"
-            class="btn btn-just-icon btn-round btn-link text-azure"
+            class="ms-1"
         >
-            <i class="material-icons">remove_red_eye</i>
+            <v-icon color="blue lighten-3" v-if="xprops.route === 'cotizacion'">
+                mdi-eye
+            </v-icon>
         </router-link>
 
         <router-link
@@ -19,7 +21,7 @@
             <i class="material-icons">edit</i>
         </router-link>
 
-        <a href="#" @click.prevent="agregarClienteCotizacion(row)">
+        <a href="#" class="ms-1" @click.prevent="agregarClienteCotizacion(row)">
             <v-icon color="blue darken-3" v-if="xprops.route === 'cotizacion'">
                 mdi-account-plus
             </v-icon>
@@ -34,12 +36,45 @@
     >
       <i class="material-icons">delete</i>
     </a> -->
+        <v-tooltip bottom color="orange darken-2">
+            <template v-slot:activator="{ on, attrs }">
+                <a
+                    v-bind="attrs"
+                    v-on="on"
+                    href="#"
+                    @click.prevent="descargarPDF(row)"
+                    class="ms-1"
+                >
+                    <v-icon
+                        color="orange darken-2"
+                        v-if="xprops.route === 'cotizacion'"
+                    >
+                        mdi-file-account
+                    </v-icon>
+                </a>
+            </template>
+            <span>Generar cotizacion con cliente asociado</span>
+        </v-tooltip>
 
-        <a href="#" @click.prevent="descargarPDF(row)" class="ms-1">
-            <v-icon color="red darken-3" v-if="xprops.route === 'cotizacion'">
-                mdi-file-document
-            </v-icon>
-        </a>
+        <v-tooltip top color="red darken-3">
+            <template v-slot:activator="{ on, attrs }">
+                <a
+                    v-bind="attrs"
+                    v-on="on"
+                    href="#"
+                    @click.prevent="descargarPDFSinCliente(row)"
+                    class="ms-1"
+                >
+                    <v-icon
+                        color="red darken-3"
+                        v-if="xprops.route === 'cotizacion'"
+                    >
+                        mdi-file-document
+                    </v-icon>
+                </a>
+            </template>
+            <span>Generar cotizacion sin cliente</span>
+        </v-tooltip>
     </div>
 </template>
 
@@ -95,13 +130,22 @@ export default {
                 }
             });
         },
-        descargarPDF(cotizacion) {
+        descargarPDFSinCliente(cotizacion) {
+            this.$store
+                .dispatch("CotizacionesSingle/cotizacionPDF", {
+                    cotizacion: cotizacion,
+                    clienteIndex: null,
+                })
+                .then((result) => {
+                    //this.$eventHub.$emit('delete-success')
+                });
+        },
+        async descargarPDF(cotizacion) {
             const Clientes = cotizacion.clientes.map((cliente) => {
                 return `${cliente.nombre}`;
             });
-            console.log(Clientes);
             this.$swal({
-                title: "Generar Cotización",
+                title: "Generar Cotización - Paso 2",
                 text: "Seleccione un cliente",
                 input: "select",
                 inputOptions: {

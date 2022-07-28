@@ -134,6 +134,9 @@ export default {
             },
         };
     },
+    created () {
+        this.$store.dispatch("ProductsIndex/fetchDolar")
+    },
     beforeDestroy() {
         this.resetState();
     },
