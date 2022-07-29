@@ -145,7 +145,7 @@ export default {
                 return `${cliente.nombre}`;
             });
             this.$swal({
-                title: "Generar Cotización - Paso 2",
+                title: "Generar Cotización",
                 text: "Seleccione un cliente",
                 input: "select",
                 inputOptions: {

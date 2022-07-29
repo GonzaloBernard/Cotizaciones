@@ -16,6 +16,9 @@ const route = 'product-categories'
 const getters = {
   data: state => state.data,
   getCategories: state => state.data,
+  getCategoriesBySectionId: (state) => (sectionId) => {
+    return state.data.filter(categoria => categoria.section_id === sectionId)
+  },
   total: state => state.total,
   loading: state => state.loading
 }

@@ -6,27 +6,11 @@
         >
             <!-- Imagen del producto -->
 
-            <v-hover absolute>
-                <template v-slot:default="{ hover }">
-                    <div>
-                        <v-fade-transition>
-                            <v-overlay v-if="hover" absolute color="#fafafa">
-                                <v-btn
-                                    small
-                                    color="red darken-3"
-                                    @click="verProducto = true"
-                                    >Ver Producto</v-btn
-                                >
-                            </v-overlay>
-                        </v-fade-transition>
                         <v-img
                             height="180"
                             :src="producto.img ? producto.img : ''"
                             contain
                         ></v-img>
-                    </div>
-                </template>
-            </v-hover>
 
             <!-- Titulo del producto -->
             <v-card-title>{{ producto.name }}</v-card-title>
@@ -50,7 +34,11 @@
                 </v-row>
 
                 <v-row justify="center">
-                    {{ producto.description.substring(0, 50) + "..." }}
+                    {{producto.category.name}}
+                </v-row>
+
+                <v-row justify="center">
+                    {{ producto.description}}
                     <div class="my-4 text-subtitle-1">
                         <strong>{{ producto.stock }} disponibles</strong>
                     </div>

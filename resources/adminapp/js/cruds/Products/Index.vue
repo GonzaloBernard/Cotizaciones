@@ -51,7 +51,7 @@
                         <v-col cols="5">
                             <v-autocomplete
                                 v-model="categoriasFilter"
-                                :items="getCategories"
+                                :items="getCategoriesBySectionId($route.params.sectionId)"
                                 item-text="name"
                                 item-value="id"
                                 solo
@@ -182,7 +182,7 @@ export default {
   }, */
     computed: {
         ...mapGetters("ProductsIndex", ["data", "total", "loading"]),
-        ...mapGetters("ProductCategoriesIndex", ["getCategories"]),
+        ...mapGetters("ProductCategoriesIndex", ["getCategoriesBySectionId"]),
         ...mapGetters("CotizacionParcial", ["getStockError"]),
     },
     watch: {
@@ -279,7 +279,12 @@ export default {
             if (productosFiltradosPorCategorias.length > 0) {
                 this.productosFiltrados = productosFiltradosPorCategorias;
             } else {
-                this.productosFiltrados = this.data;
+                this.productosFiltrados = this.productosFiltrados = this.data.filter((prod) => {
+                    return (
+                        prod.category.section_id ===
+                        parseInt(this.$route.params.sectionId)
+                    );
+                });;
             }
         },
 
