@@ -166,7 +166,7 @@
                                                 <template v-slot:append>
                                                     <v-text-field
                                                         :value="entry.stock"
-                                                         @input="updateStock"
+                                                        @input="updateStock"
                                                         class="text-center mt-0 pt-0"
                                                         type="number"
                                                         style="width: 120px"

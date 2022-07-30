@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-card
-            :max-width="$vuetify.breakpoint.width > 970 ? 220 : 300"
+            :max-width="$vuetify.breakpoint.width > 970 ? 220 : 400"
             style="border-radius: 25px"
         >
             <!-- Imagen del producto -->
@@ -33,12 +33,16 @@
                     </v-col>
                 </v-row>
 
-                <v-row justify="center">
+                <v-row justify="center" class="mb-2">
+                    <v-chip color="red darken-3" dark x-small>
                     {{producto.category.name}}
+                    </v-chip>
                 </v-row>
 
-                <v-row justify="center">
+                <v-row justify="center" class="my-2">
                     {{ producto.description}}
+                </v-row>
+                <v-row justify="center">
                     <div class="my-4 text-subtitle-1">
                         <strong>{{ producto.stock }} disponibles</strong>
                     </div>

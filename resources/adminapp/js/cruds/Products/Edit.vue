@@ -119,6 +119,27 @@
                                             @search.blur="clearFocus"
                                         />
                                     </div>
+                                    <div class="form-group bmd-form-group">
+                                        <label class="bmd-label-floating mt-4">
+                                            Stock
+                                        </label>
+                                        <v-slider
+                                            :value="entry.stock"
+                                            :max="9999"
+                                            class="align-center"
+                                            @input="updateStock"
+                                        >
+                                            <template v-slot:append>
+                                                <v-text-field
+                                                    :value="entry.stock"
+                                                    @input="updateStock"
+                                                    class="text-center mt-0 pt-0"
+                                                    type="number"
+                                                    style="width: 120px"
+                                                ></v-text-field>
+                                            </template>
+                                        </v-slider>
+                                    </div>
                                     <!-- <div
                                         class="form-group bmd-form-group"
                                         :class="{
@@ -203,6 +224,7 @@ export default {
             "setTag",
             "insertPhotoFile",
             "removePhotoFile",
+            "setStock"
         ]),
         updateName(e) {
             this.setName(e.target.value);
@@ -212,6 +234,9 @@ export default {
         },
         updatePrice(e) {
             this.setPrice(e.target.value);
+        },
+        updateStock(value) {
+            this.setStock(value);
         },
         updateCategory(value) {
             this.setCategory(value);
