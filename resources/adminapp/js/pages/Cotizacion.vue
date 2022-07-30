@@ -166,7 +166,7 @@ export default {
         },
 
         save() {
-            const c = this.clientes.map((cliente) => {
+            const c = this.clientes?.map((cliente) => {
                 return cliente.id;
             });
             this.storeData(c);

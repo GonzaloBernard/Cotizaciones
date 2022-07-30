@@ -119,7 +119,7 @@
                                             @search.blur="clearFocus"
                                         />
                                     </div>
-                                    <div
+                                    <!-- <div
                                         class="form-group bmd-form-group"
                                         :class="{
                                             'has-items': entry.tag.length !== 0,
@@ -141,7 +141,7 @@
                                             @search.focus="focusField('tag')"
                                             @search.blur="clearFocus"
                                         />
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>

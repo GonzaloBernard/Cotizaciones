@@ -240,9 +240,9 @@ const actions = {
                     index + 1,
                     item.producto.name,
                     item.producto.description,
-                    item.producto.price,
+                    (item.producto.price * parseFloat(rootGetters["ProductsIndex/getDolar"].venta)).toFixed(2),
                     item.cantidad,
-                    item.cantidad * parseFloat(item.monto_unitario) * parseFloat(rootGetters["ProductsIndex/getDolar"].venta)
+                    (item.cantidad * parseFloat(item.monto_unitario) * parseFloat(rootGetters["ProductsIndex/getDolar"].venta)).toFixed(2)
                 ])),
                 additionalRows: [{
                     col1: 'Total:',
@@ -261,7 +261,7 @@ const actions = {
                 }, */
                 {
                     col1: 'SubTotal:',
-                    col2: '116,199.90',
+                    col2: sumaTotal.toFixed(2),
                     style: {
                         fontSize: 10 //optional, default 12
                     }
