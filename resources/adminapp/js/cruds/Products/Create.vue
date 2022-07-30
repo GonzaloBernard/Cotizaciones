@@ -123,8 +123,8 @@
                                             :key="'category-field'"
                                             :value="entry.category"
                                             :options="lists.category"
-                                            :closeOnSelect="false"
-                                            multiple
+                                            :closeOnSelect="true"
+
                                             @input="updateCategory"
 
                                         />
@@ -267,7 +267,7 @@ export default {
         submitForm() {
             this.storeData()
                 .then(() => {
-                    this.$router.push({ name: "products.index" });
+                    this.$router.go(-1);
                     this.$eventHub.$emit("create-success");
                 })
                 .catch((error) => {
