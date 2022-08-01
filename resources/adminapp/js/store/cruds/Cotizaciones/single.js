@@ -171,11 +171,11 @@ const actions = {
     async cotizacionPDF({ commit,rootGetters }, cotizacionObject) {
         console.log(cotizacionObject)
         commit("setLoading", true);
-        const precioDolar = parseFloat(rootGetters["ProductsIndex/getDolar"].venta)
+        const precioDolar = 1//parseFloat(rootGetters["ProductsIndex/getDolar"].venta)
 
         let sumaTotal = 0
         cotizacionObject.cotizacion.cotizacion_productos.forEach((item) => {
-            sumaTotal += (item.cantidad * parseFloat(item.monto_unitario) * precioDolar)
+            sumaTotal += (item.cantidad * item.producto.price * (1+(item.producto.iva / 100 )) * precioDolar)
         })
 
         var props = {
@@ -196,21 +196,21 @@ const actions = {
             },
             business: {
                 name: "MIP",
-                address: "Av. Siempreviva 3222",
-                phone: "(+54)342 5 7895 355",
-                email: "mip@example.com",
-                website: "www.mip.com",
+                address: "",//"Av. Siempreviva 3222",
+                phone: "(+54) 342 422 8588",
+                email: "mipsantafe@gmail.com",
+                website: "www.mipsantafe.com",
             },
             contact: {
-                label: cotizacionObject.clienteIndex ? "Factura generada para:" : 'Cotizacion sin cliente asociado',
+                label: cotizacionObject.clienteIndex ? "Factura generada para:" : '',
                 name: cotizacionObject.clienteIndex ? cotizacionObject.cotizacion.clientes[cotizacionObject.clienteIndex].nombre : '',
                 address: cotizacionObject.clienteIndex ? `CUIT: ${cotizacionObject.cotizacion.clientes[cotizacionObject.clienteIndex].cuit}`: '',
             },
             invoice: {
                 label: "Cotizacion #: ",
                 num: cotizacionObject.cotizacion.id,
-                invDate: "Generada: 01/01/2021 18:12",
-                invGenDate: "Vencimiento: 02/02/2021 10:17",
+                invDate: "",//"Generada: 01/01/2021 18:12",
+                invGenDate: "",//"Vencimiento: 02/02/2021 10:17",
                 headerBorder: false,
                 tableBodyBorder: false,
                 header: [
@@ -233,16 +233,18 @@ const actions = {
                     }
                   },
                   { title: "Precio"},
+                  { title: "IVA %"},
                   { title: "Cantidad"},
-                  { title: "Total"}
+                  { title: "Subtotal"}
                 ],
                 table: Array.from(cotizacionObject.cotizacion.cotizacion_productos, (item, index)=>([
                     index + 1,
                     item.producto.name,
                     item.producto.description,
-                    (item.producto.price * parseFloat(rootGetters["ProductsIndex/getDolar"].venta)).toFixed(2),
+                    (item.producto.price * precioDolar).toFixed(2),
+                    item.producto.iva,
                     item.cantidad,
-                    (item.cantidad * parseFloat(item.monto_unitario) * parseFloat(rootGetters["ProductsIndex/getDolar"].venta)).toFixed(2)
+                    (item.cantidad * item.producto.price * (1+(item.producto.iva / 100 )) * precioDolar ).toFixed(2)
                 ])),
                 additionalRows: [{
                     col1: 'Total:',
@@ -259,15 +261,16 @@ const actions = {
                         fontSize: 10 //optional, default 12
                     }
                 }, */
-                {
+                /* {
                     col1: 'SubTotal:',
                     col2: sumaTotal.toFixed(2),
                     style: {
                         fontSize: 10 //optional, default 12
                     }
-                }],
-                invDescLabel: "Notas de la cotizacion",
-                invDesc: "Aca puede ir informacion relevante.",
+                } */
+            ],
+                invDescLabel: "",//"Notas de la cotizacion",
+                invDesc: "",//"Aca puede ir informacion relevante.",
             },
             footer: {
                 text: "Esta cotización se creo en una computadora y es válida sin firma ni sello.",
