@@ -21,7 +21,11 @@ a {
   color: #202124;
 }
 a:hover {
-  color: #C62828;
+
+  color: #9c27b0;
+
+  color: #f64e04;
+
   text-decoration: underline;
 }
 </style>

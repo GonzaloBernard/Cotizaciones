@@ -5,11 +5,11 @@
         <div class="container-fluid">
             <div class="navbar-wrapper">
                 <div class="navbar-brand" v-if="getDolar">
-                    <v-chip dark color="green darken-3" class="mr-2">{{
+                    <v-chip dark color="#f64e04" class="mr-2">{{
                         `Dólar venta: $ ${getDolar.venta}`
                     }}</v-chip>
 
-                    <v-chip dark color="green darken-3">{{
+                    <v-chip dark color="#f64e04">{{
                         `Dólar compra: $ ${getDolar.compra}`
                     }}</v-chip>
                 </div>

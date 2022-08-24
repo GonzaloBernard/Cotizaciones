@@ -5,9 +5,9 @@
     :data-image="backgroundImage"
     :data-color="itemColor"
   >
-    <div class="logo">
-      <a href="/" class="simple-text logo-normal">
-        {{ $t(title) }}
+    <div class="logo text-center">
+      <a href="#" class="simple-text logo-normal">
+        <img src="/md/img/logo.png" alt="" />
       </a>
     </div>
     <div class="sidebar-wrapper">

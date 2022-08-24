@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="card">
-            <div class="card-header card-header-success card-header-icon">
+            <div class="card-header card-header-primary card-header-icon">
               <div class="card-icon">
                 <i class="material-icons">language</i>
               </div>
@@ -13,7 +13,7 @@
               </h4>
             </div>
             <div class="card-body">
-              Ha iniciado sesión
+              <h3>Bienvenido al sistema MIP</h3>
             </div>
           </div>
         </div>

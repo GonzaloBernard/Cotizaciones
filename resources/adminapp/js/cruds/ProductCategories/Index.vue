@@ -7,7 +7,7 @@
                         class="card-header card-header-primary card-header-icon"
                     >
                         <div class="card-icon">
-                            <i class="material-icons">assignment</i>
+                            <i class="fa-solid fa-list-ol fa-2x"></i>
                         </div>
                         <h4 class="card-title">
                             {{ $t("global.table") }}

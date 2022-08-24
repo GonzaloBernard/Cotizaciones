@@ -19,6 +19,9 @@ import router from './routes/routes'
 import store from './store/store'
 import i18n from './i18n'
 
+import '@fortawesome/fontawesome-free/css/all.css'
+import '@fortawesome/fontawesome-free/js/all.js'
+
 // Plugins
 
 import GlobalComponents from './globalComponents'

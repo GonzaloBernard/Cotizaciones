@@ -1,15 +1,15 @@
 /*!
 
- =========================================================
+ =
  * Material Dashboard - v2.1.1
- =========================================================
+ =
 
  * Product Page: https://www.creative-tim.com/product/material-dashboard
  * Copyright 2018 Creative Tim (http://www.creative-tim.com)
 
  * Designed by www.invisionapp.com Coded by www.creative-tim.com
 
- =========================================================
+ =
 
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
@@ -185,7 +185,7 @@ md = {
 
   initDocumentationCharts: function() {
     if ($('#dailySalesChart').length != 0 && $('#websiteViewsChart').length != 0) {
-      /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
+      /* ----------===     Daily Sales Chart initialization For Documentation    ===---------- */
 
       dataDailySalesChart = {
         labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
@@ -310,7 +310,7 @@ md = {
   initDashboardPageCharts: function() {
 
     if ($('#dailySalesChart').length != 0 || $('#completedTasksChart').length != 0 || $('#websiteViewsChart').length != 0) {
-      /* ----------==========     Daily Sales Chart initialization    ==========---------- */
+      /* ----------===     Daily Sales Chart initialization    ===---------- */
 
       dataDailySalesChart = {
         labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
@@ -339,7 +339,7 @@ md = {
 
 
 
-      /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
+      /* ----------===     Completed Tasks Chart initialization    ===---------- */
 
       dataCompletedTasksChart = {
         labels: ['12p', '3p', '6p', '9p', '12p', '3a', '6a', '9a'],
@@ -368,7 +368,7 @@ md = {
       md.startAnimationForLineChart(completedTasksChart);
 
 
-      /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
+      /* ----------===     Emails Subscription Chart initialization    ===---------- */
 
       var dataWebsiteViewsChart = {
         labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
