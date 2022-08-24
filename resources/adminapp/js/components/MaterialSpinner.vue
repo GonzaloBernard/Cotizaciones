@@ -61,13 +61,13 @@ $duration: 1.4s;
     stroke: #9c27b0;
   }
   25% {
-    stroke: #C62828;
+    stroke: #f64e04;
   }
   50% {
-    stroke: #C62828;
+    stroke: #f64e04;
   }
   75% {
-    stroke: #C62828;
+    stroke: #f64e04;
   }
   100% {
     stroke: #9c27b0;

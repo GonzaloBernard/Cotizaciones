@@ -9877,9 +9877,9 @@ fieldset[disabled][disabled] .btn-group-raised .btn,
 }
 
 .bg-inverse .btn.btn-outline-primary {
-  color: #C62828;
+  color: #f64e04;
   background-color: transparent;
-  border-color: #C62828;
+  border-color: #f64e04;
 }
 
 .bg-inverse .btn.btn-outline-primary:hover {
