@@ -34,13 +34,13 @@ export default {
             return [
                 {
                     title: "Clientes",
-                    icon: "import_contacts",
+                    icon: "material-icons fa-solid fa-people-group",
                     path: { name: "contact_companies.index" },
                     gate: "user_access",
                 },
                 {
                     title: "Cotizaciones",
-                    icon: "attach_money",
+                    icon: "material-icons fa-solid fa-file-invoice-dollar",
                     path: { name: "cotizaciones" },
                 },
                 /*
@@ -52,19 +52,19 @@ export default {
                 }, */
                 {
                     title: "Crear Secciones",
-                    icon: "table_view",
+                    icon: "material-icons fa-solid fa-list",
                     path: { name: "product_sections.index" },
                     gate: "user_access",
                 },
                 {
                     title: "Crear Categorias",
-                    icon: "table_view",
+                    icon: "material-icons fa-solid fa-list-ol",
                     path: { name: "product_categories.index" },
                     gate: "user_access",
                 },
                 {
                     title: "Usuarios",
-                    icon: "person",
+                    icon: "material-icons fas fa-users",
                     path: { name: "users.index" },
                     gate: "user_access",
                 },

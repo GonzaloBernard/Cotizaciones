@@ -20,7 +20,7 @@ const getters = {
     sidebarSectionLinks: (state) => state.data.map( (section) => {
         return {
             title: section.descripcion,
-            icon: "table_view",
+            icon: "material-icons fas fa-video",
             path: { name: 'products.index', params: {sectionId: section.id}},
             name: 'products.index',
             component: () => import('@cruds/Products/Index.vue'),

@@ -14,8 +14,10 @@
           <span class="sidebar-normal">{{ $t(item.title) }}</span>
         </template>
         <template v-else>
-          <i class="material-icons">{{ item.icon }}</i>
-          <p>{{ $t(item.title) }}</p>
+          <div style="display: flex;">
+            <i :class="[item.icon, 'mr-3']"></i>
+            <p style="flex: 1 1 auto;">{{ $t(item.title) }}</p>
+          </div>
         </template>
       </a>
     </li>
