@@ -27,9 +27,7 @@
                       'is-focused': activeField == 'descripcion'
                     }"
                   >
-                    <label class="bmd-label-floating required">{{
-                      $t('cruds.productCategory.fields.descripcion')
-                    }}</label>
+                    <label class="bmd-label-floating required">Nombre</label>
                     <textarea
                       class="form-control"
                       rows="5"
